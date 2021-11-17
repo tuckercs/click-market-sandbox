@@ -2,18 +2,10 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import { useQuery } from "@apollo/client";
-
+import client from "../apollo-client";
 import QUERY_COUNTENFULL from "./queriesContentfull.graphql";
 
-const Home: NextPage = () => {
-  const { data, loading, error } = useQuery(QUERY_COUNTENFULL);
-
-  
-  // check for errors
-  if (error) {
-    return <p>:( an error happened</p>;
-  }
+const Home: NextPage = ({lots}) => {
 
   return (
     <div className={styles.container}>
@@ -33,10 +25,10 @@ const Home: NextPage = () => {
         </p>
 
         <div className={styles.grid}>
-          {data?.lotCollection?.items.map((item) => (
-            <a href="https://nextjs.org/docs" className={styles.card}>
-              <h2>{item.title}</h2>
-              <p>{item.author.name}</p>
+          {lots.map((lot) => (
+            <a href="https://nextjs.org/docs" className={styles.card} key={lot.id}>
+              <h2>{lot.title}</h2>
+              <p>{lot.author.name}</p>
             </a>
           ))}
         </div>
@@ -59,3 +51,12 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export async function getServerSideProps() {
+  const { data, loading, error } = await client.query({query: QUERY_COUNTENFULL})
+  return {
+    props: {
+      lots: data.lotCollection.items
+    },
+  };
+}
