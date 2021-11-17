@@ -1,20 +1,20 @@
 import { ApolloClient, InMemoryCache, createHttpLink, ApolloLink } from '@apollo/client';
 import { setContext } from "@apollo/client/link/context";
 
-// const dataNormalizers = new ApolloLink((operation, forward) => {
-//   return forward(operation).map((response) => {
-//     if (response?.data?.lotCollection) {
-//       const lots = response?.data?.lotCollection?.items;
-//       response.data = {
-//         lotCollection: {
-//           items: lots.filter((e: ILotData) => !!e.sys?.publishedAt),
-//         },
-//       };
-//     }
+const dataNormalizers = new ApolloLink((operation, forward) => {
+  return forward(operation).map((response) => {
+    if (response?.data?.lotCollection) {
+      const lots = response?.data?.lotCollection?.items;
+      response.data = {
+        lotCollection: {
+          items: lots.filter((e) => !!e.sys?.publishedAt),
+        },
+      };
+    }
 
-//     return response;
-//   });
-// });
+    return response;
+  });
+});
 
 const authLink = setContext(async (_, { headers }) => {
   return {
