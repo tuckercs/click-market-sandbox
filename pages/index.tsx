@@ -3,7 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import client from "api/apollo-client";
 import QUERY_CONTENTFUL from "api/queries/contentful.graphql";
-import styles from "../styles/Home.module.css";
+import styles from "styles/Home.module.css";
 
 const Home: NextPage = ({ lots }) => (
   <div className={styles.container}>
