@@ -1,0 +1,58 @@
+query lot($title: String) {
+  lotCollection(preview: true, order: lotId_ASC, where: { title: $title }) {
+    items {
+      lotId
+      sys {
+        id
+        publishedAt
+      }
+      title
+      imagesCollection {
+        items {
+          url
+          title
+          contentType
+        }
+      }
+      createdAt
+      estimatePrice
+      purchasedAt
+      smartContractAddress
+      tokenId
+      mojitoId
+      author {
+        about
+        name
+        slug
+        avatar {
+          url
+          title
+        }
+      }
+      collector {
+        name
+        slug
+        about
+        smartContractAddress
+        avatar {
+          url
+          title
+        }
+        videoId
+        twitterLink
+      }
+      aboutLot
+      history
+      video
+      conditionReportText
+      shortCollectorDescription
+      nftLink
+      slug
+      nftVideoIds
+      lotPreviewBackgroundColor
+      gridPreviewImage {
+        url
+      }
+    }
+  }
+}
