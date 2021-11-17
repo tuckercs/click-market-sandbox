@@ -1,6 +1,12 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
   reactStrictMode: true,
+  images: {
+    domains: [
+      "downloads.ctfassets.net",
+      "images.ctfassets.net"
+    ],
+  },
   webpack: (config) => {
     config.module.rules.push({
       test: /\.(graphql|gql)$/,
