@@ -9,8 +9,7 @@ import QUERY_COUNTENFULL from "./queriesContentfull.graphql";
 const Home: NextPage = () => {
   const { data, loading, error } = useQuery(QUERY_COUNTENFULL);
 
-  console.log(data?.lotCollection.items)
-
+  
   // check for errors
   if (error) {
     return <p>:( an error happened</p>;
@@ -34,7 +33,7 @@ const Home: NextPage = () => {
         </p>
 
         <div className={styles.grid}>
-          {data.lotCollection.items.map((item) => (
+          {data?.lotCollection?.items.map((item) => (
             <a href="https://nextjs.org/docs" className={styles.card}>
               <h2>{item.title}</h2>
               <p>{item.author.name}</p>
