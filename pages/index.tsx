@@ -23,7 +23,7 @@ const Home: NextPage = ({ lots }) => (
       <div className={styles.grid}>
         {lots.map((lot, index: number) => (
           <a
-            href="https://nextjs.org/docs"
+            href={`lots/${lot.slug}`}
             className={styles.lot}
             key={`${lot.id}-${index}`}
           >

@@ -1,5 +1,5 @@
-query lot($title: String) {
-  lotCollection(preview: true, order: lotId_ASC, where: { title: $title }) {
+query lot($slug: String) {
+  lotCollection(preview: true, order: lotId_ASC, where: { slug: $slug }) {
     items {
       lotId
       sys {
