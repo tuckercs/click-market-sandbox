@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-import Head from "next/head";
 import Image from "next/image";
 import client from "api/apollo-client";
 import QUERY_CONTENTFUL from "api/queries/contentful.graphql";
@@ -7,11 +6,6 @@ import styles from "styles/Home.module.css";
 
 const Home: NextPage = ({ lots }) => (
   <div className={styles.container}>
-    <Head>
-      <title>Mojito</title>
-      <link rel="icon" href="/favicon.png" />
-    </Head>
-
     <main className={styles.main}>
       <Image src="/images/brand-icon.png" alt="icon" width={24} height={8} />
       <h1 className={styles.title}>Metaverso NFTs</h1>

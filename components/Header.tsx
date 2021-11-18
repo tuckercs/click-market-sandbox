@@ -1,11 +1,13 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useUser } from "@auth0/nextjs-auth0";
 import styles from "styles/Header.module.css";
 
 const Header = () => {
   const { user } = useUser();
+  const router = useRouter();
 
   return (
     <div className={styles.container}>
@@ -24,7 +26,7 @@ const Header = () => {
           <button className={styles.button}>logout</button>
         </a>
       ) : (
-        <a href="/api/auth/login">
+        <a href={`/api/auth/login?returnTo=${router.asPath}`}>
           <button className={styles.button}>
             SIGN UP
             <div className={styles.icon}>
