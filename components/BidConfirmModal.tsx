@@ -45,7 +45,7 @@ const BidConfirmModal = ({ handleClose, show, lot }: any) => {
                 <div className={styles.bidContainer}>
                   <p className={styles.lotDescription}>Your max. bid</p>
                   <select className={styles.selectBid}>
-                    {options.map((option, index) => <option value={option.value}>{option.label}</option>)}
+                    {options.map((option, index) => <option key={index} value={option.value}>{option.label}</option>)}
                   </select>
                 </div>
                 <hr className={styles.separator}/>
