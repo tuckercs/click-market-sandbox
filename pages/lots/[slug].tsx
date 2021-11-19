@@ -70,7 +70,9 @@ export async function getServerSideProps({ params }: any) {
     variables: { slug: params.slug },
   });
 
+  console.log(data)
   if (error) {
+    console.log(error)
     return;
   }
 
