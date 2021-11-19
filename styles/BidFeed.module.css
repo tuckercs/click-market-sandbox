@@ -1,0 +1,26 @@
+.container {
+  color: #292929;
+  margin-top: 200px;
+  width: 100%;
+}
+
+.title {
+  font-family: "IBMPlexMono";
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 22px;
+}
+
+.table {
+  position: relative;
+}
+
+.overlay {
+  background-color: #ffffff;
+  position: absolute;
+  left: -40px;
+  right: -40px;
+  bottom: -15px;
+  height: 53px;
+  filter: blur(19px);
+}

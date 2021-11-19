@@ -16,13 +16,13 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@api": ["./api/*"],
-      "@components": ["./components/*"],
-      "@constants": ["./constants/*"],
-      "@hooks": ["./hooks/*"],
-      "@interfaces": ["./interfaces/*"],
-      "@styles/*": ["./styles/*"],
-      "@utils": ["./utils/*"]
+      "api": ["./api/*"],
+      "components": ["./components/*"],
+      "constants": ["./constants/*"],
+      "hooks": ["./hooks/*"],
+      "interfaces": ["./interfaces/*"],
+      "styles/*": ["./styles/*"],
+      "utils": ["./utils/"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

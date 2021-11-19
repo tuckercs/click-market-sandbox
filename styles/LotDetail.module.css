@@ -1,7 +1,4 @@
 .main {
-  background-size: 100%;
-  background-repeat: no-repeat;
-  min-height: 100vh;
   padding: 40px 90px;
   flex: 1;
   display: flex;
@@ -10,36 +7,9 @@
   align-items: center;
 }
 
-.title {
-  margin: 0;
-  font-size: 48px;
-  font-weight: 500;
-}
-
-.description {
-  margin: 35px 0 120px;
-  font-family: "PostGrotesk";
-  font-size: 15px;
-}
-
-.grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin: 0 -12px;
-  max-width: 1600px;
-}
-
-.lot {
-  border-radius: 16px;
-  color: inherit;
+.content {
   display: flex;
   flex-direction: column;
-  margin: 0 12px 68px;
-  max-width: 432px;
-  text-align: left;
-  text-decoration: none;
 }
 
 .image {
@@ -49,30 +19,35 @@
 .detailContainer {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 -36px;
 }
 
 .detailLeft {
-  margin-right: 72px;
+  margin: 0 36px 40px;
 }
 
 .detailRight {
-  flex: 2;
+  margin: 0 36px;
+  width: 432px;
 }
 
 .author {
   display: flex;
   flex-direction: row;
-  margin-bottom: 41px;
 }
 
 .authorName {
   font-family: 'PostGrotesk';
   font-weight: bold;
   font-size: 20px;
+  margin: 0 0 10px;
 }
 
 .authorImage {
   margin-right: 30px;
+  min-width: 60px;
 }
 
 .currentBid {
@@ -107,7 +82,7 @@
 .lotDescription {
   font-family: "PostGrotesk";
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 14px;
   line-height: 20px;
 }
@@ -123,8 +98,9 @@
   font-size: 26px;
   font-weight: 700;
   height: 78px;
-  padding: 22px 95px;
+  justify-content: center;
   margin-top: 40px;
+  width: 100%;
 }
 
 .lot .tag {
