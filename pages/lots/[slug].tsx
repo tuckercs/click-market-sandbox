@@ -6,7 +6,7 @@ import { useUser } from "@auth0/nextjs-auth0";
 import QUERY_CONTENTFUL from "api/queries/contentful.graphql";
 import styles from "styles/LotDetail.module.css";
 
-const LotDetail: NextPage = ({ lot }) => {
+const LotDetail: NextPage = ({ lot }: any) => {
   const { user } = useUser();
   const router = useRouter();
 
@@ -58,7 +58,7 @@ const LotDetail: NextPage = ({ lot }) => {
 
 export default LotDetail;
 
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps({ params }: any) {
   const { data, error } = await client.query({
     query: QUERY_CONTENTFUL,
     variables: { slug: params.slug },

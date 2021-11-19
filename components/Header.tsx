@@ -22,23 +22,27 @@ const Header = () => {
         </a>
       </Link>
       {user ? (
-        <a href="/api/auth/logout">
-          <button className={styles.button}>logout</button>
-        </a>
+        <Link href="/api/auth/logout">
+          <a>
+            <button className={styles.button}>logout</button>
+          </a>
+        </Link>
       ) : (
-        <a href={`/api/auth/login?returnTo=${router.asPath}`}>
-          <button className={styles.button}>
-            SIGN UP
-            <div className={styles.icon}>
-              <Image
-                src="/icons/twitter.svg"
-                alt="icon"
-                width={19}
-                height={15}
-              />
-            </div>
-          </button>
-        </a>
+        <Link href={`/api/auth/login?returnTo=${router.asPath}`}>
+          <a>
+            <button className={styles.button}>
+              SIGN UP
+              <div className={styles.icon}>
+                <Image
+                  src="/icons/twitter.svg"
+                  alt="icon"
+                  width={19}
+                  height={15}
+                />
+              </div>
+            </button>
+          </a>
+        </Link>
       )}
     </div>
   );

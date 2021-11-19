@@ -4,7 +4,7 @@ import client from "api/apollo-client";
 import QUERY_CONTENTFUL from "api/queries/contentful.graphql";
 import styles from "styles/Home.module.css";
 
-const Home: NextPage = ({ lots }) => (
+const Home: NextPage = ({ lots }: any) => (
   <div className={styles.container}>
     <main className={styles.main}>
       <Image src="/images/brand-icon.png" alt="icon" width={24} height={8} />
@@ -15,7 +15,7 @@ const Home: NextPage = ({ lots }) => (
       </p>
 
       <div className={styles.grid}>
-        {lots.map((lot, index: number) => (
+        {lots.map((lot: any, index: number) => (
           <a
             href={`lots/${lot.slug}`}
             className={styles.lot}
