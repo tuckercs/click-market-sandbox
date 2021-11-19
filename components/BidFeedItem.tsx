@@ -3,7 +3,7 @@ import Image from "next/image";
 import styles from "styles/BidFeedItem.module.css";
 import { formatCurrencyAmount } from "utils";
 
-const BidFeedItem = ({ item, isTop }) => {
+const BidFeedItem = ({ item, isTop }: any) => {
   const avatarSize = isTop ? 96 : 51;
   return (
     <div
