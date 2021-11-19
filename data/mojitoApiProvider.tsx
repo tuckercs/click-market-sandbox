@@ -124,8 +124,8 @@ const extendCollection = (collectionItems: any) => {
 const extendLot = (_lot: any) => {
   // _lot.endDate = moment().add(20, 's');
 
-  const auctionStartUnix = moment(_lot.startDate ?? null).unix();
-  const auctionEndUnix = moment(_lot.endDate ?? null).unix();
+  const auctionStartUnix = moment(_lot.startDate || null).unix();
+  const auctionEndUnix = moment(_lot.endDate || null).unix();
   // const auctionIsActive = _lot.status == EAuctionStatus.active;
   // const auctionIsCompleted = _lot.status == EAuctionStatus.completed;
   const nowUnix = moment().unix();
