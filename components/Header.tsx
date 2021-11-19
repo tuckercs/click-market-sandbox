@@ -10,7 +10,7 @@ const Header = () => {
   const router = useRouter();
 
   return (
-    <div className={styles.container}>
+    <nav className={styles.container}>
       <Link href="/">
         <a>
           <Image
@@ -44,7 +44,7 @@ const Header = () => {
           </a>
         </Link>
       )}
-    </div>
+    </nav>
   );
 };
 
