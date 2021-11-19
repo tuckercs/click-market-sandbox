@@ -2,11 +2,11 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useUser } from "@auth0/nextjs-auth0";
+import { useAuth0 } from "@auth0/auth0-react";
 import styles from "styles/Header.module.css";
 
 const Header = () => {
-  const { user } = useUser();
+  const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
   const router = useRouter();
 
   return (
@@ -21,28 +21,20 @@ const Header = () => {
           />
         </a>
       </Link>
-      {user ? (
-        <Link href="/api/auth/logout">
-          <a>
-            <button className={styles.button}>logout</button>
-          </a>
-        </Link>
+      {isAuthenticated ? (
+        <button className={styles.button} onClick={() => logout({ returnTo: window.location.origin })}>logout</button>
       ) : (
-        <Link href={`/api/auth/login?returnTo=${router.asPath}`}>
-          <a>
-            <button className={styles.button}>
-              SIGN UP
-              <div className={styles.icon}>
-                <Image
-                  src="/icons/twitter.svg"
-                  alt="icon"
-                  width={19}
-                  height={15}
-                />
-              </div>
-            </button>
-          </a>
-        </Link>
+        <button className={styles.button} onClick={() => loginWithRedirect()}>
+          SIGN UP
+          <div className={styles.icon}>
+            <Image
+              src="/icons/twitter.svg"
+              alt="icon"
+              width={19}
+              height={15}
+            />
+          </div>
+        </button>
       )}
     </nav>
   );

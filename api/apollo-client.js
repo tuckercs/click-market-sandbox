@@ -1,5 +1,6 @@
 import { ApolloClient, InMemoryCache, createHttpLink, ApolloLink } from '@apollo/client';
 import { setContext } from "@apollo/client/link/context";
+import { config } from 'constants/';
 
 const dataNormalizers = new ApolloLink((operation, forward) => {
   return forward(operation).map((response) => {
@@ -20,13 +21,13 @@ const authLink = setContext(async (_, { headers }) => {
   return {
     headers: {
       ...headers,
-      authorization: `Bearer ${process.env.CONTENTFUL_AUTH_TOKEN}`,
+      authorization: `Bearer ${config.CONTENTFUL_AUTH_TOKEN}`,
     },
   };
 });
 
 const httpLink = createHttpLink({
-  uri: `${process.env.CONTENTFUL_URL}`,
+  uri: config.CONTENTFUL_URL,
 });
 
 const client = new ApolloClient({

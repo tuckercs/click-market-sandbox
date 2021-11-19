@@ -1,15 +1,13 @@
 import type { NextPage } from "next";
 import Image from "next/image";
-import { useRouter } from "next/router";
 import client from "api/apollo-client";
-import { useUser } from "@auth0/nextjs-auth0";
+import { useAuth0 } from "@auth0/auth0-react";
 import QUERY_CONTENTFUL from "api/queries/contentful.graphql";
 import BidFeed from "components/BidFeed";
 import styles from "styles/LotDetail.module.css";
 
 const LotDetail: NextPage = ({ lot }: any) => {
-  const { user } = useUser();
-  const router = useRouter();
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
 
   return (
     <div className={styles.container}>
@@ -46,12 +44,10 @@ const LotDetail: NextPage = ({ lot }: any) => {
                   <p className={styles.lotDescription}>{lot.author.about}</p>
                 </div>
               </div>
-              {user ? (
+              {isAuthenticated ? (
                 <button className={styles.button}>BID NOW!</button>
               ) : (
-                <a href={`/api/auth/login?returnTo=${router.asPath}`}>
-                  <button className={styles.button}>SIGN IN</button>
-                </a>
+                <button className={styles.button} onClick={() => loginWithRedirect()}>SIGN IN</button>
               )}
             </div>
           </div>

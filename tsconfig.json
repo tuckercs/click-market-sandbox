@@ -21,6 +21,7 @@
       "constants": ["./constants/*"],
       "hooks": ["./hooks/*"],
       "interfaces": ["./interfaces/*"],
+      "state": ["./data/index.ts"],
       "styles/*": ["./styles/*"],
       "utils": ["./utils/"]
     }

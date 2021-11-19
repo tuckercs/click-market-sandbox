@@ -1,7 +1,7 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import { UserProvider } from "@auth0/nextjs-auth0";
 import Header from "components/Header";
+import { AuthProvider, MojitoApiProvider } from "state";
 import "styles/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -11,10 +11,12 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>Mojito</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <UserProvider>
-        <Header />
-        <Component {...pageProps} />
-      </UserProvider>
+      <AuthProvider>
+        <MojitoApiProvider>
+          <Header />
+          <Component {...pageProps} />
+        </MojitoApiProvider>
+      </AuthProvider>
     </>
   );
 }
