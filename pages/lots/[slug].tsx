@@ -5,9 +5,14 @@ import { useAuth0 } from "@auth0/auth0-react";
 import QUERY_CONTENTFUL from "api/queries/contentful.graphql";
 import BidFeed from "components/BidFeed";
 import styles from "styles/LotDetail.module.css";
+import { bidIncrement } from "utils/bidIncrement";
+import { formatCurrencyAmount } from "utils";
+import { useState } from "react";
+import BidConfirmModal from "components/BidConfirmModal";
 
 const LotDetail: NextPage = ({ lot }: any) => {
   const { isAuthenticated, loginWithRedirect } = useAuth0();
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
 
   return (
     <div className={styles.container}>
@@ -45,13 +50,14 @@ const LotDetail: NextPage = ({ lot }: any) => {
                 </div>
               </div>
               {isAuthenticated ? (
-                <button className={styles.button}>BID NOW!</button>
+                <button className={styles.button} onClick={() => setShowConfirmModal(true)}>BID NOW!</button>
               ) : (
                 <button className={styles.button} onClick={() => loginWithRedirect()}>SIGN IN</button>
               )}
             </div>
           </div>
           <BidFeed />
+          <BidConfirmModal handleClose={() => setShowConfirmModal(false)} show={showConfirmModal} lot={lot}/>
         </div>
       </main>
     </div>
@@ -66,9 +72,7 @@ export async function getServerSideProps({ params }: any) {
     variables: { slug: params.slug },
   });
 
-  console.log(data)
   if (error) {
-    console.log(error)
     return;
   }
 
