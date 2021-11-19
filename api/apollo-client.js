@@ -20,13 +20,13 @@ const authLink = setContext(async (_, { headers }) => {
   return {
     headers: {
       ...headers,
-      authorization: `Bearer 19vUSnF3_8S-OsepxXBcDAI_Ua3GbwSy5c7HNTXB-R0`,
+      authorization: `Bearer ${process.env.CONTENTFUL_AUTH_TOKEN}`,
     },
   };
 });
 
 const httpLink = createHttpLink({
-  uri: "https://graphql.contentful.com/content/v1/spaces/fu9did2d8yaw/environments/staging",
+  uri: `${process.env.CONTENTFUL_URL}`,
 });
 
 const client = new ApolloClient({
