@@ -1,55 +1,48 @@
 import type { NextPage } from "next";
 import Image from "next/image";
-import client from "api/apollo-client";
-import QUERY_CONTENTFUL from "api/queries/contentful.graphql";
+import LotGridItem from "components/LotGridItem";
+import { useContentfulLots, useAuction, useCollection } from "hooks";
 import styles from "styles/Home.module.css";
 
-const Home: NextPage = ({ lots }: any) => (
-  <div className={styles.container}>
-    <main className={styles.main}>
-      <Image src="/images/brand-icon.png" alt="icon" width={24} height={8} />
-      <h1 className={styles.title}>Metaverso NFTs</h1>
+const Home: NextPage = () => {
+  const { lots } = useContentfulLots();
+  const { slug } = useAuction();
+  const { collection } = useCollection(slug, {
+    pollInterval: 1500, // To discuss
+  });
 
-      <p className={styles.description}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.
-      </p>
+  const collectionLotsIds = collection?.items?.map((e: any) => e.lot.id) || [];
+  const filteredLots = lots.filter((e) =>
+    collectionLotsIds.includes(e.mojitoId)
+  );
 
-      <div className={styles.grid}>
-        {lots.map((lot: any, index: number) => (
-          <a
-            href={`lots/${lot.slug}`}
-            className={styles.lot}
-            key={`${lot.id}-${index}`}
-          >
-            <Image
-              className={styles.image}
-              src={lot.imagesCollection.items[0].url}
-              alt="lot-image"
-              width={432}
-              height={415}
-            />
-            <div className={styles.tag}>State tag</div>
-            <div className={styles.row}>
-              <h2>{lot.title}</h2>
-            </div>
-            <p>Collection name</p>
-            <p>
-              Created by <span>{lot.author.name}</span>
-            </p>
-          </a>
-        ))}
-      </div>
-    </main>
-  </div>
-);
+  return (
+    <div className={styles.container}>
+      <main className={styles.main}>
+        <Image src="/images/brand-icon.png" alt="icon" width={24} height={8} />
+        <h1 className={styles.title}>Metaverso NFTs</h1>
+
+        <p className={styles.description}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod.
+        </p>
+
+        <div className={styles.grid}>
+          {collection?.items.map((item: any) => {
+            const lot = filteredLots.find((lot) => lot.mojitoId === item.lot.id);
+            return lot && lot?.sys?.publishedAt ? (
+              <LotGridItem
+                key={lot.mojitoId + JSON.stringify(item.lot.bidView)}
+                mojitoLotData={item.lot}
+                lot={lot}
+                auctionSlug={collection.slug}
+              />
+            ) : null;
+          })}
+        </div>
+      </main>
+    </div>
+  );
+};
 
 export default Home;
-
-export async function getServerSideProps() {
-  const { data } = await client.query({ query: QUERY_CONTENTFUL });
-  return {
-    props: {
-      lots: data.lotCollection.items
-    },
-  };
-}

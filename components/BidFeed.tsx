@@ -1,4 +1,5 @@
 import React from "react";
+import { gql, useQuery } from "@apollo/client";
 import BidFeedItem from "components/BidFeedItem";
 import styles from "styles/BidFeed.module.css";
 
@@ -47,7 +48,14 @@ const items = [
   },
 ];
 
-const BidFeed = () => (
+const BidFeed = () => {
+  // TO DO
+  // const { loading, error, data } = useQuery(, {
+  //   variables: {},
+  //   pollInterval: 500,
+  // });
+
+  return(
   <div className={styles.container}>
     <h3 className={styles.title}>Bid feed</h3>
     <div className={styles.table}>
@@ -57,6 +65,6 @@ const BidFeed = () => (
       <div className={styles.overlay} />
     </div>
   </div>
-);
+);}
 
 export default BidFeed;

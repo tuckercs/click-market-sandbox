@@ -1,0 +1,61 @@
+.lot {
+  border-radius: 16px;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  margin: 0 12px 68px;
+  max-width: 432px;
+  text-align: left;
+  text-decoration: none;
+}
+
+.lot .image {
+  border-radius: 16px;
+}
+
+.lot .tag {
+  align-self: flex-start;
+  background-color: #29abe2;
+  border-radius: 6px;
+  color: #fff;
+  font-family: "PostGrotesk";
+  font-size: 14px;
+  margin: 16px 0 12px;
+  padding: 4px 8px;
+}
+
+.lot .tag span {
+  font-weight: 700;
+}
+
+.lot .row {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.lot h2 {
+  font-family: "PostGrotesk";
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lot p {
+  font-family: "PostGrotesk";
+  font-size: 14px;
+  margin: 3px 0;
+}
+
+.lot .id {
+  color: #ff00ff;
+  font-weight: 700;
+}
+
+.lot p span {
+  font-weight: 700;
+}
