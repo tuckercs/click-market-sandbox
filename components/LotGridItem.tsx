@@ -28,7 +28,7 @@ const LotGridItem = ({ lot, mojitoLotData, auctionSlug }: any) => {
           </>
         ) : (
           <>
-            Current bid: <span>{formatCurrencyAmount(mojitoLotData.currentBid.amount)}</span>
+            Current bid: <span>{formatCurrencyAmount(mojitoLotData.currentBid?.amount ? mojitoLotData.currentBid.amount : 0)}</span>
           </>
         )}
       </div>
