@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { NextPage } from "next";
 import Image from "next/image";
 import client from "api/apollo-client";
@@ -7,7 +8,6 @@ import BidFeed from "components/BidFeed";
 import styles from "styles/LotDetail.module.css";
 import { bidIncrement } from "utils/bidIncrement";
 import { formatCurrencyAmount } from "utils";
-import { useState } from "react";
 import BidConfirmModal from "components/BidConfirmModal";
 
 const LotDetail: NextPage = ({ lot }: any) => {
@@ -56,7 +56,7 @@ const LotDetail: NextPage = ({ lot }: any) => {
               )}
             </div>
           </div>
-          <BidFeed />
+          <BidFeed lot={lot} />
           <BidConfirmModal handleClose={() => setShowConfirmModal(false)} show={showConfirmModal} lot={lot}/>
         </div>
       </main>

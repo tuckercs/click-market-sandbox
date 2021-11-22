@@ -16,6 +16,13 @@
   flex: 1;
 }
 
+.avatar {
+  border-radius: 50%;
+  height: 51px;
+  width: 51px;
+  overflow: hidden;
+}
+
 .name {
   font-weight: 400;
   margin-left: 25px;

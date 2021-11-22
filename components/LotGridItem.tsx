@@ -11,6 +11,7 @@ const LotGridItem = ({ lot, mojitoLotData, auctionSlug }: any) => {
     momentTimeZone(startDate)
       .tz(Intl.DateTimeFormat().resolvedOptions().timeZone)
       .format("MMM Do / H:mm:ss");
+
   return (
     <a href={`lots/${lot.slug}`} className={styles.lot}>
       <Image

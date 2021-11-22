@@ -1,22 +1,30 @@
-import React from "react";
-import Image from "next/image";
+import React, { useRef, useLayoutEffect } from "react";
+import moment from "moment";
+import { formatCurrencyAmount, generateAvatar, getTimeAgo } from "utils";
 import styles from "styles/BidFeedItem.module.css";
-import { formatCurrencyAmount } from "utils";
 
 const BidFeedItem = ({ item, isTop }: any) => {
-  const avatarSize = isTop ? 96 : 51;
+  const {
+    amount,
+    createdAt,
+    marketplaceUser: { avatar: avatarKey, username },
+  } = item;
+  const avatar = useRef<HTMLDivElement>(null);
+  const timeAgo = getTimeAgo(createdAt);
+
+  useLayoutEffect(() => {
+    if (avatarKey && avatar.current) {
+      avatar.current.innerHTML = generateAvatar(avatarKey);
+    }
+  }, [avatarKey, avatar]);
+
   return (
     <div
       className={styles.container}
       style={!isTop ? { borderTopWidth: 1 } : undefined}
     >
       <div className={styles.bidder}>
-        <Image
-          src={item.avatar}
-          alt="avatar"
-          width={avatarSize}
-          height={avatarSize}
-        />
+        <div className={styles.avatar} ref={avatar} style={isTop ? { width: 96, height: 96 } : undefined} />
         <span
           className={styles.name}
           style={
@@ -25,12 +33,12 @@ const BidFeedItem = ({ item, isTop }: any) => {
               : undefined
           }
         >
-          {item.name}
+          {username}
         </span>
       </div>
-      <span>{item.bidTime}</span>
+      <span>{timeAgo}</span>
       <span className={styles.bid} style={isTop ? { fontSize: 24 } : undefined}>
-        {`30Ξ ${formatCurrencyAmount(item.bid)}`}
+        30&#926; {formatCurrencyAmount(amount)}
       </span>
     </div>
   );
