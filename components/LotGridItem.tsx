@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
+import Image from "next/image";
 import momentTimeZone from "moment-timezone";
 import { formatCurrencyAmount } from "utils";
 import styles from "styles/LotGridItem.module.css";
@@ -14,13 +15,18 @@ const LotGridItem = ({ lot, mojitoLotData, auctionSlug }: any) => {
 
   return (
     <a href={`lots/${lot.slug}`} className={styles.lot}>
-      <img
-        className={styles.image}
-        src={lot.imagesCollection.items[0].url}
-        alt="lot-image"
-        width={432}
-        height={415}
-      />
+      <div className={styles.imageWrapper}>
+        <Image
+          objectFit={"cover"}
+          layout={"fill"}
+          quality={75}
+          priority={true}
+          draggable="false"
+          className={styles.image}
+          src={lot.imagesCollection.items[0].url + `?w=${200}&h=${200}`}
+          alt="lot-image"
+        />
+      </div>
       <div className={styles.tag}>
         {mojitoLotData.bidView.isPreSale ? (
           <>
