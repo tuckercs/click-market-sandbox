@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useState } from "react";
 import type { NextPage } from "next";
 import Image from "next/image";
@@ -20,7 +21,7 @@ const LotDetail: NextPage = ({ lot }: any) => {
         <div className={styles.content}>
           <div className={styles.detailContainer}>
             <div className={styles.detailLeft}>
-              <Image
+              <img
                 className={styles.image}
                 src={lot.imagesCollection.items[0].url}
                 alt={lot.imagesCollection.items[0].title}
