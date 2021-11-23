@@ -2,6 +2,7 @@
 import { useState } from "react";
 import type { NextPage } from "next";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import client from "api/apollo-client";
 import { useAuth0 } from "@auth0/auth0-react";
 import QUERY_CONTENTFUL from "api/queries/contentful.graphql";
@@ -14,6 +15,15 @@ import BidConfirmModal from "components/BidConfirmModal";
 const LotDetail: NextPage = ({ lot }: any) => {
   const { isAuthenticated, loginWithRedirect } = useAuth0();
   const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const router = useRouter();
+  const login = () => {
+    loginWithRedirect({
+      appState: {
+        returnTo: window.location.pathname,
+        origin: router.asPath,
+      },
+    });
+  };
 
   return (
     <div className={styles.container}>
@@ -53,7 +63,7 @@ const LotDetail: NextPage = ({ lot }: any) => {
               {isAuthenticated ? (
                 <button className={styles.button} onClick={() => setShowConfirmModal(true)}>BID NOW!</button>
               ) : (
-                <button className={styles.button} onClick={() => loginWithRedirect()}>SIGN IN</button>
+                <button className={styles.button} onClick={login}>SIGN IN</button>
               )}
             </div>
           </div>

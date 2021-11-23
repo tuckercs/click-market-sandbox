@@ -8,6 +8,14 @@ import styles from "styles/Header.module.css";
 const Header = () => {
   const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
   const router = useRouter();
+  const login = () => {
+    loginWithRedirect({
+      appState: {
+        returnTo: window.location.pathname,
+        origin: router.asPath,
+      },
+    });
+  };
 
   return (
     <nav className={styles.container}>
@@ -24,7 +32,7 @@ const Header = () => {
       {isAuthenticated ? (
         <button className={styles.button} onClick={() => logout({ returnTo: window.location.origin })}>logout</button>
       ) : (
-        <button className={styles.button} onClick={() => loginWithRedirect()}>
+        <button className={styles.button} onClick={login}>
           SIGN UP
           <div className={styles.icon}>
             <Image
