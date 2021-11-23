@@ -1059,6 +1059,8 @@ export const getTimeAgo = (time: string) => {
   if (days > 1) return `${maybePluralize(Math.trunc(days), 'day')} ago`;
   const hours = now.diff(from, 'hours', true);
   if (hours > 1) return `${maybePluralize(Math.trunc(hours), 'hour')} ago`;
+  const minutes = now.diff(from, 'minutes', true);
+  if (minutes > 1) return `${maybePluralize(Math.trunc(minutes), 'minute')} ago`;
   const seconds = now.diff(from, 'seconds', true);
   if (seconds > 1) return `${maybePluralize(Math.trunc(seconds), 'second')} ago`;
 }
