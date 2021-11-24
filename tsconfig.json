@@ -17,7 +17,7 @@
     "baseUrl": ".",
     "paths": {
       "api": ["./api/*"],
-      "components": ["./components/index.ts"],
+      "components": ["./components/*"],
       "constants": ["./constants/index.ts"],
       "hooks": ["./hooks/index.ts"],
       "interfaces": ["./interfaces/index.ts"],

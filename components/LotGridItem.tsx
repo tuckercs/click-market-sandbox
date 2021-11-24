@@ -1,44 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import Image from "next/image";
-import momentTimeZone from "moment-timezone";
-import { IAuctionLotBidView } from "interfaces";
-import { formatCurrencyAmount } from "utils";
+import StatusTag from "./StatusTag";
 import styles from "styles/LotGridItem.module.css";
 
 const LotGridItem = ({ lot, mojitoLotData, auctionSlug }: any) => {
-  const startDate = mojitoLotData.startDate;
-  const formattedStartDate =
-    startDate &&
-    momentTimeZone(startDate)
-      .tz(Intl.DateTimeFormat().resolvedOptions().timeZone)
-      .format("MMM Do / H:mm:ss");
-
-  const tagTextView = (bidView: IAuctionLotBidView) => {
-    if (bidView.isPreSale)
-      return (
-        <>
-          Bidding starts on <span>{formattedStartDate}</span>
-        </>
-      );
-    if (bidView.isDuringSale)
-      return (
-        <>
-          Current Biddding:{" "}
-          <span>
-            {formatCurrencyAmount(
-              mojitoLotData.currentBid?.amount
-                ? mojitoLotData.currentBid.amount
-                : 0
-            )}
-          </span>
-        </>
-      );
-    return (
-      <span>Auction finished</span>
-    )
-  };
-
   return (
     <a href={`lots/${lot.slug}`} className={styles.lot}>
       <div className={styles.imageWrapper}>
@@ -53,8 +19,8 @@ const LotGridItem = ({ lot, mojitoLotData, auctionSlug }: any) => {
           alt="lot-image"
         />
       </div>
-      <div className={styles.tag}>
-        {tagTextView(mojitoLotData.bidView)}
+      <div className={styles.tagContainer}>
+        <StatusTag mojitoLotData={mojitoLotData} />
       </div>
       <div className={styles.row}>
         <h2>{lot.title}</h2>
@@ -63,7 +29,8 @@ const LotGridItem = ({ lot, mojitoLotData, auctionSlug }: any) => {
       <p>
         {mojitoLotData.bidView.isPostSale && mojitoLotData.currentBid ? (
           <>
-            Winner <span>{mojitoLotData.currentBid.marketplaceUser.username}</span>
+            Winner{" "}
+            <span>{mojitoLotData.currentBid.marketplaceUser.username}</span>
           </>
         ) : (
           <>

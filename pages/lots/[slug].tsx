@@ -7,8 +7,11 @@ import client from "api/apollo-client";
 import { useAuth0 } from "@auth0/auth0-react";
 import QUERY_CONTENTFUL from "api/queries/contentful.graphql";
 import BidFeed from "components/BidFeed";
+import StatusTag from "components/StatusTag";
+import { LOT_POLL_INTERVAL } from "constants/";
+import { useMojito } from "hooks";
+import { EMojitoQueries } from "state";
 import styles from "styles/LotDetail.module.css";
-import { bidIncrement } from "utils/bidIncrement";
 import { formatCurrencyAmount } from "utils";
 import BidConfirmModal from "components/BidConfirmModal";
 
@@ -16,6 +19,14 @@ const LotDetail: NextPage = ({ lot }: any) => {
   const { isAuthenticated, loginWithRedirect } = useAuth0();
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const router = useRouter();
+
+  const { data: mojitoLotData } = useMojito(EMojitoQueries.oneLot, {
+    pollInterval: LOT_POLL_INTERVAL,
+    variables: {
+      marketplaceAuctionLotId: lot.mojitoId,
+    },
+  });
+
   const login = () => {
     loginWithRedirect({
       appState: {
@@ -41,8 +52,18 @@ const LotDetail: NextPage = ({ lot }: any) => {
             </div>
 
             <div className={styles.detailRight}>
-              <span className={styles.currentBid}>Current bid: $30000</span>
-              <p className={styles.collectionTitle}>Collection</p>
+              {mojitoLotData && (
+                <>
+                  <div className={styles.row}>
+                    <span>
+                      #{mojitoLotData.getMarketplaceAuctionLot.lotNumber}
+                    </span>
+                    <StatusTag
+                      mojitoLotData={mojitoLotData.getMarketplaceAuctionLot}
+                    />
+                  </div>
+                </>
+              )}
               <p className={styles.lotTitle}>{lot.title}</p>
               <p className={styles.lotDescription}>{lot.aboutLot}</p>
               <div className={styles.author}>
@@ -60,15 +81,58 @@ const LotDetail: NextPage = ({ lot }: any) => {
                   <p className={styles.lotDescription}>{lot.author.about}</p>
                 </div>
               </div>
-              {isAuthenticated ? (
-                <button className={styles.button} onClick={() => setShowConfirmModal(true)}>BID NOW!</button>
-              ) : (
-                <button className={styles.button} onClick={login}>SIGN IN</button>
-              )}
+              <div className={styles.buttonContainer}>
+                {mojitoLotData?.getMarketplaceAuctionLot.bidView
+                  .isDuringSale && (
+                  <>
+                    {isAuthenticated ? (
+                      <button
+                        className={styles.button}
+                        onClick={() => setShowConfirmModal(true)}
+                      >
+                        BID NOW!
+                      </button>
+                    ) : (
+                      <button className={styles.button} onClick={login}>
+                        SIGN IN
+                      </button>
+                    )}
+                  </>
+                )}
+                {mojitoLotData?.getMarketplaceAuctionLot.bidView.isPostSale &&
+                  mojitoLotData.getMarketplaceAuctionLot.currentBid && (
+                    <div className={styles.winner}>
+                      <div>
+                        Winning Bid:{" "}
+                        <span>
+                          {formatCurrencyAmount(
+                            mojitoLotData.getMarketplaceAuctionLot.currentBid
+                              .amount
+                          )}
+                        </span>
+                      </div>
+                      <div>
+                        By{" "}
+                        <span>
+                          {
+                            mojitoLotData.getMarketplaceAuctionLot.currentBid
+                              .marketplaceUser.username
+                          }
+                        </span>
+                      </div>
+                    </div>
+                  )}
+              </div>
             </div>
           </div>
-          <BidFeed lot={lot} />
-          <BidConfirmModal handleClose={() => setShowConfirmModal(false)} show={showConfirmModal} lot={lot}/>
+          {!!mojitoLotData?.getMarketplaceAuctionLot.bids.length && (
+            <BidFeed bids={mojitoLotData.getMarketplaceAuctionLot.bids} />
+          )}
+          <BidConfirmModal
+            handleClose={() => setShowConfirmModal(false)}
+            show={showConfirmModal}
+            lot={lot}
+          />
         </div>
       </main>
     </div>

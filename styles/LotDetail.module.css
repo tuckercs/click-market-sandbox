@@ -33,6 +33,18 @@
   width: 432px;
 }
 
+.row {
+  align-items: center;
+  display: flex;
+  font-family: 'PostGrotesk';
+}
+
+.row > span {
+  color: #FF00FF;
+  font-weight: 700;
+  margin-right: 8px;
+}
+
 .author {
   display: flex;
   flex-direction: row;
@@ -50,22 +62,13 @@
   min-width: 60px;
 }
 
-.currentBid {
-  background-color: #29abe2;
-  color: #ffffff;
-  border-radius: 8px;
-  padding: 3px 8px;
-  margin-bottom: 18px; 
-}
-
 .collectionTitle {
-  color: #FF00FF;
   font-family: "IBMPlexMono", sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 26px;
-  line-height: 34px;
   letter-spacing: 0.12em;
+  margin: 16px 0;
   text-transform: uppercase;
 }
 
@@ -74,9 +77,7 @@
   font-style: normal;
   font-weight: 500;
   font-size: 32px;
-  line-height: 42px;
-  margin-bottom: 24px;
-  margin-top: 14px;
+  margin: 16px 0;
 }
 
 .lotDescription {
@@ -85,6 +86,24 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
+}
+
+.buttonContainer {
+  margin-top: 40px;
+}
+
+.winner {
+  font-family: "PostGrotesk";
+  font-size: 20px;
+  text-align: center;
+}
+
+.winner span {
+  font-weight: 700;
+}
+
+.winner div:last-child span {
+  color: #29abe2;
 }
 
 .button {
@@ -99,47 +118,5 @@
   font-weight: 700;
   height: 78px;
   justify-content: center;
-  margin-top: 40px;
   width: 100%;
-}
-
-.lot .tag {
-  align-self: flex-start;
-  background-color: #29abe2;
-  border-radius: 6px;
-  color: #fff;
-  font-family: "PostGrotesk";
-  font-size: 14px;
-  font-weight: 700;
-  margin: 16px 0 12px;
-  padding: 4px 8px;
-}
-
-.lot .row {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.lot h2 {
-  font-family: "PostGrotesk";
-  font-size: 24px;
-  font-weight: 700;
-  margin: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.lot p {
-  font-family: "PostGrotesk";
-  font-size: 14px;
-  margin: 3px 0;
-}
-
-.lot p span {
-  color: #29abe2;
-  font-weight: 700;
 }

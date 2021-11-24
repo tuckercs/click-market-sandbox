@@ -20,19 +20,9 @@
   border-radius: 16px;
 }
 
-.lot .tag {
+.lot .tagContainer {
   align-self: flex-start;
-  background-color: #29abe2;
-  border-radius: 6px;
-  color: #fff;
-  font-family: "PostGrotesk";
-  font-size: 14px;
   margin: 16px 0 12px;
-  padding: 4px 8px;
-}
-
-.lot .tag span {
-  font-weight: 700;
 }
 
 .lot .row {
