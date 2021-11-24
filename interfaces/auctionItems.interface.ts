@@ -8,3 +8,9 @@ export interface IAuctionLot {
 export interface IAuctionLots {
   [id: string]: IAuctionLot;
 }
+
+export interface IAuctionLotBidView {
+  isPreSale: boolean;
+  isDuringSale: boolean;
+  isPostSale: boolean;
+}

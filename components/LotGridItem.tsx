@@ -2,6 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import momentTimeZone from "moment-timezone";
+import { IAuctionLotBidView } from "interfaces";
 import { formatCurrencyAmount } from "utils";
 import styles from "styles/LotGridItem.module.css";
 
@@ -12,6 +13,31 @@ const LotGridItem = ({ lot, mojitoLotData, auctionSlug }: any) => {
     momentTimeZone(startDate)
       .tz(Intl.DateTimeFormat().resolvedOptions().timeZone)
       .format("MMM Do / H:mm:ss");
+
+  const tagTextView = (bidView: IAuctionLotBidView) => {
+    if (bidView.isPreSale)
+      return (
+        <>
+          Bidding starts on <span>{formattedStartDate}</span>
+        </>
+      );
+    if (bidView.isDuringSale)
+      return (
+        <>
+          Current Biddding:{" "}
+          <span>
+            {formatCurrencyAmount(
+              mojitoLotData.currentBid?.amount
+                ? mojitoLotData.currentBid.amount
+                : 0
+            )}
+          </span>
+        </>
+      );
+    return (
+      <span>Auction finished</span>
+    )
+  };
 
   return (
     <a href={`lots/${lot.slug}`} className={styles.lot}>
@@ -28,22 +54,22 @@ const LotGridItem = ({ lot, mojitoLotData, auctionSlug }: any) => {
         />
       </div>
       <div className={styles.tag}>
-        {mojitoLotData.bidView.isPreSale ? (
-          <>
-            Bidding starts on <span>{formattedStartDate}</span>
-          </>
-        ) : (
-          <>
-            Current bid: <span>{formatCurrencyAmount(mojitoLotData.currentBid?.amount ? mojitoLotData.currentBid.amount : 0)}</span>
-          </>
-        )}
+        {tagTextView(mojitoLotData.bidView)}
       </div>
       <div className={styles.row}>
         <h2>{lot.title}</h2>
       </div>
       <p className={styles.id}>{`#${lot.lotId}`}</p>
       <p>
-        Created by <span>{lot.author.name}</span>
+        {mojitoLotData.bidView.isPostSale && mojitoLotData.currentBid ? (
+          <>
+            Winner <span>{mojitoLotData.currentBid.marketplaceUser.username}</span>
+          </>
+        ) : (
+          <>
+            Created by <span>{lot.author.name}</span>
+          </>
+        )}
       </p>
     </a>
   );

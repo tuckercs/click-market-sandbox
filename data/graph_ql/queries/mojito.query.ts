@@ -159,6 +159,11 @@ export const mojitoQueries = {
             currentBid {
               id
               marketplaceAuctionLotId
+              marketplaceUser {
+                id
+                username
+                avatar
+              }
               amount
               isCurrent
               nextBidIncrement
