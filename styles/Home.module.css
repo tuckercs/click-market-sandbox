@@ -31,3 +31,8 @@
   margin: 0 -12px;
   max-width: 1600px;
 }
+
+.dummyView {
+  width: 432px;
+  margin: 0 12px;
+}
