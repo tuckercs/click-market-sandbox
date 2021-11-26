@@ -17,6 +17,8 @@ export const config = {
   MARKETPLACE_ID:
     process.env.NEXT_PUBLIC_MARKETPLACE_ID ||
     "c5ac4f84-b78b-4cb7-a24f-7f0c38da0eb2",
+  ETH_VALUE_MULTIPLIER:
+    process.env.NEXT_PUBLIC_ETH_VALUE_MULTIPLIER!,
 };
 
 export const LOT_POLL_INTERVAL = 2000;

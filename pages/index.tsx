@@ -39,6 +39,8 @@ const Home: NextPage = () => {
               />
             ) : null;
           })}
+          <div className={styles.dummyView} />
+          <div className={styles.dummyView} />
         </div>
       </main>
     </div>
