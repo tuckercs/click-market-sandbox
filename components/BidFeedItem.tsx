@@ -1,5 +1,5 @@
 import React, { useRef, useLayoutEffect } from "react";
-import { config } from 'constants';
+import { config } from 'constants/';
 import { formatCurrencyAmount, generateAvatar, getTimeAgo } from "utils";
 import styles from "styles/BidFeedItem.module.css";
 
@@ -38,7 +38,11 @@ const BidFeedItem = ({ item, isTop }: any) => {
       </div>
       <span>{timeAgo}</span>
       <span className={styles.bid} style={isTop ? { fontSize: 24 } : undefined}>
+<<<<<<< HEAD
         {amount / config.ETH_VALUE_MULTIPLIER}&#926; {formatCurrencyAmount(amount)}
+=======
+        {amount / parseInt(config.ETH_VALUE_MULTIPLIER)}&#926; {formatCurrencyAmount(amount)}
+>>>>>>> d7604ad64aee9c04adf80f0195b6bce834d0b96e
       </span>
     </div>
   );
