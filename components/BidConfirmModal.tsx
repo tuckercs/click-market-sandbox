@@ -1,4 +1,4 @@
-import { useState, useRef, memo, useLayoutEffect, SFC } from "react";
+import { useState, useRef, memo, useLayoutEffect } from "react";
 import Image from "next/image";
 import styles from "styles/BidConfirmModal.module.css";
 import { formatCurrencyAmount } from "utils";
@@ -15,12 +15,12 @@ interface BidConfirmModalProps {
   mojitoLotData: any;
 }
 
-const BidConfirmModal: SFC<BidConfirmModalProps> = ({
+const BidConfirmModal = ({
   handleClose,
   show,
   lot,
   mojitoLotData,
-}) => {
+}: BidConfirmModalProps) => {
   const submittedAmount = useRef<number | null>(null);
   const [userAvailableMinBid, setUserAvailableMinBid] = useState<number>(
     bidIncrement[0]
