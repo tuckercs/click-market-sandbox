@@ -208,10 +208,11 @@ const BidConfirmModal = ({
     </div>
   );
 };
-// TODO: replace with real props
-const areEqual = () => {
-  let equal = false;
-  return equal;
-};
+// // TODO: replace with real props and memo
+// const areEqual = () => {
+//   let equal = false;
+//   return equal;
+// };
 
-export default memo(BidConfirmModal, areEqual);
+// export default memo(BidConfirmModal, areEqual);
+export default BidConfirmModal;
