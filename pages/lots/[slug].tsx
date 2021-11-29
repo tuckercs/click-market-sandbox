@@ -128,12 +128,11 @@ const LotDetail: NextPage = ({ lot }: any) => {
           {!!mojitoLotData?.getMarketplaceAuctionLot.bids.length && (
             <BidFeed bids={mojitoLotData.getMarketplaceAuctionLot.bids} />
           )}
-          <BidConfirmModal
+          {showConfirmModal && <BidConfirmModal
             handleClose={() => setShowConfirmModal(false)}
-            show={showConfirmModal}
             lot={lot}
             mojitoLotData={mojitoLotData?.getMarketplaceAuctionLot}
-          />
+          />}
         </div>
       </main>
     </div>

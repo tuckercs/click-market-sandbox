@@ -10,14 +10,12 @@ import { useLocalStorageState } from "ahooks";
 
 interface BidConfirmModalProps {
   handleClose: () => void;
-  show: boolean;
   lot: any;
   mojitoLotData: any;
 }
 
 const BidConfirmModal = ({
   handleClose,
-  show,
   lot,
   mojitoLotData,
 }: BidConfirmModalProps) => {
@@ -114,7 +112,7 @@ const BidConfirmModal = ({
 
 
   return (
-    show && <div className={styles.modal}>
+    <div className={styles.modal}>
       <section className={styles.modalContent}>
         <p className={styles.modalTitle}>Bid Confirmation</p>
         <div className={styles.detailContainer}>
