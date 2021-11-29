@@ -6,7 +6,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import styles from "styles/Header.module.css";
 
 const Header = () => {
-  const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
+  const { loginWithRedirect, logout, isAuthenticated, isLoading } = useAuth0();
   const router = useRouter();
   const login = () => {
     loginWithRedirect({
@@ -29,20 +29,29 @@ const Header = () => {
           />
         </a>
       </Link>
-      {isAuthenticated ? (
-        <button className={styles.button} onClick={() => logout({ returnTo: window.location.origin })}>logout</button>
-      ) : (
-        <button className={styles.button} onClick={login}>
-          SIGN UP
-          <div className={styles.icon}>
-            <Image
-              src="/icons/twitter.svg"
-              alt="icon"
-              width={19}
-              height={15}
-            />
-          </div>
-        </button>
+      {!isLoading && (
+        <>
+          {isAuthenticated ? (
+            <button
+              className={styles.button}
+              onClick={() => logout({ returnTo: window.location.origin })}
+            >
+              logout
+            </button>
+          ) : (
+            <button className={styles.button} onClick={login}>
+              SIGN UP
+              <div className={styles.icon}>
+                <Image
+                  src="/icons/twitter.svg"
+                  alt="icon"
+                  width={19}
+                  height={15}
+                />
+              </div>
+            </button>
+          )}
+        </>
       )}
     </nav>
   );

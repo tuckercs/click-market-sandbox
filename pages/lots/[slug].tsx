@@ -16,7 +16,7 @@ import { formatCurrencyAmount } from "utils";
 import BidConfirmModal from "components/BidConfirmModal";
 
 const LotDetail: NextPage = ({ lot }: any) => {
-  const { isAuthenticated, loginWithRedirect } = useAuth0();
+  const { isAuthenticated, loginWithRedirect, isLoading } = useAuth0();
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const router = useRouter();
 
@@ -83,7 +83,7 @@ const LotDetail: NextPage = ({ lot }: any) => {
               </div>
               <div className={styles.buttonContainer}>
                 {mojitoLotData?.getMarketplaceAuctionLot.bidView
-                  .isDuringSale && (
+                  .isDuringSale && !isLoading && (
                   <>
                     {isAuthenticated ? (
                       <button
