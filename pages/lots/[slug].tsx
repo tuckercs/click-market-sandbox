@@ -132,6 +132,7 @@ const LotDetail: NextPage = ({ lot }: any) => {
             handleClose={() => setShowConfirmModal(false)}
             show={showConfirmModal}
             lot={lot}
+            mojitoLotData={mojitoLotData?.getMarketplaceAuctionLot}
           />
         </div>
       </main>

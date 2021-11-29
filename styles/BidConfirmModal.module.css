@@ -49,13 +49,17 @@
   align-items: center;
 }
 
-.selectBid {
+.selectBidContainer {
   font-weight: 700;
   height: 40px;
   flex: 0.5 1;
   border-radius: 8px;
-  border: 1px solid #CCCCCC;
-  padding: 11px;
+  font-family: 'PostGrotesk';
+}
+
+.selectBid__control {
+  background: none;
+  border: none;
 }
 
 .separator {
