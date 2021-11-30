@@ -48,6 +48,7 @@
 .author {
   display: flex;
   flex-direction: row;
+  margin-top: 141px;
 }
 
 .authorName {
@@ -86,6 +87,13 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
+}
+
+.moreText {
+  color: #FF00FF;
+  cursor: pointer;
+  font-weight: 700;
+  text-decoration: underline;
 }
 
 .buttonContainer {
