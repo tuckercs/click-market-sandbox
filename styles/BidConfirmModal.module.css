@@ -126,6 +126,12 @@
   width: 100%;
 }
 
+.button:disabled,
+.button[disabled]{
+  opacity: 0.5;
+  cursor: initial;
+}
+
 .currentBid {
   background-color: #29abe2;
   color: #ffffff;

@@ -34,6 +34,7 @@ const BidConfirmModal = ({
 
   const [error, setError] = useState<any>(null);
   const [placeBid] = usePlaceBidMutation(lot);
+  const [checkbox, setCheckbox] = useState(false);
 
   useLayoutEffect(() => {
     if (mojitoLotData?.bids) {
@@ -179,7 +180,7 @@ const BidConfirmModal = ({
               Total price excludes any applicable tax
             </p>
             <div className={styles.disclaimerContainer}>
-              <input type="checkbox" name="disclaimer" />
+              <input type="checkbox" name="disclaimer" onClick={event => setCheckbox(event.target.checked)} />
               <p className={styles.disclaimerText}>
                 By checking this box you confirm that you have read and agree to
                 be bound by the Condition of Sale and any applicable Terms of
@@ -191,7 +192,7 @@ const BidConfirmModal = ({
                 </strong>
               </p>
             </div>
-            <button className={styles.button} onClick={onSubmit}>CONFIRM BID</button>
+            <button className={styles.button} onClick={onSubmit} disabled={!checkbox}>CONFIRM BID</button>
           </div>
         </div>
         <button

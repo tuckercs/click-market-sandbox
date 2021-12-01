@@ -27,7 +27,7 @@ const LotDetail: NextPage = ({ lot }: any) => {
       marketplaceAuctionLotId: lot.mojitoId,
     },
   });
-  
+
   const login = () => {
     loginWithRedirect({
       appState: {
@@ -51,6 +51,7 @@ const LotDetail: NextPage = ({ lot }: any) => {
                 src={lot.images[0]}
                 alt={lot.title}
                 width={612}
+                height={588}
               />
             </div>
 
@@ -59,7 +60,7 @@ const LotDetail: NextPage = ({ lot }: any) => {
                 <>
                   <div className={styles.row}>
                     <span>
-                      #{mojitoLotData.getMarketplaceAuctionLot.lotNumber}
+                      #{lot.lotId}
                     </span>
                     <StatusTag
                       mojitoLotData={mojitoLotData.getMarketplaceAuctionLot}
