@@ -47,8 +47,8 @@ const BidConfirmModal = ({
           e
         ) => {
           if (
-            e >= mojitoLotData?.currentBid?.nextBidIncrement ||
-            e >= (mojitoLotData?.startingBid || 0)
+            (e >= mojitoLotData?.currentBid?.nextBidIncrement &&
+            e >= (mojitoLotData?.startingBid || 0)) || !mojitoLotData?.currentBid
           ) {
             arr.push({ value: e, label: formatCurrencyAmount(e) });
           }
