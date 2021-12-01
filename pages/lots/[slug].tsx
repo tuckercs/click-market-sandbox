@@ -167,7 +167,7 @@ const LotDetail: NextPage = ({ lot }: any) => {
                         <span>
                           {
                             mojitoLotData.getMarketplaceAuctionLot.currentBid
-                              .marketplaceUser.username
+                              .userOrganization.user.name
                           }
                         </span>
                       </div>
