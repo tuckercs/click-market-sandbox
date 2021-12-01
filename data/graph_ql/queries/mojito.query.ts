@@ -239,7 +239,6 @@ export const mojitoQueries = {
             avatar
           }
           isCurrent
-          maximumBid
           nextBidIncrement
           createdAt
         }
@@ -250,7 +249,6 @@ export const mojitoQueries = {
           holdBid @client
           outbid @client
           outbidinfo @client
-          maximumBid
           marketplaceUser {
             id
             avatar
