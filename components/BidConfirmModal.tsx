@@ -47,7 +47,7 @@ const BidConfirmModal = ({
           e
         ) => {
           if (
-            e >= mojitoLotData?.currentBid?.nextBidIncrement &&
+            e >= mojitoLotData?.currentBid?.nextBidIncrement ||
             e >= (mojitoLotData?.startingBid || 0)
           ) {
             arr.push({ value: e, label: formatCurrencyAmount(e) });
@@ -117,13 +117,12 @@ const BidConfirmModal = ({
         <p className={styles.modalTitle}>Bid Confirmation</p>
         <div className={styles.detailContainer}>
           <div className={styles.detailLeft}>
-            <Image
-              className={styles.image}
-              src={lot.imagesCollection.items[0].url}
-              alt={lot.imagesCollection.items[0].title}
-              width={432}
-              height={415}
-            />
+          <img
+                className={styles.image}
+                src={lot.images[0]}
+                alt={lot.title}
+                height={432}
+              />
           </div>
           <div className={styles.detailRight}>
             <span className={styles.currentBid}>

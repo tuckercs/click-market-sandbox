@@ -17,7 +17,7 @@ export function useCollection(
   hasMultipleLots: boolean;
 } {
   const { data, error, loading } = useMojito(EMojitoQueries.collectionBySlug, {
-    variables: { slug: "gifted-twitter-140", marketplaceID: config.MARKETPLACE_ID }, // TODO: Remove hardcoding
+    variables: { slug: "metaverso", marketplaceID: config.MARKETPLACE_ID }, // TODO: Remove hardcoding
     ...options,
   });
 

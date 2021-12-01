@@ -3,9 +3,10 @@ import Image from "next/image";
 import LotGridItem from "components/LotGridItem";
 import { useContentfulLots, useAuction, useCollection } from "hooks";
 import styles from "styles/Home.module.css";
+import Content from 'metaverso.content.json';
 
 const Home: NextPage = () => {
-  const { lots } = useContentfulLots();
+  const { lots } = Content
   const { slug } = useAuction();
   const { collection } = useCollection(slug, {
     pollInterval: 1500, // To discuss
@@ -15,6 +16,8 @@ const Home: NextPage = () => {
   const filteredLots = lots.filter((e) =>
     collectionLotsIds.includes(e.mojitoId)
   );
+
+  console.log(filteredLots)
 
   return (
     <div className={styles.container}>
@@ -30,7 +33,7 @@ const Home: NextPage = () => {
         <div className={styles.grid}>
           {collection?.items.map((item: any) => {
             const lot = filteredLots.find((lot) => lot.mojitoId === item.lot.id);
-            return lot && lot?.sys?.publishedAt ? (
+            return lot ? (
               <LotGridItem
                 key={lot.mojitoId + JSON.stringify(item.lot.bidView)}
                 mojitoLotData={item.lot}

@@ -15,7 +15,7 @@ const LotGridItem = ({ lot, mojitoLotData, auctionSlug }: any) => {
           priority={true}
           draggable="false"
           className={styles.image}
-          src={lot.imagesCollection.items[0].url + `?w=${400}&h=${400}`}
+          src={lot.images[0] + `?w=${400}&h=${400}`}
           alt="lot-image"
         />
       </div>

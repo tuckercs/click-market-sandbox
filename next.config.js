@@ -4,7 +4,10 @@ module.exports = {
   images: {
     domains: [
       "downloads.ctfassets.net",
-      "images.ctfassets.net"
+      "images.ctfassets.net",
+      "lh3.googleusercontent.com",
+      "lh5.googleusercontent.com",
+      "assets.website-files.com"
     ],
   },
   webpack: (config) => {

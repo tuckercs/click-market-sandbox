@@ -14,6 +14,7 @@ import { EMojitoQueries } from "state";
 import styles from "styles/LotDetail.module.css";
 import { formatCurrencyAmount } from "utils";
 import BidConfirmModal from "components/BidConfirmModal";
+import Content from "metaverso.content.json";
 
 const LotDetail: NextPage = ({ lot }: any) => {
   const { isAuthenticated, loginWithRedirect, isLoading } = useAuth0();
@@ -38,7 +39,7 @@ const LotDetail: NextPage = ({ lot }: any) => {
     });
   };
 
-  const isLotDescriptionLong = lot.aboutLot.length > 350;
+  const isLotDescriptionLong = lot.about.length > 350;
   const isAboutAuthorLong = lot.author.about.length > 150;
 
   return (
@@ -49,10 +50,9 @@ const LotDetail: NextPage = ({ lot }: any) => {
             <div className={styles.detailLeft}>
               <img
                 className={styles.image}
-                src={lot.imagesCollection.items[0].url}
-                alt={lot.imagesCollection.items[0].title}
+                src={lot.images[0]}
+                alt={lot.title}
                 width={612}
-                height={588}
               />
             </div>
 
@@ -73,8 +73,8 @@ const LotDetail: NextPage = ({ lot }: any) => {
               <p className={styles.lotDescription}>
                 {`${
                   isSeeMoreLot && isLotDescriptionLong
-                    ? `${lot.aboutLot.slice(0, 350)}...`
-                    : lot.aboutLot
+                    ? `${lot.about.slice(0, 350)}...`
+                    : lot.about
                 } `}
                 {isLotDescriptionLong && (
                   <span
@@ -177,18 +177,12 @@ const LotDetail: NextPage = ({ lot }: any) => {
 export default LotDetail;
 
 export async function getServerSideProps({ params }: any) {
-  const { data, error } = await client.query({
-    query: QUERY_CONTENTFUL,
-    variables: { slug: params.slug },
-  });
-
-  if (error) {
-    return;
-  }
+  const { lots } = Content;
+  const lot = lots.find(lot => lot.slug == params.slug)
 
   return {
     props: {
-      lot: data.lotCollection.items[0],
+      lot: lot,
     },
   };
 }
