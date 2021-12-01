@@ -36,7 +36,7 @@ const Header = () => {
               className={styles.button}
               onClick={() => logout({ returnTo: window.location.origin })}
             >
-              logout
+              LOG OUT
             </button>
           ) : (
             <button className={styles.button} onClick={login}>

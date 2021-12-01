@@ -261,6 +261,11 @@ export const mojitoQueries = {
             avatar
           }
           amount
+          userOrganization {
+            user {
+              name
+            }
+          }
         }
       }
     }

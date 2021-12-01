@@ -12,12 +12,14 @@ interface BidConfirmModalProps {
   handleClose: () => void;
   lot: any;
   mojitoLotData: any;
+  setHasBid: (value: boolean) => void;
 }
 
 const BidConfirmModal = ({
   handleClose,
   lot,
   mojitoLotData,
+  setHasBid,
 }: BidConfirmModalProps) => {
   const submittedAmount = useRef<number | null>(null);
   const [userAvailableMinBid, setUserAvailableMinBid] = useState<number>(
@@ -101,6 +103,7 @@ const BidConfirmModal = ({
         },
       }).then(() => {
         handleClose()
+        setHasBid(true);
       });
     } catch (e) {
       console.log(e)
