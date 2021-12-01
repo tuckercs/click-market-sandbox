@@ -3,13 +3,11 @@ import { useState } from "react";
 import type { NextPage } from "next";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import client from "api/apollo-client";
 import { useAuth0 } from "@auth0/auth0-react";
-import QUERY_CONTENTFUL from "api/queries/contentful.graphql";
 import BidFeed from "components/BidFeed";
 import StatusTag from "components/StatusTag";
 import { LOT_POLL_INTERVAL } from "constants/";
-import { useFetchAfterAuth, useLazyMojito, useMojito } from "hooks";
+import { useMojito } from "hooks";
 import { EMojitoQueries } from "state";
 import styles from "styles/LotDetail.module.css";
 import { formatCurrencyAmount } from "utils";
@@ -22,16 +20,14 @@ const LotDetail: NextPage = ({ lot }: any) => {
   const [isSeeMoreLot, setIsSeeMoreLot] = useState(true);
   const [isSeeMoreAuthor, setIsSeeMoreAuthor] = useState(true);
   const router = useRouter();
-  
-  const [getData, { data: mojitoLotData }] = useLazyMojito(EMojitoQueries.oneLot, {
+
+  const { data: mojitoLotData } = useMojito(EMojitoQueries.oneLot, {
     pollInterval: LOT_POLL_INTERVAL,
     variables: {
       marketplaceAuctionLotId: lot.mojitoId,
     },
   });
   
-  useFetchAfterAuth(getData);
-
   const login = () => {
     loginWithRedirect({
       appState: {
