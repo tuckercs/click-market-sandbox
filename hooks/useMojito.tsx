@@ -15,6 +15,8 @@ import {
   QueryResult,
   QueryTuple,
 } from "@apollo/client/react/types/types";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useEffect } from "react";
 import {
   EMojitoMutations,
   EMojitoQueries,
@@ -45,4 +47,14 @@ export function useMojitoMutation<T = any, D = OperationVariables>(
   options?: MutationHookOptions<T, D>
 ): MutationTuple<T, D, DefaultContext, ApolloCache<any>> {
   return useMutation<T, D>(mojitoMutations[query], options);
+}
+
+
+export function useFetchAfterAuth(cb: () => void): boolean {
+  const { isAuthenticated, isLoading } = useAuth0();
+
+  useEffect(() => {
+    if (isAuthenticated) cb();
+  }, [isAuthenticated]);
+  return isLoading;
 }
