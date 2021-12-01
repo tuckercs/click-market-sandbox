@@ -195,7 +195,7 @@ const BidConfirmModal = ({
               <input
                 type="checkbox"
                 name="disclaimer"
-                onClick={(event) => setCheckbox(event.target.checked)}
+                onChange={(event) => setCheckbox(event.target.checked)}
               />
               <p className={styles.disclaimerText}>
                 By checking this box you confirm that you have read and agree to
