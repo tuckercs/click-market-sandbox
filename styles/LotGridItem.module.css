@@ -21,6 +21,12 @@
   background-color: #FFFFFF;
 }
 
+.video {
+  height: 100%;
+  background-color: #FFFFFF;
+  border-radius: 16px;
+}
+
 .lot .tagContainer {
   align-self: flex-start;
   margin: 16px 0 12px;

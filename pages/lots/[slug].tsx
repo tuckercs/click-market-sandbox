@@ -46,13 +46,15 @@ const LotDetail: NextPage = ({ lot }: any) => {
         <div className={styles.content}>
           <div className={styles.detailContainer}>
             <div className={styles.detailLeft}>
-              <img
+              {lot.format === "image" && <img
                 className={styles.image}
                 src={lot.images[0]}
                 alt={lot.title}
                 width={612}
-                height={588}
-              />
+              />}
+              {
+                lot.format == "video" && <video className={styles.video} width={432} src={lot.videos[0]}></video>
+              }
             </div>
 
             <div className={styles.detailRight}>

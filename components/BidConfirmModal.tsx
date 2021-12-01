@@ -38,7 +38,6 @@ const BidConfirmModal = ({
 
   useLayoutEffect(() => {
     if (mojitoLotData?.bids) {
-
       const options = bidIncrement.reduce(
         (
           arr: {
@@ -49,7 +48,8 @@ const BidConfirmModal = ({
         ) => {
           if (
             (e >= mojitoLotData?.currentBid?.nextBidIncrement &&
-            e >= (mojitoLotData?.startingBid || 0)) || !mojitoLotData?.currentBid
+              e >= (mojitoLotData?.startingBid || 0)) ||
+            !mojitoLotData?.currentBid
           ) {
             arr.push({ value: e, label: formatCurrencyAmount(e) });
           }
@@ -61,7 +61,9 @@ const BidConfirmModal = ({
       if (!options.length) {
         options.push({
           value: mojitoLotData?.currentBid?.nextBidIncrement,
-          label: formatCurrencyAmount(mojitoLotData?.currentBid?.nextBidIncrement),
+          label: formatCurrencyAmount(
+            mojitoLotData?.currentBid?.nextBidIncrement
+          ),
         });
       }
 
@@ -85,7 +87,9 @@ const BidConfirmModal = ({
   const bidOnChange = (e: any) => {
     const value = e.value;
     if (parseFloat(value) < userAvailableMinBid) {
-      setError("Bid amount can't be less than " + userAvailableMinBid.toString());
+      setError(
+        "Bid amount can't be less than " + userAvailableMinBid.toString()
+      );
     } else {
       setError(null);
     }
@@ -100,10 +104,10 @@ const BidConfirmModal = ({
           marketplaceAuctionLotId: lot.mojitoId,
         },
       }).then(() => {
-        handleClose()
+        handleClose();
       });
     } catch (e) {
-      console.log(e)
+      console.log(e);
       // @ts-ignore
       setError(e?.message);
       setTimeout(() => setError(null), 4000);
@@ -111,19 +115,21 @@ const BidConfirmModal = ({
     }
   };
 
-
   return (
     <div className={styles.modal}>
       <section className={styles.modalContent}>
         <p className={styles.modalTitle}>Bid Confirmation</p>
         <div className={styles.detailContainer}>
           <div className={styles.detailLeft}>
-          <img
-                className={styles.image}
-                src={lot.images[0]}
-                alt={lot.title}
-                height={350}
-              />
+            {lot.format === "image" && <img
+              className={styles.image}
+              src={lot.images[0]}
+              alt={lot.title}
+              height={350}
+            />}
+            {
+              lot.format == "video" && <video className={styles.video} width={432} src={lot.videos[0]}></video>
+            }
           </div>
           <div className={styles.detailRight}>
             <span className={styles.currentBid}>
@@ -159,7 +165,10 @@ const BidConfirmModal = ({
                         label: formatCurrencyAmount(submittedAmount?.current),
                       }
                     : bidAmount
-                    ? { value: bidAmount, label: formatCurrencyAmount(bidAmount) }
+                    ? {
+                        value: bidAmount,
+                        label: formatCurrencyAmount(bidAmount),
+                      }
                     : {
                         value: availableOptions[0]?.value,
                         label: formatCurrencyAmount(availableOptions[0]?.value),
@@ -174,13 +183,17 @@ const BidConfirmModal = ({
             <hr className={styles.separator} />
             <div className={styles.maxTotalContainer}>
               <p>max. Total</p>
-              <p>31,000 usd</p>
+              <p>{bidAmount} USD</p>
             </div>
             <p className={styles.lotDescription}>
               Total price excludes any applicable tax
             </p>
             <div className={styles.disclaimerContainer}>
-              <input type="checkbox" name="disclaimer" onClick={event => setCheckbox(event.target.checked)} />
+              <input
+                type="checkbox"
+                name="disclaimer"
+                onClick={(event) => setCheckbox(event.target.checked)}
+              />
               <p className={styles.disclaimerText}>
                 By checking this box you confirm that you have read and agree to
                 be bound by the Condition of Sale and any applicable Terms of
@@ -192,7 +205,13 @@ const BidConfirmModal = ({
                 </strong>
               </p>
             </div>
-            <button className={styles.button} onClick={onSubmit} disabled={!checkbox}>CONFIRM BID</button>
+            <button
+              className={styles.button}
+              onClick={onSubmit}
+              disabled={!checkbox}
+            >
+              CONFIRM BID
+            </button>
           </div>
         </div>
         <button

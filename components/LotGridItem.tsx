@@ -8,7 +8,7 @@ const LotGridItem = ({ lot, mojitoLotData, auctionSlug }: any) => {
   return (
     <a href={`lots/${lot.slug}`} className={styles.lot}>
       <div className={styles.imageWrapper}>
-        <Image
+        {lot.format == "image" && <Image
           objectFit={"cover"}
           layout={"fill"}
           quality={75}
@@ -17,7 +17,10 @@ const LotGridItem = ({ lot, mojitoLotData, auctionSlug }: any) => {
           className={styles.image}
           src={lot.images[0] + `?w=${400}&h=${400}`}
           alt="lot-image"
-        />
+        />}
+        {
+          lot.format == "video" && <video className={styles.video} width={432} src={lot.videos[0]}></video>
+        }
       </div>
       <div className={styles.tagContainer}>
         <StatusTag mojitoLotData={mojitoLotData} />

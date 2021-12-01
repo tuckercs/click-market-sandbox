@@ -6,8 +6,8 @@ module.exports = {
       "downloads.ctfassets.net",
       "images.ctfassets.net",
       "lh3.googleusercontent.com",
-      "lh5.googleusercontent.com",
-      "assets.website-files.com"
+      "assets.website-files.com",
+      "storage.googleapis.com"
     ],
   },
   webpack: (config) => {

@@ -13,11 +13,9 @@ const Home: NextPage = () => {
   });
 
   const collectionLotsIds = collection?.items?.map((e: any) => e.lot.id) || [];
-  const filteredLots = lots.filter((e) =>
+  let filteredLots = lots.filter((e) =>
     collectionLotsIds.includes(e.mojitoId)
   );
-
-  console.log(filteredLots)
 
   return (
     <div className={styles.container}>
@@ -31,7 +29,20 @@ const Home: NextPage = () => {
         </p>
 
         <div className={styles.grid}>
-          {collection?.items.map((item: any) => {
+        {
+          filteredLots.map(lot => {
+            const item = collection?.items.find((item: any) => item.lot.id === lot.mojitoId)
+            return lot ? (
+              <LotGridItem
+                key={lot.mojitoId + JSON.stringify(item.lot.bidView)}
+                mojitoLotData={item.lot}
+                lot={lot}
+                auctionSlug={collection.slug}
+              />
+            ) : null;
+          })
+        }
+          {/* {collection?.items.map((item: any) => {
             const lot = filteredLots.find((lot) => lot.mojitoId === item.lot.id);
             return lot ? (
               <LotGridItem
@@ -41,7 +52,7 @@ const Home: NextPage = () => {
                 auctionSlug={collection.slug}
               />
             ) : null;
-          })}
+          })} */}
           <div className={styles.dummyView} />
           <div className={styles.dummyView} />
         </div>
