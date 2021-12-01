@@ -164,6 +164,11 @@ export const mojitoQueries = {
                 username
                 avatar
               }
+              userOrganization {
+                user {
+                  name
+                }
+              }
               amount
               isCurrent
               nextBidIncrement
@@ -238,6 +243,11 @@ export const mojitoQueries = {
             username
             avatar
           }
+          userOrganization {
+            user {
+              name
+            }
+          }
           isCurrent
           nextBidIncrement
           createdAt
@@ -261,6 +271,11 @@ export const mojitoQueries = {
             avatar
           }
           amount
+          userOrganization {
+            user {
+              name
+            }
+          }
         }
       }
     }

@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { useAuth0 } from "@auth0/auth0-react";
 import BidFeed from "components/BidFeed";
 import StatusTag from "components/StatusTag";
-import { LOT_POLL_INTERVAL } from "constants/";
+import { LOT_POLL_INTERVAL, config } from "constants/";
 import { useMojito } from "hooks";
 import { EMojitoQueries } from "state";
 import styles from "styles/LotDetail.module.css";
@@ -19,12 +19,18 @@ const LotDetail: NextPage = ({ lot }: any) => {
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [isSeeMoreLot, setIsSeeMoreLot] = useState(true);
   const [isSeeMoreAuthor, setIsSeeMoreAuthor] = useState(true);
+  const [hasBid, setHasBid] = useState(false);
   const router = useRouter();
 
   const { data: mojitoLotData } = useMojito(EMojitoQueries.oneLot, {
     pollInterval: LOT_POLL_INTERVAL,
     variables: {
       marketplaceAuctionLotId: lot.mojitoId,
+    },
+  });
+  const { data: profile } = useMojito(EMojitoQueries.profile, {
+    variables: {
+      organizationID: config.ORGANIZATION_ID,
     },
   });
 
@@ -43,6 +49,19 @@ const LotDetail: NextPage = ({ lot }: any) => {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
+        {hasBid && mojitoLotData && !!mojitoLotData.getMarketplaceAuctionLot.bids.length && profile && (
+          <div className={styles.topBanner}>
+            {mojitoLotData.getMarketplaceAuctionLot.bids[0].marketplaceUser.id === profile.me.id ? (
+              <div className={styles.yourBid}>
+                Your bid is the highest so far
+              </div>
+            ) : (
+              <div className={styles.outbid}>
+                You have been outbid!
+              </div>
+            )}
+          </div>
+        )}
         <div className={styles.content}>
           <div className={styles.detailContainer}>
             <div className={styles.detailLeft}>
@@ -150,7 +169,7 @@ const LotDetail: NextPage = ({ lot }: any) => {
                         <span>
                           {
                             mojitoLotData.getMarketplaceAuctionLot.currentBid
-                              .marketplaceUser.username
+                              .userOrganization.user.name
                           }
                         </span>
                       </div>
@@ -160,13 +179,14 @@ const LotDetail: NextPage = ({ lot }: any) => {
             </div>
           </div>
           {!!mojitoLotData?.getMarketplaceAuctionLot.bids.length && (
-            <BidFeed bids={mojitoLotData.getMarketplaceAuctionLot.bids} />
+            <BidFeed bids={mojitoLotData.getMarketplaceAuctionLot.bids} userId={profile?.me.id} />
           )}
           {showConfirmModal && (
             <BidConfirmModal
               handleClose={() => setShowConfirmModal(false)}
               lot={lot}
               mojitoLotData={mojitoLotData?.getMarketplaceAuctionLot}
+              setHasBid={(value: boolean) => setHasBid(value)}
             />
           )}
         </div>
