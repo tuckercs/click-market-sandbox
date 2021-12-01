@@ -121,7 +121,7 @@ const BidConfirmModal = ({
                 className={styles.image}
                 src={lot.images[0]}
                 alt={lot.title}
-                height={432}
+                height={350}
               />
           </div>
           <div className={styles.detailRight}>
