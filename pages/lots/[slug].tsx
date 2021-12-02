@@ -55,10 +55,10 @@ const LotDetail: NextPage = ({ lot }: any) => {
               {mojitoLotData.getMarketplaceAuctionLot.bids[0].marketplaceUser
                 .id === profile.me.id ? (
                 <div className={styles.yourBid}>
-                  Your bid is the highest so far
+                  Your bid is the highest so far 🥇
                 </div>
               ) : (
-                <div className={styles.outbid}>You have been outbid!</div>
+                <div className={styles.outbid}>You have been outbid! ⚠️</div>
               )}
             </div>
           )}
@@ -137,16 +137,34 @@ const LotDetail: NextPage = ({ lot }: any) => {
                 </div>
               </div>
               <div className={styles.buttonContainer}>
+                {mojitoLotData?.getMarketplaceAuctionLot.bidView.isPreSale && (
+                  <button className={styles.disabledButton} disabled>
+                    AVAILABLE SOON
+                  </button>
+                )}
                 {mojitoLotData?.getMarketplaceAuctionLot.bidView.isDuringSale &&
                   !isLoading && (
                     <>
                       {isAuthenticated ? (
-                        <button
-                          className={styles.button}
-                          onClick={() => setShowConfirmModal(true)}
-                        >
-                          BID NOW!
-                        </button>
+                        <>
+                          {mojitoLotData?.getMarketplaceAuctionLot.currentBid
+                            ?.marketplaceUser.id === profile?.me.id ? (
+                            <button className={styles.disabledButton} disabled>
+                              YOUR BID WAS SENT
+                            </button>
+                          ) : (
+                            <button
+                              className={styles.button}
+                              onClick={() => setShowConfirmModal(true)}
+                            >
+                              {hasBid &&
+                              mojitoLotData?.getMarketplaceAuctionLot.currentBid
+                                ?.marketplaceUser.id !== profile?.me.id
+                                ? "BID AGAIN!"
+                                : "BID NOW!"}
+                            </button>
+                          )}
+                        </>
                       ) : (
                         <button className={styles.button} onClick={login}>
                           SIGN IN

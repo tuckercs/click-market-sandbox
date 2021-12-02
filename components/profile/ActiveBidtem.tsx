@@ -23,7 +23,7 @@ export const ActiveBidtem = ({ bidData, lotData }: any) => (
       )}
     </div>
     <div className={styles.row}>
-      <h2>{lotData?.title}</h2>
+      <h3>{lotData?.title}</h3>
     </div>
     <p className={styles.id}>{`#${lotData?.lotId}`}</p>
     <p>

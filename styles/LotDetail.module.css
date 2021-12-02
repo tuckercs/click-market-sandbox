@@ -154,6 +154,21 @@
   width: 100%;
 }
 
+.disabledButton {
+  align-items: center;
+  background-color: #C4C4C4;
+  border: none;
+  border-radius: 16px;
+  color: #000000;
+  display: flex;
+  font-family: "IBMPlexMono";
+  font-size: 26px;
+  font-weight: 700;
+  height: 78px;
+  justify-content: center;
+  width: 100%;
+}
+
 @media screen and (max-width: 767px){
   .image {
     width: 100%;
