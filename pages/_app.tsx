@@ -1,8 +1,10 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import fetch from "node-fetch";
+import Image from "next/image";
 import { abortableFetch } from "abortcontroller-polyfill/dist/cjs-ponyfill";
 import Header from "components/Header";
+import Footer from "components/Footer";
 import { AuthProvider, MojitoApiProvider } from "state";
 import "styles/globals.css";
 
@@ -19,6 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <MojitoApiProvider>
           <Header />
           <Component {...pageProps} />
+          <Footer/>
         </MojitoApiProvider>
       </AuthProvider>
     </>
