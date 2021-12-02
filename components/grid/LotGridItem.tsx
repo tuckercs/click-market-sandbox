@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import Image from "next/image";
-import StatusTag from "./StatusTag";
+import { StatusTag } from "components";
 import styles from "styles/LotGridItem.module.css";
 
-const LotGridItem = ({ lot, mojitoLotData, auctionSlug }: any) => (
+export const LotGridItem = ({ lot, mojitoLotData, auctionSlug }: any) => (
   <a href={`lots/${lot.slug}`} className={styles.lot}>
     <div className={styles.imageWrapper}>
       {lot.format === "image" && (
@@ -44,5 +44,3 @@ const LotGridItem = ({ lot, mojitoLotData, auctionSlug }: any) => (
     </p>
   </a>
 );
-
-export default LotGridItem;

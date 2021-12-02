@@ -10,7 +10,7 @@ module.exports = {
       "assets.website-files.com",
       "storage.googleapis.com",
       "assets.website-files.com",
-      "abs.twimg.com",
+      "abs.twimg.com"
     ],
   },
   webpack: (config) => {

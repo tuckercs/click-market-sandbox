@@ -4,7 +4,7 @@ import { IAuctionLotBidView } from "interfaces";
 import { formatCurrencyAmount } from "utils";
 import styles from "styles/StatusTag.module.css";
 
-const StatusTag = ({ mojitoLotData }: any) => {
+export const StatusTag = ({ mojitoLotData }: any) => {
   const startDate = mojitoLotData.startDate;
   const formattedStartDate =
     startDate &&
@@ -39,5 +39,3 @@ const StatusTag = ({ mojitoLotData }: any) => {
 
   return <div className={styles.tag}>{tagTextView(mojitoLotData.bidView)}</div>;
 };
-
-export default StatusTag;

@@ -15,7 +15,7 @@ interface BidConfirmModalProps {
   setHasBid: (value: boolean) => void;
 }
 
-const BidConfirmModal = ({
+export const BidConfirmModal = ({
   handleClose,
   lot,
   mojitoLotData,
@@ -232,4 +232,3 @@ const BidConfirmModal = ({
 // };
 
 // export default memo(BidConfirmModal, areEqual);
-export default BidConfirmModal;

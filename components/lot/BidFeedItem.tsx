@@ -1,10 +1,10 @@
-import React, { useRef, useLayoutEffect } from "react";
+import React from "react";
 import Image from "next/image";
 import { config } from "constants/";
-import { formatCurrencyAmount, generateAvatar, getTimeAgo } from "utils";
+import { formatCurrencyAmount, getTimeAgo } from "utils";
 import styles from "styles/BidFeedItem.module.css";
 
-const BidFeedItem = ({ item, isTop, userId }: any) => {
+export const BidFeedItem = ({ item, isTop, userId }: any) => {
   const {
     amount,
     createdAt,
@@ -59,5 +59,3 @@ const BidFeedItem = ({ item, isTop, userId }: any) => {
     </div>
   );
 };
-
-export default BidFeedItem;
