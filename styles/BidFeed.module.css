@@ -1,6 +1,8 @@
 .container {
   color: #292929;
+  margin: 0 auto;
   margin-top: 200px;
+  max-width: 1116px;
   width: 100%;
 }
 
@@ -15,12 +17,8 @@
   position: relative;
 }
 
-.overlay {
-  background-color: #ffffff;
-  position: absolute;
-  left: -40px;
-  right: -40px;
-  bottom: -15px;
-  height: 53px;
-  filter: blur(19px);
+@media screen and (max-width: 1115px) {
+  .container {
+    padding: 0 30px;
+  }
 }

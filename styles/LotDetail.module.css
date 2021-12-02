@@ -1,5 +1,5 @@
 .main {
-  padding: 40px 90px;
+  padding: 40px 0;
 }
 
 .content {
@@ -55,9 +55,15 @@
   margin: 0 36px 40px;
 }
 
+.detailLeft video {
+  max-width: 612px;
+  width: 100%;
+}
+
 .detailRight {
   margin: 0 36px;
-  width: 432px;
+  max-width: 432px;
+  width: 100%;
 }
 
 .row {
@@ -172,8 +178,22 @@
   width: 100%;
 }
 
-@media screen and (max-width: 767px){
+@media screen and (max-width: 767px) {
   .image {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 1115px) {
+  .detailContainer {
+    margin: 0;
+  }
+
+  .detailLeft {
+    margin: 0 0 40px;
+  }
+  
+  .detailRight {
+    margin: 0 30px;
   }
 }

@@ -9,7 +9,6 @@ export const BidFeed = ({ bids, userId }: any) => (
       {bids.map((item: any, index: number) => (
         <BidFeedItem item={item} isTop={index === 0} key={item.id} userId={userId} />
       ))}
-      <div className={styles.overlay} />
     </div>
   </div>
 );

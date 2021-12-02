@@ -1,7 +1,7 @@
 .container {
   align-items: center;
   display: flex;
-  height: 82px;
+  min-height: 82px;
   justify-content: space-between;
   padding: 0 59px 0 48px;
   flex-direction: column;

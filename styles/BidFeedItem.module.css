@@ -33,3 +33,19 @@
   flex: 1;
   text-align: right;
 }
+
+@media screen and (max-width: 767px) {
+  .bidder img {
+    display: none !important;
+  }
+
+  .name {
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    margin-left: 0;
+  }
+
+  .bid {
+    font-size: 14px !important;
+  }
+}
