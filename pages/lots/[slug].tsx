@@ -49,40 +49,44 @@ const LotDetail: NextPage = ({ lot }: any) => {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        {hasBid && mojitoLotData && !!mojitoLotData.getMarketplaceAuctionLot.bids.length && profile && (
-          <div className={styles.topBanner}>
-            {mojitoLotData.getMarketplaceAuctionLot.bids[0].marketplaceUser.id === profile.me.id ? (
-              <div className={styles.yourBid}>
-                Your bid is the highest so far
-              </div>
-            ) : (
-              <div className={styles.outbid}>
-                You have been outbid!
-              </div>
-            )}
-          </div>
-        )}
+        {hasBid &&
+          mojitoLotData &&
+          !!mojitoLotData.getMarketplaceAuctionLot.bids.length &&
+          profile && (
+            <div className={styles.topBanner}>
+              {mojitoLotData.getMarketplaceAuctionLot.bids[0].marketplaceUser
+                .id === profile.me.id ? (
+                <div className={styles.yourBid}>
+                  Your bid is the highest so far
+                </div>
+              ) : (
+                <div className={styles.outbid}>You have been outbid!</div>
+              )}
+            </div>
+          )}
         <div className={styles.content}>
           <div className={styles.detailContainer}>
             <div className={styles.detailLeft}>
-              {lot.format === "image" && <img
-                className={styles.image}
-                src={lot.images[0]}
-                alt={lot.title}
-                width={612}
-              />}
-              {
-                lot.format == "video" && <video className={styles.video} width={432} src={lot.videos[0]}></video>
-              }
+              {lot.format === "image" && (
+                <img
+                  className={styles.image}
+                  src={lot.images[0]}
+                  alt={lot.title}
+                  width={612}
+                />
+              )}
+              {lot.format === "video" && (
+                <video className={styles.video} width={612} controls>
+                  <source src={lot.videos[0]} type="video/mp4" />
+                </video>
+              )}
             </div>
 
             <div className={styles.detailRight}>
               {mojitoLotData && (
                 <>
                   <div className={styles.row}>
-                    <span>
-                      #{lot.lotId}
-                    </span>
+                    <span>#{lot.lotId}</span>
                     <StatusTag
                       mojitoLotData={mojitoLotData.getMarketplaceAuctionLot}
                     />
@@ -179,7 +183,10 @@ const LotDetail: NextPage = ({ lot }: any) => {
             </div>
           </div>
           {!!mojitoLotData?.getMarketplaceAuctionLot.bids.length && (
-            <BidFeed bids={mojitoLotData.getMarketplaceAuctionLot.bids} userId={profile?.me.id} />
+            <BidFeed
+              bids={mojitoLotData.getMarketplaceAuctionLot.bids}
+              userId={profile?.me.id}
+            />
           )}
           {showConfirmModal && (
             <BidConfirmModal
@@ -199,7 +206,7 @@ export default LotDetail;
 
 export async function getServerSideProps({ params }: any) {
   const { lots } = Content;
-  const lot = lots.find(lot => lot.slug == params.slug)
+  const lot = lots.find((lot) => lot.slug == params.slug);
 
   return {
     props: {

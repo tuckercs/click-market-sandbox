@@ -7,7 +7,7 @@ import styles from "styles/LotGridItem.module.css";
 const LotGridItem = ({ lot, mojitoLotData, auctionSlug }: any) => (
   <a href={`lots/${lot.slug}`} className={styles.lot}>
     <div className={styles.imageWrapper}>
-      {lot.format == "image" && (
+      {lot.format === "image" && (
         <Image
           objectFit={"cover"}
           layout={"fill"}
@@ -19,8 +19,8 @@ const LotGridItem = ({ lot, mojitoLotData, auctionSlug }: any) => (
           alt="lot-image"
         />
       )}
-      {lot.format == "video" && (
-        <video className={styles.video} width={432} src={lot.videos[0]}></video>
+      {lot.format === "video" && (
+        <video className={styles.video} width={432} src={lot.videos[0]} />
       )}
     </div>
     <div className={styles.tagContainer}>
