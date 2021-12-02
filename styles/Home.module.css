@@ -39,9 +39,16 @@
   flex-wrap: wrap;
   margin: 0 -12px;
   max-width: 1600px;
+  width: 100%;
 }
 
 .dummyView {
   width: 432px;
   margin: 0 12px;
+}
+
+@media screen and (max-width: 767px){
+  .grid {
+    display: block;
+  }
 }

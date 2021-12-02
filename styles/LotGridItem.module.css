@@ -8,12 +8,13 @@
   text-align: left;
   text-decoration: none;
   flex: 1 0 30%;
+  width: 100%;
 }
 
 .imageWrapper {
   position: relative;
   height: 415px;
-  width: 432px;
+  width: 100%;
 }
 
 .lot .image {
@@ -25,6 +26,7 @@
   height: 100%;
   background-color: #FFFFFF;
   border-radius: 16px;
+  width: 100%;
 }
 
 .lot .tagContainer {
@@ -62,4 +64,10 @@
 
 .lot p span {
   font-weight: 700;
+}
+
+@media screen and (max-width: 767px){
+  .lot {
+    margin: 0 auto 68px;
+  }
 }

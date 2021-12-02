@@ -18,13 +18,12 @@ const Home: NextPage = () => {
   );
 
   return (
-    <div className={styles.container}>
       <main className={styles.main}>
         <Image src="/images/brand-icon.png" alt="icon" width={24} height={8} />
         <h1 className={styles.title}>Metaverso NFTs</h1>
 
         <p className={styles.description}>
-          Puerto Rico's home in the metaverse
+          {`Puerto Rico's home in the metaverse`}
         </p>
 
         <p className={styles.descriptionTitle}>
@@ -64,7 +63,6 @@ const Home: NextPage = () => {
           <div className={styles.dummyView} />
         </div>
       </main>
-    </div>
   );
 };
 
