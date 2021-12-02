@@ -8,19 +8,19 @@ const BidFeedItem = ({ item, isTop, userId }: any) => {
   const {
     amount,
     createdAt,
-    marketplaceUser: { avatar: avatarKey, id },
+    marketplaceUser: { avatar, username, id },
     userOrganization: {
       user: { name },
     },
   } = item;
-  const avatar = useRef<HTMLDivElement>(null);
+  // const avatar = useRef<HTMLDivElement>(null);
   const timeAgo = getTimeAgo(createdAt);
 
-  useLayoutEffect(() => {
-    if (avatarKey && avatar.current) {
-      avatar.current.innerHTML = generateAvatar(avatarKey);
-    }
-  }, [avatarKey, avatar]);
+  // useLayoutEffect(() => {
+  //   if (avatarKey && avatar.current) {
+  //     avatar.current.innerHTML = generateAvatar(avatarKey);
+  //   }
+  // }, [avatarKey, avatar]);
 
   return (
     <div
@@ -35,7 +35,7 @@ const BidFeedItem = ({ item, isTop, userId }: any) => {
         /> */}
         <Image
           className={styles.avatar}
-          src="/images/profile-placeholder.svg"
+          src={avatar || "/images/profile-placeholder.svg"}
           alt="avatar"
           width={isTop ? 96 : 51}
           height={isTop ? 96 : 51}
@@ -48,7 +48,7 @@ const BidFeedItem = ({ item, isTop, userId }: any) => {
               : undefined
           }
         >
-          {id === userId ? "You" : name}
+          {id === userId ? "You" : username || name}
         </span>
       </div>
       <span>{timeAgo}</span>

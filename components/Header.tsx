@@ -1,13 +1,42 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useAuth0 } from "@auth0/auth0-react";
+import { config } from "constants/";
+import { useMojitoMutation, useMojito } from "hooks";
+import { EMojitoMutations, EMojitoQueries } from "state";
 import styles from "styles/Header.module.css";
 
 const Header = () => {
-  const { loginWithRedirect, logout, isAuthenticated, isLoading } = useAuth0();
+  const { loginWithRedirect, logout, isAuthenticated, isLoading, user } =
+    useAuth0();
   const router = useRouter();
+
+  const [updateUserSettings] = useMojitoMutation<{
+    userOrgId: string;
+    username: string;
+    avatar: string;
+  }>(EMojitoMutations.updateUserOrgSettings);
+
+  const { data: profile } = useMojito(EMojitoQueries.profile, {
+    variables: {
+      organizationID: config.ORGANIZATION_ID,
+    },
+  });
+
+  useEffect(() => {
+    if (isAuthenticated && profile && !profile.me.userOrgs[0].username) {
+      updateUserSettings({
+        variables: {
+          userOrgId: profile.me.userOrgs[0].id,
+          username: user?.nickname,
+          avatar: user?.picture,
+        },
+      });
+    }
+  }, [isAuthenticated, profile, profile?.me.userOrgs, updateUserSettings, user?.picture, user?.nickname]);
+
   const login = () => {
     loginWithRedirect({
       appState: {
