@@ -24,8 +24,15 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>Metaverso NFTs</h1>
 
         <p className={styles.description}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod.
+          Puerto Rico's home in the metaverse
+        </p>
+
+        <p className={styles.descriptionTitle}>
+          Dec 7, 2021 Museo de Arte de Puerto Rico
+        </p>
+
+        <p className={styles.subtitle}>
+          metaver.so
         </p>
 
         <div className={styles.grid}>

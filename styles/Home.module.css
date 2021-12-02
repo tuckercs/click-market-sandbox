@@ -18,9 +18,18 @@
 }
 
 .description {
-  margin: 35px 0 120px;
   font-family: "PostGrotesk";
   font-size: 15px;
+  font-weight: bold;
+}
+
+.descriptionTitle {
+  color: #ffffff;
+}
+
+.subtitle {
+  margin: 35px 0 120px;
+  font-weight: bold;
 }
 
 .grid {
