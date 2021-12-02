@@ -43,7 +43,7 @@ const LotDetail: NextPage = ({ lot }: any) => {
 
   const isLotDescriptionLong = lot.about.length > 350;
   const isAboutAuthorLong = lot.author.about.length > 150;
-
+console.log('mojitoLotData:',mojitoLotData)
   return (
 
       <main className={styles.main}>
@@ -147,8 +147,8 @@ const LotDetail: NextPage = ({ lot }: any) => {
                     <>
                       {isAuthenticated ? (
                         <>
-                          {mojitoLotData?.getMarketplaceAuctionLot.currentBid
-                            ?.marketplaceUser.id === profile?.me.id ? (
+                          {mojitoLotData && mojitoLotData.getMarketplaceAuctionLot.currentBid && profile && mojitoLotData.getMarketplaceAuctionLot.currentBid
+                            .marketplaceUser.id === profile?.me.id ? (
                             <button className={styles.disabledButton} disabled>
                               YOUR BID WAS SENT
                             </button>
