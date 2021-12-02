@@ -1,0 +1,19 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footerText {
+  font-family: "PostGrotesk";
+  font-style: normal;
+  font-size: 14px;
+  line-height: 18px;
+  text-decoration-line: underline;
+  color: #ff00ff;
+}
+
+.footerLogo {
+    margin: 34px 0;
+    z-index: -1000;
+}

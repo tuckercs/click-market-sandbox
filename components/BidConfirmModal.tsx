@@ -179,9 +179,6 @@ const BidConfirmModal = ({
                 }
                 options={availableOptions}
               />
-              {/* <select className={styles.selectBid}>
-                    {options.map((option, index) => <option key={index} value={option.value}>{option.label}</option>)}
-                  </select> */}
             </div>
             <hr className={styles.separator} />
             <div className={styles.maxTotalContainer}>
@@ -191,6 +188,13 @@ const BidConfirmModal = ({
             <p className={styles.lotDescription}>
               Total price excludes any applicable tax
             </p>
+            <button
+              className={styles.button}
+              onClick={onSubmit}
+              disabled={!checkbox}
+            >
+              CONFIRM BID
+            </button>
             <div className={styles.disclaimerContainer}>
               <input
                 type="checkbox"
@@ -208,13 +212,6 @@ const BidConfirmModal = ({
                 </strong>
               </p>
             </div>
-            <button
-              className={styles.button}
-              onClick={onSubmit}
-              disabled={!checkbox}
-            >
-              CONFIRM BID
-            </button>
           </div>
         </div>
         <button
