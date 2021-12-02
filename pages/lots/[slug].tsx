@@ -47,7 +47,7 @@ const LotDetail: NextPage = ({ lot }: any) => {
   const isAboutAuthorLong = lot.author.about.length > 150;
 
   return (
-    <div className={styles.container}>
+
       <main className={styles.main}>
         {hasBid &&
           mojitoLotData &&
@@ -198,7 +198,6 @@ const LotDetail: NextPage = ({ lot }: any) => {
           )}
         </div>
       </main>
-    </div>
   );
 };
 
