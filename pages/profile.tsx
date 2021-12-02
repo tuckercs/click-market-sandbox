@@ -80,7 +80,7 @@ const Profile: NextPage = () => {
                 <span>{"You don't have any bids going on now"}</span>
                 <Link href="/">
                   <a>
-                    <Button>GET STARTED</Button>
+                    <Button onClick={() => {}}>GET STARTED</Button>
                   </a>
                 </Link>
               </div>

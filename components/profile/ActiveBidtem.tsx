@@ -4,9 +4,9 @@ import Image from "next/image";
 import styles from "styles/ActiveBidItem.module.css";
 
 export const ActiveBidtem = ({ bidData, lotData }: any) => (
-  <a href={`lots/${lotData.slug}`} className={styles.lot}>
+  <a href={`lots/${lotData?.slug}`} className={styles.lot}>
     <div className={styles.imageWrapper}>
-      {lotData.format === "image" && (
+      {lotData?.format === "image" && (
         <Image
           objectFit={"cover"}
           layout={"fill"}
@@ -14,20 +14,20 @@ export const ActiveBidtem = ({ bidData, lotData }: any) => (
           priority={true}
           draggable="false"
           className={styles.image}
-          src={lotData.images[0] + `?w=${400}&h=${400}`}
+          src={lotData?.images[0] + `?w=${400}&h=${400}`}
           alt="lot-image"
         />
       )}
-      {lotData.format === "video" && (
-        <video className={styles.video} width={432} src={lotData.videos[0]} />
+      {lotData?.format === "video" && (
+        <video className={styles.video} width={432} src={lotData?.videos[0]} />
       )}
     </div>
     <div className={styles.row}>
-      <h2>{lotData.title}</h2>
+      <h2>{lotData?.title}</h2>
     </div>
-    <p className={styles.id}>{`#${lotData.lotId}`}</p>
+    <p className={styles.id}>{`#${lotData?.lotId}`}</p>
     <p>
-      Created by <span>{lotData.author.name}</span>
+      Created by <span>{lotData?.author.name}</span>
     </p>
   </a>
 );
