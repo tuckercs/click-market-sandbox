@@ -1,8 +1,8 @@
 import React from "react";
-import BidFeedItem from "components/BidFeedItem";
+import { BidFeedItem } from "components";
 import styles from "styles/BidFeed.module.css";
 
-const BidFeed = ({ bids, userId }: any) => (
+export const BidFeed = ({ bids, userId }: any) => (
   <div className={styles.container}>
     <h3 className={styles.title}>Bid feed</h3>
     <div className={styles.table}>
@@ -13,5 +13,3 @@ const BidFeed = ({ bids, userId }: any) => (
     </div>
   </div>
 );
-
-export default BidFeed;

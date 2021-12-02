@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import styles from "styles/Footer.module.css";
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <footer className={styles.footer}>
       <a href="/" className={styles.footerText}>
@@ -19,5 +19,3 @@ const Footer = () => {
     </footer>
   );
 };
-
-export default Footer;

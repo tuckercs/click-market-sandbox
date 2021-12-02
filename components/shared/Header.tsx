@@ -3,15 +3,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useAuth0 } from "@auth0/auth0-react";
+import { Button, TwitterIcon } from "components";
 import { config } from "constants/";
 import { useMojitoMutation, useMojito } from "hooks";
 import { EMojitoMutations, EMojitoQueries } from "state";
 import styles from "styles/Header.module.css";
 
-const Header = () => {
+export const Header = () => {
   const { loginWithRedirect, logout, isAuthenticated, isLoading, user } =
     useAuth0();
-  const router = useRouter();
+    const router = useRouter();
 
   const [updateUserSettings] = useMojitoMutation<{
     userOrgId: string;
@@ -61,29 +62,28 @@ const Header = () => {
       {!isLoading && (
         <>
           {isAuthenticated ? (
-            <button
-              className={styles.button}
-              onClick={() => logout({ returnTo: window.location.origin })}
-            >
-              LOG OUT
-            </button>
-          ) : (
-            <button className={styles.button} onClick={login}>
-              SIGN UP
-              <div className={styles.icon}>
+            <Link href="/profile">
+              <a>
                 <Image
-                  src="/icons/twitter.svg"
-                  alt="icon"
-                  width={19}
-                  height={15}
+                  src="/icons/profile.svg"
+                  alt="profile"
+                  width={26}
+                  height={26}
                 />
-              </div>
-            </button>
+              </a>
+            </Link>
+          ) : (
+            <div className={styles.button}>
+              <Button onClick={login}>
+                SIGN UP
+                <div className={styles.icon}>
+                  <TwitterIcon />
+                </div>
+              </Button>
+            </div>
           )}
         </>
       )}
     </nav>
   );
 };
-
-export default Header;

@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Image from "next/image";
-import LotGridItem from "components/LotGridItem";
+import { LotGridItem } from "components";
 import { useContentfulLots, useAuction, useCollection } from "hooks";
 import styles from "styles/Home.module.css";
 import Content from 'metaverso.content.json';

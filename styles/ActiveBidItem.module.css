@@ -1,0 +1,66 @@
+.lot {
+  border-radius: 16px;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  margin: 0 12px 68px;
+  max-width: 432px;
+  text-align: left;
+  text-decoration: none;
+  flex: 1 0 30%;
+}
+
+.imageWrapper {
+  position: relative;
+  height: 415px;
+  width: 432px;
+}
+
+.lot .image {
+  border-radius: 16px;
+  background-color: #FFFFFF;
+}
+
+.video {
+  height: 100%;
+  background-color: #FFFFFF;
+  border-radius: 16px;
+}
+
+.lot .tagContainer {
+  align-self: flex-start;
+  margin: 16px 0 12px;
+}
+
+.lot .row {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 23px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.lot h2 {
+  font-family: "PostGrotesk";
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lot p {
+  font-family: "PostGrotesk";
+  font-size: 14px;
+  margin: 3px 0;
+}
+
+.lot .id {
+  color: #ff00ff;
+  font-weight: 700;
+}
+
+.lot p span {
+  font-weight: 700;
+}

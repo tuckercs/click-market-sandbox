@@ -4,14 +4,12 @@ import type { NextPage } from "next";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useAuth0 } from "@auth0/auth0-react";
-import BidFeed from "components/BidFeed";
-import StatusTag from "components/StatusTag";
 import { LOT_POLL_INTERVAL, config } from "constants/";
+import { BidFeed, StatusTag, BidConfirmModal } from "components";
 import { useMojito } from "hooks";
 import { EMojitoQueries } from "state";
 import styles from "styles/LotDetail.module.css";
 import { formatCurrencyAmount } from "utils";
-import BidConfirmModal from "components/BidConfirmModal";
 import Content from "metaverso.content.json";
 
 const LotDetail: NextPage = ({ lot }: any) => {

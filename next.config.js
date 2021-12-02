@@ -11,6 +11,7 @@ module.exports = {
       "storage.googleapis.com",
       "assets.website-files.com",
       "abs.twimg.com",
+      "abs.twimg.com"
     ],
   },
   webpack: (config) => {
