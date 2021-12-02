@@ -5,12 +5,12 @@ import { useRouter } from "next/router";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Button, TwitterIcon } from "components";
 import { config } from "constants/";
-import { useMojitoMutation, useMojito } from "hooks";
+import { useMojitoMutation, useLazyMojito, useFetchAfterAuth } from "hooks";
 import { EMojitoMutations, EMojitoQueries } from "state";
 import styles from "styles/Header.module.css";
 
 export const Header = () => {
-  const { loginWithRedirect, logout, isAuthenticated, isLoading, user } =
+  const { loginWithRedirect, isAuthenticated, isLoading, user } =
     useAuth0();
     const router = useRouter();
 
@@ -20,11 +20,13 @@ export const Header = () => {
     avatar: string;
   }>(EMojitoMutations.updateUserOrgSettings);
 
-  const { data: profile } = useMojito(EMojitoQueries.profile, {
+  const [getData, { data: profile }] = useLazyMojito(EMojitoQueries.profile, {
     variables: {
       organizationID: config.ORGANIZATION_ID,
     },
   });
+
+  useFetchAfterAuth(getData);
 
   useEffect(() => {
     if (isAuthenticated && profile && !profile.me.userOrgs[0].username) {

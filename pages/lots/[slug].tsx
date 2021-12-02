@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { useAuth0 } from "@auth0/auth0-react";
 import { LOT_POLL_INTERVAL, config } from "constants/";
 import { BidFeed, StatusTag, BidConfirmModal } from "components";
-import { useMojito } from "hooks";
+import { useMojito, useLazyMojito, useFetchAfterAuth } from "hooks";
 import { EMojitoQueries } from "state";
 import styles from "styles/LotDetail.module.css";
 import { formatCurrencyAmount } from "utils";
@@ -26,11 +26,13 @@ const LotDetail: NextPage = ({ lot }: any) => {
       marketplaceAuctionLotId: lot.mojitoId,
     },
   });
-  const { data: profile } = useMojito(EMojitoQueries.profile, {
+  const [getData, { data: profile }] = useLazyMojito(EMojitoQueries.profile, {
     variables: {
       organizationID: config.ORGANIZATION_ID,
     },
   });
+
+  useFetchAfterAuth(getData);
 
   const login = () => {
     loginWithRedirect({
@@ -43,9 +45,8 @@ const LotDetail: NextPage = ({ lot }: any) => {
 
   const isLotDescriptionLong = lot.about.length > 350;
   const isAboutAuthorLong = lot.author.about.length > 150;
-console.log('mojitoLotData:',mojitoLotData)
-  return (
 
+  return (
       <main className={styles.main}>
         {hasBid &&
           mojitoLotData &&

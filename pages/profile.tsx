@@ -4,18 +4,21 @@ import Link from "next/link";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Button, ActiveBidtem } from "components";
 import { config } from "constants/";
-import { useMojito } from "hooks";
+import { useLazyMojito, useFetchAfterAuth } from "hooks";
 import { EMojitoQueries } from "state";
 import Content from "metaverso.content.json";
 import styles from "styles/Profile.module.css";
 
 const Profile: NextPage = () => {
   const { logout, user } = useAuth0();
-  const { data: profile } = useMojito(EMojitoQueries.profile, {
+  const [getData, { data: profile }] = useLazyMojito(EMojitoQueries.profile, {
     variables: {
       organizationID: config.ORGANIZATION_ID,
     },
   });
+
+  useFetchAfterAuth(getData);
+
   const { lots } = Content;
 
   if (!profile) return null;

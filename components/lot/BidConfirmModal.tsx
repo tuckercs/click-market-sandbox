@@ -1,12 +1,10 @@
-import { useState, useRef, memo, useLayoutEffect } from "react";
+import { useState, useRef, useLayoutEffect } from "react";
 import Image from "next/image";
-import styles from "styles/BidConfirmModal.module.css";
 import { formatCurrencyAmount } from "utils";
 import { bidIncrement } from "utils/bidIncrement";
 import Select from "react-select";
-import { ILotData } from "interfaces";
-import { useAuction, usePlaceBidMutation } from "hooks";
-import { useLocalStorageState } from "ahooks";
+import { usePlaceBidMutation } from "hooks";
+import styles from "styles/BidConfirmModal.module.css";
 
 interface BidConfirmModalProps {
   handleClose: () => void;
@@ -106,7 +104,7 @@ export const BidConfirmModal = ({
           marketplaceAuctionLotId: lot.mojitoId,
         },
       }).then(() => {
-        handleClose()
+        handleClose();
         setHasBid(true);
       });
     } catch (e) {
@@ -124,19 +122,25 @@ export const BidConfirmModal = ({
         <p className={styles.modalTitle}>Bid Confirmation</p>
         <div className={styles.detailContainer}>
           <div className={styles.detailLeft}>
-            {lot.format === "image" && <img
-              className={styles.image}
-              src={lot.images[0]}
-              alt={lot.title}
-              height={350}
-            />}
-            {
-              lot.format == "video" && <video className={styles.video} width={432} src={lot.videos[0]}></video>
-            }
+            {lot.format === "image" && (
+              <img
+                className={styles.image}
+                src={lot.images[0]}
+                alt={lot.title}
+                height={350}
+              />
+            )}
+            {lot.format === "video" && (
+              <video
+                className={styles.video}
+                width={432}
+                src={lot.videos[0]}
+              />
+            )}
           </div>
           <div className={styles.detailRight}>
             <span className={styles.currentBid}>
-              Current bid:{" "}
+              Current Bidding:{" "}
               {formatCurrencyAmount(
                 mojitoLotData.currentBid?.amount
                   ? mojitoLotData.currentBid.amount
@@ -219,7 +223,12 @@ export const BidConfirmModal = ({
           onClick={handleClose}
           className={styles.closeButton}
         >
-          X
+          <Image
+            src="/icons/close.svg"
+            alt="close"
+            width={20}
+            height={20}
+          />
         </button>
       </section>
     </div>
