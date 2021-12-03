@@ -51,7 +51,7 @@ const LotDetail: NextPage = ({ lot }: any) => {
       {hasBid &&
         mojitoLotData &&
         !!mojitoLotData.getMarketplaceAuctionLot.bids.length &&
-        profile && (
+        profile && mojitoLotData?.getMarketplaceAuctionLot.bidView.isDuringSale && (
           <div className={styles.topBanner}>
             {mojitoLotData.getMarketplaceAuctionLot.bids[0].marketplaceUser
               .id === profile.me.id ? (

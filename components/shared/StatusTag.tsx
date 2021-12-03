@@ -22,7 +22,7 @@ export const StatusTag = ({ mojitoLotData }: any) => {
     if (bidView.isDuringSale)
       return (
         <>
-          Current Bidding:{" "}
+          Current bid:{" "}
           <span>
             {formatCurrencyAmount(
               mojitoLotData.currentBid?.amount

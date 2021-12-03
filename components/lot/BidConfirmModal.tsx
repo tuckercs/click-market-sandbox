@@ -34,7 +34,6 @@ export const BidConfirmModal = ({
 
   const [error, setError] = useState<any>(null);
   const [placeBid] = usePlaceBidMutation(lot);
-  const [checkbox, setCheckbox] = useState(false);
 
   useLayoutEffect(() => {
     if (mojitoLotData?.bids) {
@@ -143,7 +142,7 @@ export const BidConfirmModal = ({
           </div>
           <div className={styles.detailRight}>
             <span className={styles.currentBid}>
-              Current Bidding:{" "}
+              Current bid:{" "}
               {formatCurrencyAmount(
                 mojitoLotData.currentBid?.amount
                   ? mojitoLotData.currentBid.amount
@@ -192,33 +191,12 @@ export const BidConfirmModal = ({
               <p>max. Total</p>
               <p>{bidAmount} USD</p>
             </div>
-            <p className={styles.lotDescription}>
-              Total price excludes any applicable tax
-            </p>
             <button
               className={styles.button}
               onClick={onSubmit}
-              disabled={!checkbox}
             >
               CONFIRM BID
             </button>
-            <div className={styles.disclaimerContainer}>
-              <input
-                type="checkbox"
-                name="disclaimer"
-                onChange={(event) => setCheckbox(event.target.checked)}
-              />
-              <p className={styles.disclaimerText}>
-                By checking this box you confirm that you have read and agree to
-                be bound by the Condition of Sale and any applicable Terms of
-                Guarantee for this bid and any later bids you place on this or
-                any other lot in this sale.{" "}
-                <strong>
-                  Bids placed in Online-Only sales cannot be cancelled except
-                  for the limited reasons set out in the Conditions of Sale.
-                </strong>
-              </p>
-            </div>
           </div>
         </div>
         <button

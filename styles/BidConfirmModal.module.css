@@ -80,21 +80,6 @@
   color: #292929;
 }
 
-.disclaimerContainer {
-  display: flex;
-  flex-direction: row;
-  font-family: 'PostGrotesk';
-  font-style: normal;
-  font-size: 14px;
-  line-height: 18px;
-  margin-top: 16px;
-}
-
-.disclaimerText{
-  margin: 0;
-  margin-left: 16px;
-}
-
 .lotDescription {
   font-family: "PostGrotesk";
   font-style: normal;
@@ -131,13 +116,6 @@
   justify-content: center;
   margin-top: 40px;
   width: 100%;
-}
-
-.button:disabled,
-.button[disabled]{
-  background-color: #C4C4C4;
-  color: #000000;
-  cursor: initial;
 }
 
 .currentBid {
