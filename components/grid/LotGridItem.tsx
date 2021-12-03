@@ -20,7 +20,7 @@ export const LotGridItem = ({ lot, mojitoLotData, auctionSlug }: any) => (
         />
       )}
       {lot.format === "video" && (
-        <video className={styles.video} width={432} src={lot.videos[0]} />
+        <video className={styles.video} src={lot.videos[0]} />
       )}
     </div>
     <div className={styles.tagContainer}>
