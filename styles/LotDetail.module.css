@@ -40,6 +40,7 @@
 }
 
 .image {
+  background-color: #CCCCCC;
   border-radius: 16px;
 }
 
@@ -56,6 +57,7 @@
 }
 
 .detailLeft video {
+  background-color: #CCCCCC;
   max-width: 612px;
   width: 100%;
 }

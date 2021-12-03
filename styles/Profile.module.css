@@ -1,5 +1,8 @@
 .container {
-  padding: 92px 0;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 92px 30px;
 }
 
 .topContainer {
@@ -89,9 +92,44 @@
   flex-wrap: wrap;
   margin: 0 -12px;
   max-width: 1600px;
+  width: 100%;
 }
 
 .dummyView {
   width: 432px;
   margin: 0 12px;
+}
+
+@media screen and (max-width: 767px) {
+  .grid {
+    display: block;
+  }
+
+  .lot {
+    margin: 0 auto 68px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .user {
+    align-items: center;
+    padding: 24px 27px;
+  }
+
+  .user .image {
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 120px;
+  }
+
+  .buttons {
+    margin-bottom: 15px;
+    margin-top: 55px;
+  }
+
+  .score {
+    align-self: center;
+  }
 }

@@ -18,14 +18,14 @@
 }
 
 .lot .image {
+  background-color: #CCCCCC;
   border-radius: 16px;
-  background-color: #FFFFFF;
 }
 
 .video {
-  height: 100%;
-  background-color: #FFFFFF;
+  background-color: #CCCCCC;
   border-radius: 16px;
+  height: 100%;
   width: 100%;
 }
 

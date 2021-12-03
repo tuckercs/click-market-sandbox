@@ -25,7 +25,7 @@ const Profile: NextPage = () => {
   const activeBids = profile.me.activeBids;
 
   return (
-    <div className={styles.container}>
+    <main className={styles.container}>
       {user && (
         <>
           <div className={styles.topContainer}>
@@ -91,7 +91,7 @@ const Profile: NextPage = () => {
           </div>
         </>
       )}
-    </div>
+    </main>
   );
 };
 
