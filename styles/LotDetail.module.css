@@ -39,11 +39,6 @@
   width: 100%;
 }
 
-.image {
-  background-color: #CCCCCC;
-  border-radius: 16px;
-}
-
 .detailContainer {
   display: flex;
   flex-direction: row;
@@ -56,10 +51,11 @@
   margin: 0 36px 40px;
 }
 
-.detailLeft video {
+.detailLeft .image, .video {
   background-color: #CCCCCC;
-  max-width: 612px;
-  width: 100%;
+  border-radius: 16px;
+  max-height: 588px;
+  object-fit: contain;
 }
 
 .detailRight {
@@ -96,6 +92,10 @@
 .authorImage {
   margin-right: 30px;
   min-width: 60px;
+}
+
+.authorImage img {
+  border-radius: 50%;
 }
 
 .collectionTitle {
@@ -181,7 +181,11 @@
 }
 
 @media screen and (max-width: 767px) {
-  .image {
+  .detailLeft {
+    padding: 0 30px;
+  }
+
+  .image, .video {
     width: 100%;
   }
 }

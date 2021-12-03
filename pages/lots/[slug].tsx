@@ -111,7 +111,6 @@ const LotDetail: NextPage = ({ lot }: any) => {
             <div className={styles.author}>
               <div className={styles.authorImage}>
                 <Image
-                  className={styles.image}
                   src={lot.author.avatar.url}
                   alt={lot.author.avatar.title}
                   width={60}
