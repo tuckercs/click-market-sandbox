@@ -45,13 +45,17 @@ const LotDetail: NextPage = ({ lot }: any) => {
 
   const isLotDescriptionLong = lot.about.length > 350;
   const isAboutAuthorLong = lot.author.about.length > 150;
+  let currentBid;
+  if (mojitoLotData)
+    currentBid = mojitoLotData.getMarketplaceAuctionLot.currentBid;
 
   return (
     <main className={styles.main}>
       {hasBid &&
         mojitoLotData &&
         !!mojitoLotData.getMarketplaceAuctionLot.bids.length &&
-        profile && mojitoLotData?.getMarketplaceAuctionLot.bidView.isDuringSale && (
+        profile &&
+        mojitoLotData?.getMarketplaceAuctionLot.bidView.isDuringSale && (
           <div className={styles.topBanner}>
             {mojitoLotData.getMarketplaceAuctionLot.bids[0].marketplaceUser
               .id === profile.me.id ? (
@@ -148,10 +152,9 @@ const LotDetail: NextPage = ({ lot }: any) => {
                     {isAuthenticated ? (
                       <>
                         {mojitoLotData &&
-                        mojitoLotData.getMarketplaceAuctionLot.currentBid &&
+                        currentBid &&
                         profile &&
-                        mojitoLotData.getMarketplaceAuctionLot.currentBid
-                          .marketplaceUser.id === profile?.me.id ? (
+                        currentBid.marketplaceUser.id === profile?.me.id ? (
                           <button className={styles.disabledButton} disabled>
                             YOUR BID WAS SENT
                           </button>
@@ -161,8 +164,7 @@ const LotDetail: NextPage = ({ lot }: any) => {
                             onClick={() => setShowConfirmModal(true)}
                           >
                             {hasBid &&
-                            mojitoLotData?.getMarketplaceAuctionLot.currentBid
-                              ?.marketplaceUser.id !== profile?.me.id
+                            currentBid?.marketplaceUser.id !== profile?.me.id
                               ? "BID AGAIN!"
                               : "BID NOW!"}
                           </button>
@@ -176,24 +178,19 @@ const LotDetail: NextPage = ({ lot }: any) => {
                   </>
                 )}
               {mojitoLotData?.getMarketplaceAuctionLot.bidView.isPostSale &&
-                mojitoLotData.getMarketplaceAuctionLot.currentBid && (
+                currentBid && (
                   <div className={styles.winner}>
                     <div>
                       Winning Bid:{" "}
-                      <span>
-                        {formatCurrencyAmount(
-                          mojitoLotData.getMarketplaceAuctionLot.currentBid
-                            .amount
-                        )}
-                      </span>
+                      <span>{formatCurrencyAmount(currentBid.amount)}</span>
                     </div>
                     <div>
                       By{" "}
                       <span>
-                        {
-                          mojitoLotData.getMarketplaceAuctionLot.currentBid
-                            .userOrganization.user.name
-                        }
+                        {currentBid.marketplaceUser.id === profile?.me.id
+                          ? "You"
+                          : currentBid.marketplaceUser.username ||
+                            currentBid.userOrganization.user.name}
                       </span>
                     </div>
                   </div>
