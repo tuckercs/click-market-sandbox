@@ -11,12 +11,13 @@
   position: fixed;
   background: white;
   width: 80%;
-  height: auto;
+  max-height: 90vh;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 16px;
   padding: 45px 61px;
+  overflow-y: auto;
 }
 
 .closeButton {
@@ -106,6 +107,11 @@
   margin: 0 36px 40px;
 }
 
+.image, .video {
+  border-radius: 16px;
+  object-fit: cover;
+}
+
 .detailRight {
   margin: 0 36px;
   width: 432px;
@@ -140,4 +146,45 @@
   border-radius: 8px;
   padding: 3px 8px;
   margin-bottom: 18px; 
+}
+
+@media screen and (max-width: 767px) {
+  .modalContent {
+    padding: 45px 15px;
+    width: 90%;
+  }
+
+  .modalTitle {
+    font-size: 20px;
+  }
+
+  .detailContainer {
+    margin: 0;
+  }
+
+  .detailLeft {
+    margin: 0 0 40px;
+    width: 100%;
+  }
+
+  .detailRight {
+    margin: 0;
+    width: 100%;
+  }
+
+  .image, .video {
+    height: auto;
+    max-height: 500px;
+    width: 100%;
+  }
+
+  .button {
+    border-radius: 8px;
+    font-size: 20px;
+    height: 56px;
+  }
+
+  .closeButton img {
+    width: 15px !important;
+  }
 }

@@ -128,11 +128,14 @@ export const BidConfirmModal = ({
                 src={lot.images[0]}
                 alt={lot.title}
                 height={350}
+                width={432}
+                
               />
             )}
             {lot.format === "video" && (
               <video
                 className={styles.video}
+                height={350}
                 width={432}
                 src={lot.videos[0]}
               />

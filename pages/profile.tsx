@@ -50,9 +50,11 @@ const Profile: NextPage = () => {
             </Button>
             </div> */}
               </div>
-              <h3>{user.name}</h3>
-              <div className={styles.score}>
-                Bidding score: {activeBids.length}
+              <div className={styles.info}>
+                <h3>{user.name}</h3>
+                <div className={styles.score}>
+                  Bidding score: {activeBids.length}
+                </div>
               </div>
             </div>
           </div>
