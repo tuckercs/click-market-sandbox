@@ -76,7 +76,7 @@
         "slug": "bea-arte",
         "about": "Estudió dibujo y pintura en la Escuela Central High de Artes Visuales en Santurce. Completó su bachillerato y maestría en Diseño Gráfico en la Universidad Atlantic College, en Guaynabo. Ha participado de eventos tales como: Paseo de los Artistas, Timbiriche, Mercado Design, Festival Claridad, Prisma Collective, entre otros. Ha participado de exposiciones colectivas y ha tenido la oportunidad de hacer una Expo con varias piezas (30 piezas) creadas con tinta de café, titulada: ¨Con lo que me sobró del café negro¨ (2018). También ofrece talleres de arte a niños y adultos. Su concepto artístico se destaca por su explosión de colores, patrones y surrealismo. Trabaja en medio acrílico, óleo, tinta, acuarela, medio mixto, madera, canvas y papel, entre otros. Actualmente trabaja artes digitales. Su frase favorita es ¨El arte es vida¨ ",
         "avatar": {
-          "url": "https://lh3.googleusercontent.com/fife/AAWUweUZtVlfFSjDPQk97_Byg3zTYwiaGgyaaiLjQlaRYfZIMGoZDGzHfourpAaEXNYtdqMlymo3orBDLLgbbm9exl7SCcspVoaNDPTC4mdYPRNUKKLjMeJ9Zb0NPdtNLUs6SCizXr2MowKr7NxSoO_KVOtR-XxuJdcq7V2rSK63tfEA4r44rctbr4xyVSlk4TRF6g9dhZKJJFnkJ5oY29kiKiMydY_kluECHNXq3yDmmTL0shmJ2nAaEkA3n-mV0wyl62pi9o20nC5uPCwPbcCYBlLtnHO1wSEHA3Nfpp39kDHfmFYczNwwTuDACK59dqNiNxakdDM1aD3nzKcGPtwT_xli1MFXplDxpOS2VbGlsUVlxP6v6l3B6TQoeDecZ9HzbOkA76bm2Ri-Q2BkyCkpu-7jrcLOWKI2DXTEJtIVS6aZfpuUzTlFYgGzvELR-fA5EDPP4NyK94FekxWY1ObW3J0Y9ST2G0KsRBJ9R7G0RmjIDJGNx0dbVBoqJqfIbmNydxrodCQGKAsKPldU1Nd7mIAtBOu5o-r6MNzXnclK-p-Ujj7eErH2b3Yma7thTtyr2Q4oDZhDRynPVGQA9XTcrC-xVAhGUDVwnrDzv9sxUaRFEykEmxpJgMWxwUzrk09nys92Qq1tBW3_3-TI0cNmNNC3VZKLvwCncLC7IKKbZts8CO_UHWEMCWALU3xwEHOkLcuxEDFx9oaKxGJDq5zYTg5lSqx-23Urzes=w2880-h1052-ft"
+          "url": "https://assets.website-files.com/615efe6e52047df62fc828c2/619c0efeaf38fe6c0453a9e8_Beatriz%20Rodriguez%20Torres.jpg"
         }
       }
     },
@@ -121,8 +121,28 @@
       }
     },
     {
-      "title": "Structural Integrity: Butterfly in the Machine",
+      "title": "Mundo de Colores",
       "lotId": 7,
+      "slug": "mundo-de-colores",
+      "mojitoId": "",
+      "about": "¨El mundo de colores es el mundo de las emociones, emociones oscuras que no podemos entender, amarillo alegria, rojo hira, verde esperanza.¨\nThis piece was created by a teenage student during Blockchain Education Network’'s NFT workshop at Boys & Girls Club of Puerto Rico in Bayamón.\nThe proceeds of this work will go 1/2 to Boys & Girls Club PR & 1/2 to Blockchain Education Network.",
+      "format": "image",
+      "images": [
+        "https://storage.googleapis.com/mojito-public-assets/media/metaverso/mundodecolores_boysgirlsclubofpuertorico.jpg"
+      ],
+      "author": {
+        "name": "BGCPR",
+        "title": "Boys & Girls Club of Puerto Rico",
+        "slug": "boys-and-girls-club-of-puerto-rico",
+        "about": "Boys & Girls Clubs of Puerto Rico (BGCPR) is a nonprofit organization, and a leader in after-school programs and services for children and youth between the ages of 6 and 18. With 54 years of service, the organization offers a safe and creative place where children develop into leaders who achieve their academic, personal and professional goals. Their innovation programs focus on career development and entrepreneurship. The organization provides the tools needed to be competitive in a global economy and to obtain a worthy job that allows economic security. Last year they served more than 12,000 children, youth and families, and employed more than 300 professionals in the Island. BGCPR Clubs are located at the Las Margaritas Housing Complex and Luis Llorens Torres Housing Complex in Santurce, Franklin D. Roosevelt Housing Complex in Mayagüez, San Lorenzo, Carolina, Arecibo, Aguas Buenas, Bayamón, Loíza, Vieques and Isabela. For more information visit bgcpr.org.",
+        "avatar": {
+          "url": "https://assets.website-files.com/615efe6e52047df62fc828c2/618d5478ed0f09487057dc24_BiancaMontoya.jpg"
+        }
+      }
+    },
+    {
+      "title": "Structural Integrity: Butterfly in the Machine",
+      "lotId": 8,
       "slug": "butterfly-in-the-machine",
       "mojitoId": "9d1cf9d7-d66e-4d22-974c-315c5d846b77",
       "about": "Butterfly in the Machine is part of a series of six  ghost tapestries Camille Sofia Rivera created in Puerto Rico in 2021. She sees the ghost as a symbol for the unification of presence and absence--a relevant theme in digital art. For this NFT, the artist has freed the ghost from its tapestry, so that it can haunt the metaverse. The GIF and tapestry are tied together as a pair: one is the real ghost, and the other, its mythological portrayal.",
@@ -142,7 +162,7 @@
     },
     {
       "title": "CITRINO",
-      "lotId": 8,
+      "lotId": 9,
       "slug": "citrino",
       "mojitoId": "b1b1207e-f8f7-4be8-8602-93a662e6f729",
       "about": "Natural citrine, one of the most sought after crystals, carries the power to tap into abundance, creativity, and joy. It's sunny yellow color brings confidence to whoever keeps it close and it moves your Solar Plexus... the energy point within you that can bring forth to life anything you desire.\nHow? Crystals are formed of atoms and minerals arranged in a perfect symmetric lattice which gives each one of them a specific power and allows them to influence the energy of whoever has them close.\nMy hope with this collection is that it lights up the dreams you have forgotten and that it's energy influences your space, both physical and mental, just like a traditional crystal would.\nSo stare at it, meditate with it, charge it, program it... you'll be surprised at what your intention can do. Allow it to bring abundance and joy into your life. After all, everything, including the Metaverse is made of pure energy.\nWhy not harness it in your favor? Dare to elevate your vibration and shift your life.\n*Citrino is part of a 22 piece collection of powerful crystal NFTs that will be released in January 2022.",
@@ -161,14 +181,34 @@
       }
     },
     {
+      "title": "HYPEVIBE",
+      "lotId": 10,
+      "slug": "hypevibe",
+      "mojitoId": "",
+      "about": "Weekends, cartoons, friends from the block, laughs and a whole lot of HYPE VIBES. Never stop being a kid; never stop the hustle; REBEL OUT!\nFrom street wear culture to street art scene hype is the new trend. Inspired on the sneakers subculture and motivated from Carlos “Carlitos” Rivera's last merch “Uncrown” drop he created this colorful piece. Using a vibrant pallet and lots of nostalgic images from his childhood. Carlitos is traveling in time when he used to watch cartoon in front of the T.V while baby sitting by his uncle.\nNow as an adult using this imagery as a hook to capture attention and brandalism; pop culture symbols like “Disney” and hype brands like Supreme and LV, Carlitos is appealing to narrate what the subculture of the street wear is bringing to the table.\nBut what is contemporary art if not adaptable to it's time and era. Carlitos as a true visionary has taken Hype Vibe from it's tangible and physical concept (Uncrown apparel) to the NFT world and into the Meta verse and linked these two for a complete and valuable item and experience like no other.",
+      "format": "video",
+      "videos": [
+        "https://storage.googleapis.com/mojito-public-assets/media/metaverso/hypevibe_carliitosskils.mp4"
+      ],
+      "author": {
+        "name": "Carlitos Skils",
+        "title": "Carlitos Skills",
+        "slug": "carlitos-skills",
+        "about": "Carlos A. Rivera Rivera, born in 1991 in Bayamón, Puerto Rico, completed his bachelor's degree in Fine Arts with a specialization in Art and Digital Design at the School of Plastic Arts of Puerto Rico. These years of study allowed him to develop as a multifaceted artist, a lover of the visual arts and, tattoo artist and entrepreneur.\nHe started painting clothes, later, inspired by urban art and pop culture, he decided to take his art to a larger scale, becoming a muralist. Since then, his colorful murals have served as his main platform to express his ideas. His aesthetic consists on mixing realism, geometry and semi-abstract patterns. In addition, Rivera's work includes symbols and ideas such as: skulls, masks, female faces and a bright color palette to arouse the attention of viewers. Its main objective is to encourage and inform young people about art. He has left his mark on walls and tattoos around the world from New York to France to Colombia. \nIn 2017, artist Carlos Rivera opened his gallery space, Skills Creative Studios, where he has worked with some of the most talented artists in the world, including Ahol Sniffs Glue, Sen2 Figueroa, Don Rimx and more. Among his largest works to date is “FOLKLORE,” a multi-piece mural created in LoanDepot Park Miami, Florida, for the Marlins team and community. Currently, he has focused on honing his skills as a visual artist, creative director, tattoo artist and so much more as an artist and entrepreneur. His unique style and the way in which he fuses different fine art techniques has made his works uniquely bold and intriguing pieces.",
+        "avatar": {
+          "url": "https://assets.website-files.com/615efe6e52047df62fc828c2/61ac4efe90025a6ce005f952_Carlitos%20Skills.jpg"
+        }
+      }
+    },
+    {
       "title": "6am",
-      "lotId": 9,
+      "lotId": 11,
       "slug": "6am",
       "mojitoId": "e817070e-ec8b-4fa0-94b8-b57227e39221",
       "about": "gm, Sun\nIt’s a beautiful day to have a beautiful day.\nEmerald water, reflection of daydreams.\nA time to pause and ground yourself.\n6 am is the beginning of a new beginning.",
       "format": "image",
       "images": [
-        "https://lh3.googleusercontent.com/fife/AAWUweXU1aeK1s3S8RQc_gVuSmYpnqNEp0ynf3x5uK5mlux0PL5vgTzFOoxiUD8vN-w2_NlL8N90bn7kUXsk5ZO2TH2eN-UbB_f5JHDOXV-JMaDQP4fqByKXFsBZwI_uRO9-lTQI8HsyNtcua1uUklLPn2dwHcFSdfwbsRQ6ZzyGIA3oPowDaqYSx7XxRGUyRJEVg3u6fDwXdu88Ga4YnzVjyEpc5AyhnvEIZLetrPhm6Y3edsHXDESac7-TwuO_L264QtTinlqPrHaGP65NhIuq0XHr566GtvgApsOIGPytyQKdescA6v7Bs9j09Nj0rtEPlHk0J9sBYT0A56IYRcyXs1u14HeNNOHvkHUeA2LTWlwh5mOJmd6nvK9YuO0h_uDt9T_PvP8EQbyLNgHxZm3JIJuTgyuFgT-MB4I7v5IEjuhWNOQ9vPykh08znwcZPJ-KXayQZLa0jcxH3R9EUILEgF5pkJ6csmzVaaZZ9klGQAp7EsMqBqAFTsBFe3LJELlhW9NdxtzVmuwEbCCs26Ll7Ps4QCGJIoqS6jmk2kls2OEvu3wXcV2gSJC4upOKhr4JqgVp3QOPdjLxeFhHeuu-Iw1FfRoorJgROhSBjNWCXpLFPpsWDDn5kZB3mNuI3L_7YqShkXqolexDZE8TaUdYMZkAMJzQnv4aZ3B3x-B3_hH8rHi20jA8bXZgDCU4ihQBVl7Ukvq-WEsj1JofvtIlJWvqxsabnKFfE4M=w2880-h1052-ft"
+        "https://storage.googleapis.com/mojito-public-assets/media/metaverso/6am_cathsimard.jpg"
       ],
       "author": {
         "name": "Cath Simard",
@@ -182,7 +222,7 @@
     },
     {
       "title": "The Pill",
-      "lotId": 10,
+      "lotId": 12,
       "slug": "the-pill",
       "mojitoId": "7bc9f066-c596-4311-a9de-98c0a742ae26",
       "about": "This piece was concocted merging together low-light photography & bone-crafting manipulation, animated and polished on Procreate.\nThe visual portrays how my brain surrounds the whole idea of what reality is. Is it better to keep developing the ability to calculate how every second rolls out in your lifetime,  by paying attention and accumulating data, just to make your every interaction in this world more predictable with practice? Or should we just go holistically limp, submissive and follow the same pathway that everyone is sleepwalking on to their graves, slowly, unknowingly, but with a serene smile?\nSo which one is it? \nBeing human gives you the power to explore and expand your intellect in beneficial ways to oneself and others; yet we choose to waste our lives in front of a screen and lack meaningful interactions.  It seems we need to make a tough  choice: should we  choose to heal, root into Earth, and make this little sand clock we call life into a memorable one for ourselves and the whole universe or should we be a nuisance to everyone we come close to? \nThe Pill is the paradox I encounter when choosing which path to take The Red Pill or The Blue Pill. I usually oscillate between the two. Either way you look at it, whether you: don’t take either, or alternate between the two depends on how you feel that day.\nJust take The Red one, or throw both in your mouth like a maniac to see what happens. The Blue Pill’s ending is inevitable, when your time is running out, one tends to forget things, and unknowingly convince ourselves to take the Blue Pill just to stay  calm until passing.\nAll that you  are left with, is what  supported you the most, your bones, which will pulverize with time for the good purpose of feeding what always mattered: this planet, what is alive, what is not, and what is in transition. We don't need either pill when we can choose to use what’s left of our lives to be respectful and caring. Even when we are gone, we leave a legacy so others can carry on the gift of our values in their memories, forever.",
@@ -202,13 +242,13 @@
     },
     {
       "title": "Conectados en un mundo alterno",
-      "lotId": 11,
+      "lotId": 13,
       "slug": "conectados-en-un-mundo-alterno",
       "mojitoId": "",
       "about": "Connected in an alternate world",
       "format": "video",
       "videos": [
-        "https://rr4---sn-cvb7lnee.c.drive.google.com/videoplayback?expire=1638328922&ei=GrKmYam0BYGO2LYP576-uAU&ip=204.199.97.84&cp=QVRIWkRfV1lQQ1hPOkctZDFIRUY3aC16QVZwWUdwb1pvR3o4SWRQdTgyVzJYVkN6a0NMMDM4a1k&id=747778a3ecc017d5&itag=22&source=webdrive&requiressl=yes&mh=Rq&mm=32&mn=sn-cvb7lnee&ms=su&mv=m&mvi=4&pl=22&ttl=transient&susc=dr&driveid=1XTd93aPfhrw1eyLT8hgZegtEa6SR2irN&app=explorer&mime=video/mp4&vprv=1&prv=1&dur=7.058&lmt=1637373366075707&mt=1638314197&sparams=expire,ei,ip,cp,id,itag,source,requiressl,ttl,susc,driveid,app,mime,vprv,prv,dur,lmt&sig=AOq0QJ8wRQIhAKytm8tthyw9Optv-CNZ--GDU-LBCd7OtY4n18HndORsAiBZLJMVXzT9CRh6Kh09DKeobIE3ov39cdO-0cWWWaXIDw==&lsparams=mh,mm,mn,ms,mv,mvi,pl&lsig=AG3C_xAwRQIhAP0lvhZ8x2W-H62dtLWroOzhBqH1jRH09NiOXGzfAEZ_AiBTrBwUWM3XZ4JuRSZWN5yJEmKxGEpsYT6Y0_1-j6b2lw==&cpn=qkHSHPKyOH7Lb4PE&c=WEB_EMBEDDED_PLAYER&cver=1.20211128.00.00"
+        "https://storage.googleapis.com/mojito-public-assets/media/metaverso/conectadosenunmundoalterno_ebonytorres.mp4"
       ],
       "author": {
         "name": "Ebony Torres",
@@ -222,7 +262,7 @@
     },
     {
       "title": "Versus",
-      "lotId": 12,
+      "lotId": 14,
       "slug": "versus",
       "mojitoId": "cbb2f9a6-2535-4124-85af-778898148f3a",
       "about": "La autodestrucción es la ambición ciega del hombre en contra de la naturaleza.",
@@ -242,7 +282,7 @@
     },
     {
       "title": "Barrio Glitch",
-      "lotId": 13,
+      "lotId": 15,
       "slug": "barrio-glitch",
       "mojitoId": "908e82e3-01f1-4b33-85e5-262c37b73262",
       "about": "We’re zooming into the future at a speed that’s greater than our capacity to solve many of our most vital social issues. Evidently, we’ll experience the Metaverse from inequitable social and living conditions. Progress and technological advances can help us solve many social problems and build a future of welfare, yet it could also be quite the contrary. This piece tries to represent a marginalized neighborhood somewhere in the Metaverse and invites us to reflect on the types of futures we are building.\n//\nNos adentramos en el futuro a una velocidad mayor que nuestra capacidad para solucionar muchos de nuestros problemas sociales más urgentes. Es evidente que experimentaremos el Metaverso desde condiciones sociales y de vida desiguales. El progreso y los avances tecnológicos pueden ayudarnos a solucionar muchos males sociales y construir un futuro de bienestar, pero también puede ser todo lo contrario. Esta pieza intenta representar un barrio marginado en algún lugar del metaverso y nos invita a una reflexión sobre qué tipos de futuros estamos construyendo.",
@@ -261,8 +301,28 @@
       }
     },
     {
+      "title": "Shit #087 - Bill Gates (Common)",
+      "lotId": 16,
+      "slug": "shit-bill-gates",
+      "mojitoId": "",
+      "about": "Can #087 filled with shit of Bill Gates, leaking on the ETH Blockchain.",
+      "format": "image",
+      "images": [
+        "https://storage.googleapis.com/mojito-public-assets/media/metaverso/shit087billgates_italianft.jpg"
+      ],
+      "author": {
+        "name": "ItaliaNFT Donation",
+        "title": "Shitoshi Nakamoto, with the help of Shit Gates and Shit Jobs",
+        "slug": "italianft-donation",
+        "about": "Based on Piero Manzoni’s Artist’s shit, created in 1961, which had an impressive impact on the whole art market with its provocative and groundbreaking idea, Shitoshi and his team decided to collect feces by famous people from all over the world. They collected 1500+ human feces in a matter of 2 years. Then, they packaged and preserved this precious biological matter in state-of-the-art cans and digitized them in a 100 NFTs collection: Shitties.",
+        "avatar": {
+          "url": "/"
+        }
+      }
+    },
+    {
       "title": "Creation of the Metaverse",
-      "lotId": 14,
+      "lotId": 17,
       "slug": "creation-of-the-metaverse",
       "mojitoId": "06156e5c-f531-4abf-a6e2-7eaa46f20aff",
       "about": "Iurie trained AI with hundreds of his Iceland Highlands photographs taken in the last 15 years to create a New World in the Metaverse, the algorithms created a new and unique dreamlike landscape.... a New World ... The result is a unique artwork created from a collaboration between a machine and a human.",
@@ -281,28 +341,48 @@
       }
     },
     {
-      "title": "Anxious Pleasures 2020_0524",
-      "lotId": 15,
-      "slug": "Anxious-Pleasures-2020_0524",
-      "mojitoId": "20c94d42-14b7-42fd-bd55-d7d6d88e0f93",
-      "about": "For 377 consecutive days, from the day the lockdown started until Elkins received her COVID vaccine, she took one self portrait. The collection shows her whimsy, boredom, frustration and courage - and reflects what many around the world have felt over the past year.\nAnxious Pleasures was minted on Quantum Art on November 2nd, 2021, and is the inaugural collection on our platform.  Quantum is the first on-chain platform focused solely on photographers and their work, by curating and dropping NFT collections, working to make NFT photography easily accessible for both artists and collectors. Launched in 2021 by Justin Aversano, Kris Graves, Alexx Shadow, EXP_Table and Jonas Lamis, Quantum is focused on minting and selling the best photographic collections as NFT sets.",
+      "title": "La Dolce Vita",
+      "lotId": 18,
+      "slug": "la-dolce-vita",
+      "mojitoId": "",
+      "about": "Taken in Capri, Italy.",
       "format": "image",
       "images": [
-        "https://storage.googleapis.com/mojito-public-assets/media/metaverso/anxiouspleasures_amyalkins.jpg"
+        "https://storage.googleapis.com/mojito-public-assets/media/metaverso/ladolcevita_joseanvelezbetancourt.jpg"
       ],
       "author": {
-        "name": "Quantum Art Donation: Amy Elkins",
-        "title": "Anxious Pleasures 2020_0524",
-        "slug": "quantum-art-donation-amy-elkins",
-        "about": "Amy Elkins received her BFA in Photography from the School of Visual Arts in New York City and is currently pursuing her MFA in Art Practice at Stanford University. She has been exhibited and published both nationally and internationally, including at The High Museum of Art in Atlanta, GA; Kunsthalle Wien in Vienna, Austria; the Center for Creative Photography in Tucson, AZ; the Minneapolis Institute of Arts; North Carolina Museum of Art; among others. Her first book Black is the Day, Black is the Night won the 2017 Lucie Independent Book Award. It was shortlisted for the 2017 Mack First Book Award and the 2016 Paris Photo-Aperture Foundation Photobook Prize as well as listed as one of the Best Photobooks of 2016 by TIME, Humble Arts Foundation, Photobook Store Magazine and Photo-Eye among others.",
+        "name": "JVB (Josean Vélez Betancourt)",
+        "title": "Fine Arts & Lifestyle Photographer",
+        "slug": "jvb",
+        "about": "Born and raised in Puerto Rico, my passion for photography and entrepreneurship started while I was in College about ten years ago in which I successfully completed a major in Graphic Design with a minor in Fine Art Photography. I learned that it is not just clicking the camera’s shutter or knowing how to use it correctly, but instead like any other art, photography is the way of expressing what you see and feel to the world by capturing those precise and unique moments. Nevertheless, my interest in Photography, Fine Arts, and Design have been within me from a very young age. Inspired and instilled by the artistic side of my family which these days I am very grateful for. Since then, I started to participate in art galleries and online platforms to expose my photography to the world which I’m very proud of.\nI aspire to inspire others to fight for their dreams. I'm a firm believer that you should do what sets your soul on fire. I love sharing my passion and personal vision of the photography industry and ¨travel with no regrets¨ is my motto. I'm always striving to expand my knowledge by taking courses in a wide array of subjects that would help me develop more the way I see this world. Knowledge is the only thing that no one can take away from me.",
         "avatar": {
-          "url": "/"
+          "url": "https://assets.website-files.com/615efe6e52047df62fc828c2/61a9413267bbcc413a974328_Josean%20V%C3%A9lez%20Betancourt.jpg"
+        }
+      }
+    },
+    {
+      "title": "Can't Hide",
+      "lotId": 19,
+      "slug": "cant-hide",
+      "mojitoId": "",
+      "about": "This short loop is an excerpt of an art installation called “Tras la Puerta“ presented by the artist in the exhibition space “El Arsenal de La Puntilla” on July 2017, San Juan, PR. The piece consists of an all seeing eye casting judgement on a love affair.",
+      "format": "video",
+      "videos": [
+        "https://storage.googleapis.com/mojito-public-assets/media/metaverso/canthide_keruortiz.mp4"
+      ],
+      "author": {
+        "name": "Keru Ortiz",
+        "title": "Digital Media Artist",
+        "slug": "keru-ortiz",
+        "about": "Keru Ortiz is an Emmy winning digital media artist based in Puerto Rico and Boston, MA. With over 12 years in the Motion Design industry, Keru has collaborated with brands, studios, production companies and agencies by helping them solve creative and visual problems through the power of animation. His works range from: concert visuals, music and lyric videos, visual effects, broadcast design, art installations and ﬁlm production. Keru enjoys tackling challenges and experimenting with new ways of making pixels move.",
+        "avatar": {
+          "url": "https://assets.website-files.com/615efe6e52047df62fc828c2/61a9418da9d19bb56adb6ede_Keru%20Ortiz.png"
         }
       }
     },
     {
       "title": "Gentle Abyss",
-      "lotId": 16,
+      "lotId": 20,
       "slug": "gentle-abyss",
       "mojitoId": "56a24c43-2fd0-44fa-ab85-982abd096a70",
       "about": "Some say being underwater feels a lot like space.\nNothing pushes you up\nOr pulls you down.\nWith eyes closed, you see the infinite stars in the gentle darkness that surrounds you.\nYou are bound to nothing but your held breath.\nYou are weightless in the depths of the “Ever-Expanding Nothingness.”\nAnd gliding through the abyss as if it were home, you find just that.\nAgain.\nAnd again.\n\n///\n\nAlgunos dicen que sumergirse debajo del agua es como estar en el espacio.\nNada te empuja hacia arriba\nO te hala hacia abajo.\nCon tus ojos cerrados, observas las estrellas en la oscuridad que gentilmente te rodea.\nEstás atadx a nada, solamente a tu respiración retenida.\nEstás ingrávidx en lo más hondo de el “Siempre Expandiendo la Nada.”\nY deslizándote por el abismo como si fuese tu hogar, encuentras exactamente eso.\nUna\nY otra vez.",
@@ -322,13 +402,13 @@
     },
     {
       "title": "OLA",
-      "lotId": 17,
-      "slug": "ola",
+      "lotId": 21,
+      "slug": "OLA",
       "mojitoId": "",
       "about": "Ola, was created in October 2021. I took this shot on a windy early morning on Puerto Rico’s north shore in the town of Arecibo. An offshore hurricane left some swells for surfers to play in and for photographers to capture. This top down view offers a unique & uncommon viewpoint only possible with aerial photography. I hope you enjoy it as much as I do.",
-      "format": "pdf",
-      "docs": [
-        "https://storage.googleapis.com/mojito-public-assets/media/metaverso/ola_miguelolivio.pdf"
+      "format": "image",
+      "images": [
+        "https://storage.googleapis.com/mojito-public-assets/media/metaverso/ola_miguelolivio.jpg"
       ],
       "author": {
         "name": "Miguel Olivo",
@@ -337,6 +417,86 @@
         "about": "For the past few years, I have been working in developing a distinct photography perspective. My background as an Air Traffic Controller has served me well in understanding the challenges for aerial pictures in congested airspaces and mixing that knowledge with my artistic creativity. Additionally, my unique editing style brings the picture to life on your screen or any printed media.",
         "avatar": {
           "url": "https://assets.website-files.com/615efe6e52047df62fc828c2/619c11839b29052393a5ff8c_migu3lolivo.png"
+        }
+      }
+    },
+    {
+      "title": "Melon Fiore",
+      "lotId": 22,
+      "slug": "melon-fiore",
+      "mojitoId": "",
+      "about": "MelonFiore is a celebration of multicultural roots. I’m a boricua that loves Mexico and their culture, so I took a piece of them (Luchador Masks) and remade them with a touch on my style, with flowers. It also has a message behind what we (women) have to do on a daily basis, we have to luchar with inequality and a lot of other things with our best face and flourish the next day, again.",
+      "format": "image",
+      "images": [
+        "https://storage.googleapis.com/mojito-public-assets/media/metaverso/melonfiore_nohelysepulveda.png"
+      ],
+      "author": {
+        "name": "Nohely Sepúlveda",
+        "title": "Artist",
+        "slug": "nohely-sepulveda",
+        "about": "Hi, Nohely Sepúlveda. I'm a 26 years artist from Mayaguez, Puerto Rico.\nIn 2015 I founded ¡Qué Cojines! (it's means a common puertorrican slang). ¡Qué Cojines! was created for every single person who loves personalized things/gifts. These are hand made painting cushions with acrylic paint.\nHaving a background in Visual Arts (B.A. from Inter American University) has helped me greatly in my marketing career (MBA, from Inter American University). In my past jobs experience, I have been able to benefit the companies creatively, plan and execute content for campaigns and being in charge of the design department.\nI'm so impressed and excited to see what I can do with my NFT works in this “new” digital era for art. NFTs are changing the world and it represents for us (artists) a lot, because people are actually appreciating our work and they're interested in investing in digital art. Also, they're proud to be part of these and I'm so glad they share their collections and influence other people to become an NFT investor.",
+        "avatar": {
+          "url": "/"
+        }
+      }
+    },
+    {
+      "title": "Anxious Pleasures 2020_0524",
+      "lotId": 23,
+      "slug": "Anxious-Pleasures-2020_0524",
+      "mojitoId": "20c94d42-14b7-42fd-bd55-d7d6d88e0f93",
+      "about": "For 377 consecutive days, from the day the lockdown started until Elkins received her COVID vaccine, she took one self portrait. The collection shows her whimsy, boredom, frustration and courage - and reflects what many around the world have felt over the past year.\nAnxious Pleasures was minted on Quantum Art on November 2nd, 2021, and is the inaugural collection on our platform.  Quantum is the first on-chain platform focused solely on photographers and their work, by curating and dropping NFT collections, working to make NFT photography easily accessible for both artists and collectors. Launched in 2021 by Justin Aversano, Kris Graves, Alexx Shadow, EXP_Table and Jonas Lamis, Quantum is focused on minting and selling the best photographic collections as NFT sets.",
+      "format": "image",
+      "images": [
+        "https://storage.googleapis.com/mojito-public-assets/media/metaverso/anxiouspleasures_amyalkins.jpg"
+      ],
+      "author": {
+        "name": "Quantum Art Donation: Amy Elkins",
+        "title": "Anxious Pleasures 2020_0524",
+        "slug": "quantum-art-donation-amy-elkins",
+        "about": "Amy Elkins received her BFA in Photography from the School of Visual Arts in New York City and is currently pursuing her MFA in Art Practice at Stanford University. She has been exhibited and published both nationally and internationally, including at The High Museum of Art in Atlanta, GA; Kunsthalle Wien in Vienna, Austria; the Center for Creative Photography in Tucson, AZ; the Minneapolis Institute of Arts; North Carolina Museum of Art; among others. Her first book Black is the Day, Black is the Night won the 2017 Lucie Independent Book Award. It was shortlisted for the 2017 Mack First Book Award and the 2016 Paris Photo-Aperture Foundation Photobook Prize as well as listed as one of the Best Photobooks of 2016 by TIME, Humble Arts Foundation, Photobook Store Magazine and Photo-Eye among others.",
+        "avatar": {
+          "url": "/"
+        }
+      }
+    },
+    {
+      "title": "Satoshi is Female 01",
+      "lotId": 24,
+      "slug": "satoshi-is-female-01",
+      "mojitoId": "",
+      "about": "Satoshi is female is a subculture movement bringing women, people of color into NFTs, so we can architect and flourish in the new digital economy.\nWe started as a small group of crypto-activists seeding the idea that the architect of Bitcoin, Satoshi Nakamoto, could be anyone, could be anywhere, and could be female.\nThis is the first-ever, 1-of-1 Satoshi is Female NFT, launched in partnership with emerging Miami-based artist, Tierra Armstrong.\nFrom the artist: I wanted the subject to have a very poised demeanor in this piece as I was going through quite a large change as we all were during the time the pandemic struck. I felt an array of emotions while having the space to really process them, leading me down a path of self discovery and confidence in self something I always saw in Lydia (the muse). The rural aesthetic in this piece stems from my time spending quarantine in PR with my mother. I found it to be such a beautiful experience. I had nothing but time to go through rural lands and explore the outdoors as well as myself. I felt it was necessary to include some of the beautiful plants I would see while in the forest.",
+      "format": "image",
+      "images": [
+        "https://storage.googleapis.com/mojito-public-assets/media/metaverso/satoshiisfemale_tierraarmstrong.jpg"
+      ],
+      "author": {
+        "name": "Tierra Armstrong",
+        "title": "Artist",
+        "slug": "tierra-armstrong",
+        "about": "Tierra Armstrong (b.1997) is a Miami-based painter and muralist. Her paintings depict figures in sacred moments that transcend space and time. She uses religious iconography - colors as symbolism and light emmanations - to articulate the divinity of Black bodies. Her work often explores the balanced duality of feminine and masculine energies irrespective of gender. Influenced by her experiences in Mexico City and Chicago, she draws inspiration for her murals from the self-determinism of communities of color. She has been featured in various exhibitions including Museo del Juguete Antiguo México (Mexico City), and was commissioned to create the first Black Lives Matter mural in Miami in 2020.",
+        "avatar": {
+          "url": "/"
+        }
+      }
+    },
+    {
+      "title": "DataFort",
+      "lotId": 25,
+      "slug": "ixshells",
+      "mojitoId": "",
+      "about": "",
+      "format": "image",
+      "images": [
+        "https://storage.googleapis.com/mojito-public-assets/media/metaverso/dataform_ixshells.jpg"
+      ],
+      "author": {
+        "name": "Ix Shells",
+        "title": "IX Shells",
+        "slug": "ix-shells",
+        "about": "Itzel Yard (b. 1990, Panama), also known as IX Shells, is a generative artist skilled in curatorial projects, creative concept design and experimental art. She is based in Panama, Central America. IX Shells is self taught. Her constant research is fueled by a sense of rhythm, passion and wonder. Her love for computers started from a very young age with video game missions. These quests turned into riddles and seeds of real-time visions of what surrounds us. And eventually the patterns found within the darkest alleys of our minds became a quest for parallels. IX Shells has been creating digital art collections since February 2021. One of the most significant project in her career was creating the piece Dreaming AT Dusk in favor of Tor’s Project to support journalists, whistle-blowers and human rights defenders. This auction rocketed IX Shells to the forefront of female artists working in the NFT space. IX Shells is a leading voice in the generative art movement, creating poetic visualizations of algorithms and experimental music. As co-founder of Creative Code Art, IX Shells is also a strong advocate for an entire community of artists who are pushing the boundaries of creative coding.",
+        "avatar": {
+          "url": "https://lh3.googleusercontent.com/fife/AAWUweVUelomQdcRIkOIRbzECBUYwfnl993qk5NLF5DWFqPfAACUvfyS4qncIxjtx2L9SgY-tUwQZ0SSMS_GHVIdfBajcr8qAUpA1utU1bpceJXL_QMsLEorysGHfF7QdlyJNCz03D5whB-mdryjwXq7MA_2P9H_uNOlDSRwWG963QeQlL2VBWcNgE0hJ8Krxev_Gj--SIFrWU-K9g0w9oAKbErhJA2wCPd_kpCytlcN8RtaAnrcMuOXJeG6Toj_ckE9HrNCinTrXAwqwPiwH3XfqdSYqMmaBAFqi-NDtddYPd7JYXmsa8CETRRxGG_-K29axy-dmQukDBR_AxczGyXBXg1rvgfXgUtUwW7rRz_zbSSzWGwIA_-_nLad36EMUCqITWkos6B3IwJsIYrupCIvVogKwMq6NddnKOadFmgx0u_-jzCGZiOBWS5VClp4gFGNOpLC5AVD9e4qx7LUZ-SM7EJqy3Bw1pb6Jt6k1AwCYzr-gWyfWvkyJIXchU0Wyrg7SiEMtdN85fQKiAKIJsJKfrB2EWWwgs4H0UfT1yqXOwPtZMIcgePsrg_zh3ZUQMwsTOEr6iU46f2me9yrlh7blj0yp0YLP551xc20w_hWkSJcD1F2zEMUE-IkfA25fSK9c7R17KirkK0Ggc0ngpgzWTd0irtXsTDVM_6rNPIIrBjk_CdOXSktSiBcXT4ulEsA5tSVrTGWBcR_GYv1hff25mcDa4RrJH5oO7g=w2880-h1578-ft"
         }
       }
     }
