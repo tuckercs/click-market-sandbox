@@ -7,9 +7,8 @@ import Content from 'metaverso.content.json';
 
 const Home: NextPage = () => {
   const { lots } = Content
-  const { slug } = useAuction();
-  const { collection } = useCollection(slug, {
-    pollInterval: 1500, // To discuss
+  const { collection } = useCollection("metaverso", { // TODO: Remove hardcoding
+    pollInterval: 1500,
   });
 
   const collectionLotsIds = collection?.items?.map((e: any) => e.lot.id) || [];

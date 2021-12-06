@@ -499,6 +499,46 @@
           "url": "https://lh3.googleusercontent.com/fife/AAWUweVUelomQdcRIkOIRbzECBUYwfnl993qk5NLF5DWFqPfAACUvfyS4qncIxjtx2L9SgY-tUwQZ0SSMS_GHVIdfBajcr8qAUpA1utU1bpceJXL_QMsLEorysGHfF7QdlyJNCz03D5whB-mdryjwXq7MA_2P9H_uNOlDSRwWG963QeQlL2VBWcNgE0hJ8Krxev_Gj--SIFrWU-K9g0w9oAKbErhJA2wCPd_kpCytlcN8RtaAnrcMuOXJeG6Toj_ckE9HrNCinTrXAwqwPiwH3XfqdSYqMmaBAFqi-NDtddYPd7JYXmsa8CETRRxGG_-K29axy-dmQukDBR_AxczGyXBXg1rvgfXgUtUwW7rRz_zbSSzWGwIA_-_nLad36EMUCqITWkos6B3IwJsIYrupCIvVogKwMq6NddnKOadFmgx0u_-jzCGZiOBWS5VClp4gFGNOpLC5AVD9e4qx7LUZ-SM7EJqy3Bw1pb6Jt6k1AwCYzr-gWyfWvkyJIXchU0Wyrg7SiEMtdN85fQKiAKIJsJKfrB2EWWwgs4H0UfT1yqXOwPtZMIcgePsrg_zh3ZUQMwsTOEr6iU46f2me9yrlh7blj0yp0YLP551xc20w_hWkSJcD1F2zEMUE-IkfA25fSK9c7R17KirkK0Ggc0ngpgzWTd0irtXsTDVM_6rNPIIrBjk_CdOXSktSiBcXT4ulEsA5tSVrTGWBcR_GYv1hff25mcDa4RrJH5oO7g=w2880-h1578-ft"
         }
       }
+    },
+    {
+      "title": "The Revenge of the Pangolin",
+      "lotId": 26,
+      "slug": "the-revenge-of-the-pangolian",
+      "mojitoId": "3a99990e-3b41-4476-917e-a9a0cb81ad0c",
+      "about": "The image contains a sword and some arrows going through a Pangolin as he is holding a virus.  Pangolins are mammals of the order Pholidota. They have large, protective keratin scales, similar in material to fingernails and toenails, covering their skin, being the only known mammals with this feature. Pangolins are threatened by poaching (for their meat and scales, which are used in traditional medicine) and heavy deforestation of their natural habitats, and they are arguably the most trafficked mammal in the world.\nAlthough there are other hypothesis about how the COVID-19 started, the nucleic acid sequence of a specific receptor-binding domain of the spike protein belonging to coronaviruses taken from pangolins was found to be a 99% match with SARS coronavirus 2 (SARS-CoV-2), the virus which causes COVID-19 and was thought to be responsible for the COVID-19 pandemic.",
+      "format": "image",
+      "images": [
+        "https://storage.googleapis.com/mojito-public-assets/media/metaverso/therevengeofthepangolin_juansalgado.jpg"
+      ],
+      "author": {
+        "name": "Juan Salgado",
+        "title": "Juan Salgado",
+        "slug": "juan-salgado",
+        "about": "Juan Salgado is a multimedia artist known for his colorful tattoos, murals, and paintings.  Born in Puerto Rico, Juan graduated from the Central High School of Visual Arts and furthered his art studies at the School of Plastic Arts and the Sacred Heart University.  Juan was the People’s Champion and Runner Up of Ink Master, Season 10 and has over 150 international tattoo awards.  He also has murals in Santurce, Wynwood, Australia, Italy, and the Caribbean and his work has been exhibited in shows, galleries, and museums in Puerto Rico, New York, and Los Angeles.",
+        "avatar": {
+          "url": "https://assets.website-files.com/615efe6e52047df62fc828c2/61a69be4f937c094b8e22f7c_Juan%20Salgado%20.jpeg"
+        }
+      }
+    },
+    {
+      "title": "Genesis de Medalla Light",
+      "lotId": 27,
+      "slug": "medalla",
+      "mojitoId": "",
+      "about": "Our Genesis has just begun, and since our taste stands out in any universe, we’re sure this will not be the exception.\nMedalla Light 3.0 is about to begin. As Puerto Ricans, art and culture have always been key in our history. With this digital collective, we’re sharing a Taste of Puerto Rico with the Metaverse. Could this be a new way of enjoying a beer? We’re about to find out.",
+      "format": "image",
+      "images": [
+        "https://storage.googleapis.com/mojito-public-assets/media/metaverso/genesisdemedallalight_medalla.jpg"
+      ],
+      "author": {
+        "name": "Medalla",
+        "title": "Medalla",
+        "slug": "medalla",
+        "about": "Medalla Light is the flagship product of Cervecera de Puerto Rico. It has been recognized internationally for its quality at top beer international competitions, sharing a Taste of Puerto Rico with the entire world.",
+        "avatar": {
+          "url": "https://assets.website-files.com/615efe6e52047df62fc828c2/61a69be4f937c094b8e22f7c_Juan%20Salgado%20.jpeg"
+        }
+      }
     }
   ]
 }
