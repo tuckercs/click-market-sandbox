@@ -23,7 +23,7 @@ const Profile: NextPage = () => {
 
   if (!profile) return null;
   const activeBids = profile.me.activeBids;
-  const userPictureBetterQuality = (user.picture or "").replace("_normal", "_400x400")
+  const userPictureBetterQuality = user?.picture?.replace("_normal", "_400x400")
   return (
     <main className={styles.container}>
       {user && (
