@@ -79,7 +79,12 @@ const LotDetail: NextPage = ({ lot }: any) => {
               />
             )}
             {lot.format === "video" && (
-              <video className={styles.video} width={612} controls preload="auto">
+              <video
+                className={styles.video}
+                width={612}
+                controls
+                preload="auto"
+              >
                 <source src={lot.videos[0]} type="video/mp4" />
               </video>
             )}
@@ -140,6 +145,17 @@ const LotDetail: NextPage = ({ lot }: any) => {
                 </p>
               </div>
             </div>
+            {mojitoLotData?.getMarketplaceAuctionLot.bidView.isDuringSale &&
+              currentBid && (
+                <p className={styles.currentBid}>
+                  Current bid:{" "}
+                  <span>
+                    {formatCurrencyAmount(
+                      currentBid?.amount ? currentBid?.amount : 0
+                    )}
+                  </span>
+                </p>
+              )}
             <div className={styles.buttonContainer}>
               {mojitoLotData?.getMarketplaceAuctionLot.bidView.isPreSale && (
                 <button className={styles.disabledButton} disabled>

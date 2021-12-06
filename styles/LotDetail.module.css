@@ -132,10 +132,6 @@
   text-decoration: underline;
 }
 
-.buttonContainer {
-  margin-top: 40px;
-}
-
 .winner {
   font-family: "PostGrotesk";
   font-size: 20px;
@@ -179,6 +175,20 @@
   height: 78px;
   justify-content: center;
   width: 100%;
+}
+
+.currentBid {
+  font-family: "PostGrotesk";
+  font-style: normal;
+  font-size: 20px;
+  line-height: 22px;
+  text-align: center;
+  margin: 40px 0 20px;
+}
+
+.currentBid span {
+  color: #ff00ff;
+  font-weight: 600;
 }
 
 @media screen and (max-width: 767px) {
