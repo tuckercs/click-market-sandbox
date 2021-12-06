@@ -114,11 +114,10 @@ export const BidConfirmModal = ({
       return null;
     }
   };
-
   return (
     <div className={styles.modal}>
       <section className={styles.modalContent}>
-        <p className={styles.modalTitle}>Bid Confirmation</p>
+        <p className={styles.modalTitle}>Confirm your bid for {lot.title}</p>
         <div className={styles.detailContainer}>
           <div className={styles.detailLeft}>
             {lot.format === "image" && (
@@ -126,9 +125,6 @@ export const BidConfirmModal = ({
                 className={styles.image}
                 src={lot.images[0]}
                 alt={lot.title}
-                height={350}
-                width={432}
-                
               />
             )}
             {lot.format === "video" && (
@@ -191,25 +187,17 @@ export const BidConfirmModal = ({
               <p>max. Total</p>
               <p>{bidAmount} USD</p>
             </div>
-            <button
-              className={styles.button}
-              onClick={onSubmit}
-            >
-              CONFIRM BID
-            </button>
           </div>
         </div>
+        <button className={styles.button} onClick={onSubmit}>
+          CONFIRM BID
+        </button>
         <button
           type="button"
           onClick={handleClose}
           className={styles.closeButton}
         >
-          <Image
-            src="/icons/close.svg"
-            alt="close"
-            width={20}
-            height={20}
-          />
+          <Image src="/icons/close.svg" alt="close" width={20} height={20} />
         </button>
       </section>
     </div>

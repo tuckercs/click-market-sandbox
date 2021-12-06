@@ -40,8 +40,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
-  margin: 0 -36px;
+  justify-content: space-between;
 }
 
 .bidContainer {
@@ -88,18 +87,18 @@
   line-height: 20px;
 }
 
-.detailLeft {
-  margin: 0 36px 40px;
-}
-
 .image, .video {
   border-radius: 16px;
   object-fit: cover;
 }
 
-.detailRight {
-  margin: 0 36px;
-  width: 432px;
+.detailRight{
+  flex: 1.5;
+  margin-left: 1rem;
+}
+
+.detailLeft {
+  flex: 1;
 }
 
 .button {
@@ -116,6 +115,8 @@
   justify-content: center;
   margin-top: 40px;
   width: 100%;
+  max-width: 320px;
+  margin: 67px auto;
 }
 
 .currentBid {
@@ -124,6 +125,12 @@
   border-radius: 8px;
   padding: 3px 8px;
   margin-bottom: 18px; 
+}
+
+
+.image, .video {
+  height: 200px;
+  width: 100%;
 }
 
 @media screen and (max-width: 767px) {
@@ -138,6 +145,7 @@
 
   .detailContainer {
     margin: 0;
+    flex-direction: column;
   }
 
   .detailLeft {
