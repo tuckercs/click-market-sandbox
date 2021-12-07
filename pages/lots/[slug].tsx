@@ -10,7 +10,7 @@ import { useMojito, useLazyMojito, useFetchAfterAuth } from "hooks";
 import { EMojitoQueries } from "state";
 import styles from "styles/LotDetail.module.css";
 import { formatCurrencyAmount } from "utils";
-import Content from "metaverso.content.json";
+import Content from "metaverso.content.prod.json";
 
 const LotDetail: NextPage = ({ lot }: any) => {
   const { isAuthenticated, loginWithRedirect, isLoading } = useAuth0();
@@ -103,11 +103,10 @@ const LotDetail: NextPage = ({ lot }: any) => {
             )}
             <p className={styles.lotTitle}>{lot.title}</p>
             <p className={styles.lotDescription}>
-              {`${
-                isSeeMoreLot && isLotDescriptionLong
-                  ? `${lot.about.slice(0, 350)}...`
-                  : lot.about
-              } `}
+              {`${isSeeMoreLot && isLotDescriptionLong
+                ? `${lot.about.slice(0, 350)}...`
+                : lot.about
+                } `}
               {isLotDescriptionLong && (
                 <span
                   onClick={() => setIsSeeMoreLot(!isSeeMoreLot)}
@@ -129,11 +128,10 @@ const LotDetail: NextPage = ({ lot }: any) => {
               <div>
                 <h3 className={styles.authorName}>{lot.author.name}</h3>
                 <p className={styles.lotDescription}>
-                  {`${
-                    isSeeMoreAuthor && isAboutAuthorLong
-                      ? `${lot.author.about.slice(0, 150)}...`
-                      : lot.author.about
-                  } `}
+                  {`${isSeeMoreAuthor && isAboutAuthorLong
+                    ? `${lot.author.about.slice(0, 150)}...`
+                    : lot.author.about
+                    } `}
                   {isAboutAuthorLong && (
                     <span
                       onClick={() => setIsSeeMoreAuthor(!isSeeMoreAuthor)}
@@ -168,9 +166,9 @@ const LotDetail: NextPage = ({ lot }: any) => {
                     {isAuthenticated ? (
                       <>
                         {mojitoLotData &&
-                        currentBid &&
-                        profile &&
-                        currentBid.marketplaceUser.id === profile?.me.id ? (
+                          currentBid &&
+                          profile &&
+                          currentBid.marketplaceUser.id === profile?.me.id ? (
                           <button className={styles.disabledButton} disabled>
                             YOUR BID WAS SENT
                           </button>
@@ -180,7 +178,7 @@ const LotDetail: NextPage = ({ lot }: any) => {
                             onClick={() => setShowConfirmModal(true)}
                           >
                             {hasBid &&
-                            currentBid?.marketplaceUser.id !== profile?.me.id
+                              currentBid?.marketplaceUser.id !== profile?.me.id
                               ? "BID AGAIN!"
                               : "BID NOW!"}
                           </button>
@@ -206,7 +204,7 @@ const LotDetail: NextPage = ({ lot }: any) => {
                         {currentBid.marketplaceUser.id === profile?.me.id
                           ? "You"
                           : currentBid.marketplaceUser.username ||
-                            currentBid.userOrganization.user.name}
+                          currentBid.userOrganization.user.name}
                       </span>
                     </div>
                   </div>

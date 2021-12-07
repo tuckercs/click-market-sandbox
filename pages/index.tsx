@@ -3,7 +3,7 @@ import Image from "next/image";
 import { LotGridItem } from "components";
 import { useContentfulLots, useAuction, useCollection } from "hooks";
 import styles from "styles/Home.module.css";
-import Content from 'metaverso.content.json';
+import Content from 'metaverso.content.prod.json';
 
 const Home: NextPage = () => {
   const { lots } = Content
@@ -17,23 +17,23 @@ const Home: NextPage = () => {
   );
 
   return (
-      <main className={styles.main}>
-        <Image src="/images/brand-icon.png" alt="icon" width={24} height={8} />
-        <h1 className={styles.title}>Metaverso NFTs</h1>
+    <main className={styles.main}>
+      <Image src="/images/brand-icon.png" alt="icon" width={24} height={8} />
+      <h1 className={styles.title}>Metaverso NFTs</h1>
 
-        <p className={styles.description}>
-          {`Puerto Rico's home in the metaverse`}
-        </p>
+      <p className={styles.description}>
+        {`Puerto Rico's home in the metaverse`}
+      </p>
 
-        <p className={styles.descriptionTitle}>
-          Dec 7, 2021 Museo de Arte de Puerto Rico
-        </p>
+      <p className={styles.descriptionTitle}>
+        Dec 7, 2021 Museo de Arte de Puerto Rico
+      </p>
 
-        <p className={styles.subtitle}>
-          metaver.so
-        </p>
+      <p className={styles.subtitle}>
+        metaver.so
+      </p>
 
-        <div className={styles.grid}>
+      <div className={styles.grid}>
         {
           filteredLots.map(lot => {
             const item = collection?.items.find((item: any) => item.lot.id === lot.mojitoId)
@@ -47,7 +47,7 @@ const Home: NextPage = () => {
             ) : null;
           })
         }
-          {/* {collection?.items.map((item: any) => {
+        {/* {collection?.items.map((item: any) => {
             const lot = filteredLots.find((lot) => lot.mojitoId === item.lot.id);
             return lot ? (
               <LotGridItem
@@ -58,10 +58,10 @@ const Home: NextPage = () => {
               />
             ) : null;
           })} */}
-          <div className={styles.dummyView} />
-          <div className={styles.dummyView} />
-        </div>
-      </main>
+        <div className={styles.dummyView} />
+        <div className={styles.dummyView} />
+      </div>
+    </main>
   );
 };
 

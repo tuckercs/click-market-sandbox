@@ -6,7 +6,7 @@ import { Button, ActiveBidtem } from "components";
 import { config } from "constants/";
 import { useLazyMojito, useFetchAfterAuth } from "hooks";
 import { EMojitoQueries } from "state";
-import Content from "metaverso.content.json";
+import Content from "metaverso.content.prod.json";
 import styles from "styles/Profile.module.css";
 
 const Profile: NextPage = () => {
@@ -85,7 +85,7 @@ const Profile: NextPage = () => {
                 <span>{"You don't have any bids going on now"}</span>
                 <Link href="/">
                   <a>
-                    <Button onClick={() => {}}>GET STARTED</Button>
+                    <Button onClick={() => { }}>GET STARTED</Button>
                   </a>
                 </Link>
               </div>
