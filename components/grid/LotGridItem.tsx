@@ -7,17 +7,22 @@ import styles from "styles/LotGridItem.module.css";
 export const LotGridItem = ({ lot, mojitoLotData, auctionSlug }: any) => (
   <a href={`lots/${lot.slug}`} className={styles.lot}>
     <div className={styles.imageWrapper}>
-      <Image
-        objectFit={"cover"}
-        width={450}
-        height={450}
-        draggable="false"
-        className={styles.image}
-        src={`${
-          lot.format === "image" ? lot.images[0] : lot.preview
-        }`}
-        alt="lot-image"
-      />
+      {lot.format === "image" && (
+        <Image
+          objectFit={"cover"}
+          width={450}
+          height={450}
+          draggable="false"
+          className={styles.image}
+          src={`${lot.images[0]}`}
+          alt="lot-image"
+        />
+      )}
+      {lot.format === "video" && (
+        <video className={styles.video} preload="none" poster={lot.preview}>
+          <source src={lot.videos[0]} />
+        </video>
+      )}
     </div>
     <div className={styles.tagContainer}>
       <StatusTag mojitoLotData={mojitoLotData} />
