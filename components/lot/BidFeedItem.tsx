@@ -15,7 +15,7 @@ export const BidFeedItem = ({ item, isTop, userId }: any) => {
   } = item;
   // const avatar = useRef<HTMLDivElement>(null);
   const timeAgo = getTimeAgo(createdAt);
-
+  const avatarBetterQuality = avatar?.replace("_normal", "_400x400");
   // useLayoutEffect(() => {
   //   if (avatarKey && avatar.current) {
   //     avatar.current.innerHTML = generateAvatar(avatarKey);
@@ -35,7 +35,7 @@ export const BidFeedItem = ({ item, isTop, userId }: any) => {
         /> */}
         <Image
           className={styles.avatar}
-          src={avatar || "/images/profile-placeholder.svg"}
+          src={avatarBetterQuality || "/images/profile-placeholder.svg"}
           alt="avatar"
           width={isTop ? 96 : 51}
           height={isTop ? 96 : 51}
