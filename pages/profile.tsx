@@ -23,7 +23,7 @@ const Profile: NextPage = () => {
 
   if (!profile) return null;
   const activeBids = profile.me.activeBids;
-
+  const userPictureBetterQuality = user?.picture?.replace("_normal", "_400x400")
   return (
     <main className={styles.container}>
       {user && (
@@ -32,7 +32,7 @@ const Profile: NextPage = () => {
             <div className={styles.user}>
               <div className={styles.image}>
                 <Image
-                  src={user.picture || "/images/profile-placeholder.svg"}
+                  src={userPictureBetterQuality || "/images/profile-placeholder.svg"}
                   alt="user"
                   width={120}
                   height={120}
