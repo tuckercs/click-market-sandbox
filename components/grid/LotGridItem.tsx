@@ -20,9 +20,16 @@ export const LotGridItem = ({ lot, mojitoLotData, auctionSlug }: any) => (
         />
       )}
       {lot.format === "video" && (
-        <video className={styles.video} preload="metadata">
-          <source src={lot.videos[0]}/>
-        </video>
+        <Image
+          objectFit={"cover"}
+          layout={"fill"}
+          quality={75}
+          priority={true}
+          draggable="false"
+          className={styles.image}
+          src={lot.preview + `?w=${400}&h=${400}`}
+          alt="lot-image"
+        />
       )}
     </div>
     <div className={styles.tagContainer}>
