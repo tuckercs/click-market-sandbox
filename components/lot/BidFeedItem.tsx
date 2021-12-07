@@ -53,7 +53,7 @@ export const BidFeedItem = ({ item, isTop, userId }: any) => {
       </div>
       <span>{timeAgo}</span>
       <span className={styles.bid} style={isTop ? { fontSize: 24 } : undefined}>
-        {amount / config.ETH_VALUE_MULTIPLIER}&#926;{" "}
+        {+(amount / config.ETH_VALUE_MULTIPLIER).toFixed(5)}&#926;{" "}
         {formatCurrencyAmount(amount)}
       </span>
     </div>
