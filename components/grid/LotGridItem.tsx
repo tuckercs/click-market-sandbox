@@ -13,6 +13,7 @@ export const LotGridItem = ({ lot, mojitoLotData, auctionSlug }: any) => (
           layout={"fill"}
           quality={75}
           priority={true}
+          sizes="40vw"
           draggable="false"
           className={styles.image}
           src={lot.images[0] + `?w=${400}&h=${400}`}
@@ -25,6 +26,7 @@ export const LotGridItem = ({ lot, mojitoLotData, auctionSlug }: any) => (
           layout={"fill"}
           quality={75}
           priority={true}
+          sizes="40vw"
           draggable="false"
           className={styles.image}
           src={lot.preview + `?w=${400}&h=${400}`}
