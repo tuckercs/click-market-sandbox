@@ -526,9 +526,9 @@
       "slug": "medalla",
       "mojitoId": "7080d97c-1641-47c7-8bcb-08e9cb560af4",
       "about": "Our Genesis has just begun, and since our taste stands out in any universe, we’re sure this will not be the exception.\nMedalla Light 3.0 is about to begin. As Puerto Ricans, art and culture have always been key in our history. With this digital collective, we’re sharing a Taste of Puerto Rico with the Metaverse. Could this be a new way of enjoying a beer? We’re about to find out.",
-      "format": "image",
-      "images": [
-        "https://storage.googleapis.com/mojito-public-assets/media/metaverso/genesisdemedallalight_medalla.jpg"
+      "format": "video",
+      "videos": [
+        "https://storage.googleapis.com/mojito-public-assets/media/metaverso/genesisdemedallalight_medalla.mp4"
       ],
       "author": {
         "name": "Medalla",
