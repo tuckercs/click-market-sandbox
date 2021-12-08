@@ -1,28 +1,38 @@
 .container {
   align-items: center;
   display: flex;
-  min-height: 82px;
+  height: 82px;
   justify-content: space-between;
-  padding: 0 59px 0 48px;
-  flex-direction: column;
-  margin: 20px 0;
+  padding: 0 48px;
 }
 
-.button {
-  margin-top: 10px;
+.logo {
+  display: flex;
 }
 
 .icon {
   margin-left: 10px;
 }
 
-@media screen and (min-width: 767px){
+@media screen and (max-width: 767px){
   .container {
-    flex-direction: row;
-    margin: 0;
+    height: 50px;
+    padding: 0 16px;
+  }
+
+  .logo > * {
+    height: 24px !important;
+    width: 142px !important;
   }
   
-  .button {
-    margin: 0
+  .button button {
+    font-size: 16px;
+    height: 35px;
+    padding: 0 28px;
+  }
+
+  .button .icon svg {
+    height: 11px;
+    width: 14px;
   }
 }

@@ -52,7 +52,7 @@ export const Header = () => {
   return (
     <nav className={styles.container}>
       <Link href="/">
-        <a>
+        <a className={styles.logo}>
           <Image
             src="/images/metaverso-logo.svg"
             alt="logo"
