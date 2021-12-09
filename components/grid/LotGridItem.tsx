@@ -11,8 +11,6 @@ export const LotGridItem = ({ lot, mojitoLotData, auctionSlug }: any) => (
         <Image
           objectFit="cover"
           layout="fill"
-          width={450}
-          height={450}
           draggable="false"
           className={styles.image}
           src={lot.images[0]}
