@@ -217,7 +217,7 @@ const LotDetail: NextPage = ({ lot }: any) => {
         {!!mojitoLotData?.getMarketplaceAuctionLot.bids.length && (
           <BidFeed
             bids={mojitoLotData.getMarketplaceAuctionLot.bids}
-            userId={profile?.me.id}
+            profile={profile}
           />
         )}
         {showConfirmModal && (
