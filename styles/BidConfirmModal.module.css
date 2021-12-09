@@ -50,16 +50,18 @@
 }
 
 .selectBidContainer {
+  border-radius: 8px;
+  display: flex;
+  font-family: 'PostGrotesk';
   font-weight: 700;
   height: 40px;
-  flex: 0.5 1;
-  border-radius: 8px;
-  font-family: 'PostGrotesk';
+  justify-content: flex-end;
 }
 
 .selectBid__control {
   background: none;
   border: none;
+  width: max-content;
 }
 
 .separator {
