@@ -1,20 +1,19 @@
 import type { NextPage } from "next";
 import Image from "next/image";
 import { LotGridItem } from "components";
-import { useContentfulLots, useAuction, useCollection } from "hooks";
+import { useCollection } from "hooks";
 import styles from "styles/Home.module.css";
-import Content from 'metaverso.content.prod.json';
+import Content from "metaverso.content.json";
 
 const Home: NextPage = () => {
-  const { lots } = Content
-  const { collection } = useCollection("metaverso", { // TODO: Remove hardcoding
+  const { lots } = Content;
+  const { collection } = useCollection("metaverso", {
+    // TODO: Remove hardcoding
     pollInterval: 1500,
   });
 
   const collectionLotsIds = collection?.items?.map((e: any) => e.lot.id) || [];
-  let filteredLots = lots.filter((e) =>
-    collectionLotsIds.includes(e.mojitoId)
-  );
+  let filteredLots = lots.filter((e) => collectionLotsIds.includes(e.mojitoId));
 
   return (
     <main className={styles.main}>
@@ -29,35 +28,21 @@ const Home: NextPage = () => {
         Dec 7, 2021 Museo de Arte de Puerto Rico
       </p>
 
-      <p className={styles.subtitle}>
-        metaver.so
-      </p>
+      <p className={styles.subtitle}>metaver.so</p>
 
       <div className={styles.grid}>
-        {
-          filteredLots.map(lot => {
-            const item = collection?.items.find((item: any) => item.lot.id === lot.mojitoId)
-            return lot ? (
-              <LotGridItem
-                key={lot.mojitoId + JSON.stringify(item.lot.bidView)}
-                mojitoLotData={item.lot}
-                lot={lot}
-                auctionSlug={collection.slug}
-              />
-            ) : null;
-          })
-        }
-        {/* {collection?.items.map((item: any) => {
-            const lot = filteredLots.find((lot) => lot.mojitoId === item.lot.id);
-            return lot ? (
-              <LotGridItem
-                key={lot.mojitoId + JSON.stringify(item.lot.bidView)}
-                mojitoLotData={item.lot}
-                lot={lot}
-                auctionSlug={collection.slug}
-              />
-            ) : null;
-          })} */}
+        {filteredLots.map((lot) => {
+          const item = collection?.items.find(
+            (item: any) => item.lot.id === lot.mojitoId
+          );
+          return lot ? (
+            <LotGridItem
+              key={lot.mojitoId + JSON.stringify(item.lot.bidView)}
+              mojitoLotData={item.lot}
+              lot={lot}
+            />
+          ) : null;
+        })}
         <div className={styles.dummyView} />
         <div className={styles.dummyView} />
       </div>
