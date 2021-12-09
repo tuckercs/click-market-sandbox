@@ -83,11 +83,11 @@
             }
         },
         {
-            "title": "Unusual Girls",
+            "title": "You can be everything",
             "lotId": 5,
             "slug": "unusual-girls",
             "mojitoId": "bb15003d-db9a-4064-ae4d-472b5222e497",
-            "about": "You can be everything\n\nI find myself sometimes just waiting for time to fly by.\nI find myself thinking about how faces stay in our minds forever.\nI find myself imagining different versions of what I could be tomorrow.\nI can and will be, everything.",
+            "about": "I find myself sometimes just waiting for time to fly by.\nI find myself thinking about how faces stay in our minds forever.\nI find myself imagining different versions of what I could be tomorrow.\nI can and will be, everything.",
             "format": "image",
             "images": [
                 "https://storage.googleapis.com/mojito-public-assets/media/metaverso/unusualgirls_biancamontoya.png"
