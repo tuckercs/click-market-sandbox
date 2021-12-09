@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { config } from "constants/";
 import { formatCurrencyAmount, getTimeAgo } from "utils";
 import styles from "styles/BidFeedItem.module.css";
 
 export const BidFeedItem = ({ item, isTop, userId }: any) => {
+  const [showMessage, setShowMessage] = useState(false);
   const {
     amount,
     createdAt,
@@ -12,6 +13,7 @@ export const BidFeedItem = ({ item, isTop, userId }: any) => {
     userOrganization: {
       user: { name },
     },
+    outbidinfo,
   } = item;
   // const avatar = useRef<HTMLDivElement>(null);
   const timeAgo = getTimeAgo(createdAt);
@@ -21,6 +23,12 @@ export const BidFeedItem = ({ item, isTop, userId }: any) => {
   //     avatar.current.innerHTML = generateAvatar(avatarKey);
   //   }
   // }, [avatarKey, avatar]);
+  const onShowMessage = () => {
+    if (!showMessage) {
+      setShowMessage(true);
+      setTimeout(() => setShowMessage(false), 5000);
+    }
+  };
 
   return (
     <div
@@ -50,6 +58,23 @@ export const BidFeedItem = ({ item, isTop, userId }: any) => {
         >
           {id === userId ? "You" : username || name}
         </span>
+        <div className={styles.warningContainer}>
+          {outbidinfo && (
+            <span className={styles.warning} onClick={onShowMessage}>
+              ⚠️
+            </span>
+          )}
+          {showMessage && (
+            <>
+              <div className={styles.arrow} />
+              <div className={styles.warningMessage}>
+                {
+                  "You don't hold the leading bid because you placed your responsive high bid after the leading user."
+                }
+              </div>
+            </>
+          )}
+        </div>
       </div>
       <span>{timeAgo}</span>
       <span className={styles.bid} style={isTop ? { fontSize: 24 } : undefined}>

@@ -28,6 +28,35 @@
   margin-left: 25px;
 }
 
+.warningContainer {
+  position: relative;
+}
+
+.warning {
+  cursor: default;
+  margin-left: 10px;
+}
+
+.warningMessage {
+  background-color: #C4C4C4;
+  border-radius: 5px;
+  left: -85px;
+  padding: 5px;
+  position: absolute;
+  top: 27px;
+  width: 200px;
+}
+
+.arrow {
+  background-color: #C4C4C4;
+  height: 15px;
+  left: 10px;
+  position: absolute;
+  top: 22px;
+  transform: rotate(45deg);
+  width: 15px;
+}
+
 .bid {
   color: #000000;
   flex: 1;
