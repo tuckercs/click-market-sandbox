@@ -2,19 +2,14 @@ import React from "react";
 import { BidFeedItem } from "components";
 import styles from "styles/BidFeed.module.css";
 
-export const BidFeed = ({ bids, profile }: any) => {
-  bids = bids?.map((bid: any) => {
-    bid.isYou = profile?.me.id == bid.marketplaceUser.id;
-    return bid;
-  });
-
-  const _youFirstBid = bids.findIndex((bid: any) => bid.isYou);
-  if (_youFirstBid == 0) bids[0].holdBid = true;
-  else if (_youFirstBid > 0) {
-    bids[_youFirstBid].outbid = true;
-    if (bids[0].amount == bids[_youFirstBid].amount) {
-      bids[_youFirstBid].outbidinfo = true;
+export const BidFeed = ({ bids, userId }: any) => {
+  let _nextIndex = 1;
+  while (bids[_nextIndex] !== undefined) {
+    if (bids[_nextIndex - 1].amount === bids[_nextIndex].amount) {
+      bids[_nextIndex].outbidinfo = "You don't hold the bid because you placed your responsive high bid after the user above.";
+      bids[_nextIndex - 1].outbidinfo = "You hold the bid because you placed your responsive high bid before the user below.";
     }
+    _nextIndex += 1;
   }
 
   return (
@@ -26,7 +21,7 @@ export const BidFeed = ({ bids, profile }: any) => {
             item={item}
             isTop={index === 0}
             key={item.id}
-            userId={profile?.me.id}
+            userId={userId}
           />
         ))}
       </div>

@@ -40,11 +40,12 @@
 .warningMessage {
   background-color: #C4C4C4;
   border-radius: 5px;
-  left: -85px;
+  left: -80px;
   padding: 5px;
   position: absolute;
   top: 27px;
   width: 200px;
+  z-index: 1;
 }
 
 .arrow {

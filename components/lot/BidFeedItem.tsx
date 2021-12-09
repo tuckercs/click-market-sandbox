@@ -59,7 +59,7 @@ export const BidFeedItem = ({ item, isTop, userId }: any) => {
           {id === userId ? "You" : username || name}
         </span>
         <div className={styles.warningContainer}>
-          {outbidinfo && (
+          {!!outbidinfo && (
             <span className={styles.warning} onClick={onShowMessage}>
               ⚠️
             </span>
@@ -67,11 +67,7 @@ export const BidFeedItem = ({ item, isTop, userId }: any) => {
           {showMessage && (
             <>
               <div className={styles.arrow} />
-              <div className={styles.warningMessage}>
-                {
-                  "You don't hold the leading bid because you placed your responsive high bid after the leading user."
-                }
-              </div>
+              <div className={styles.warningMessage}>{outbidinfo}</div>
             </>
           )}
         </div>
