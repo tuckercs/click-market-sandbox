@@ -2,9 +2,10 @@
 import React from "react";
 import Image from "next/image";
 import { StatusTag } from "components";
+import { formatCurrencyAmount } from "utils";
 import styles from "styles/LotGridItem.module.css";
 
-export const LotGridItem = ({ lot, mojitoLotData, auctionSlug }: any) => (
+export const LotGridItem = ({ lot, mojitoLotData }: any) => (
   <a href={`lots/${lot.slug}`} className={styles.lot}>
     <div className={styles.imageWrapper}>
       {lot.format === "image" && (
@@ -26,21 +27,37 @@ export const LotGridItem = ({ lot, mojitoLotData, auctionSlug }: any) => (
     <div className={styles.tagContainer}>
       <StatusTag mojitoLotData={mojitoLotData} />
     </div>
-    <div className={styles.row}>
+    <div className={styles.line}>
       <h2>{lot.title}</h2>
     </div>
-    <p className={styles.id}>{`#${lot.lotId}`}</p>
-    <p>
-      {mojitoLotData.bidView.isPostSale && mojitoLotData.currentBid ? (
-        <>
-          Winner{" "}
-          <span>{mojitoLotData.currentBid.userOrganization.user.name}</span>
-        </>
-      ) : (
-        <>
-          Created by <span>{lot.author.name}</span>
-        </>
+    <div className={styles.row}>
+      <div>
+        <p className={styles.id}>{`#${lot.lotId}`}</p>
+        <p>
+          {mojitoLotData.bidView.isPostSale && mojitoLotData.currentBid ? (
+            <>
+              Winner{" "}
+              <span>{mojitoLotData.currentBid.userOrganization.user.name}</span>
+            </>
+          ) : (
+            <>
+              Created by <span>{lot.author.name}</span>
+            </>
+          )}
+        </p>
+      </div>
+      {mojitoLotData.bidView.isDuringSale && (
+        <div className={styles.currentBid}>
+          Current bid:
+          <div>
+            {formatCurrencyAmount(
+              mojitoLotData.currentBid?.amount
+                ? mojitoLotData.currentBid?.amount
+                : 0
+            )}
+          </div>
+        </div>
       )}
-    </p>
+    </div>
   </a>
 );
