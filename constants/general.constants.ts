@@ -20,5 +20,3 @@ export const config = {
   ETH_VALUE_MULTIPLIER:
   parseInt(process.env.NEXT_PUBLIC_ETH_VALUE_MULTIPLIER!),
 };
-
-export const LOT_POLL_INTERVAL = 2000;

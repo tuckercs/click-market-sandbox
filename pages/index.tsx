@@ -7,10 +7,7 @@ import Content from "metaverso.content.json";
 
 const Home: NextPage = () => {
   const { lots } = Content;
-  const { collection } = useCollection("metaverso", {
-    // TODO: Remove hardcoding
-    pollInterval: 1500,
-  });
+  const { collection } = useCollection("metaverso"); // TODO: Remove hardcoding
 
   const collectionLotsIds = collection?.items?.map((e: any) => e.lot.id) || [];
   let filteredLots = lots.filter((e) => collectionLotsIds.includes(e.mojitoId));

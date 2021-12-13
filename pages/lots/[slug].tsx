@@ -4,7 +4,7 @@ import type { NextPage } from "next";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useAuth0 } from "@auth0/auth0-react";
-import { LOT_POLL_INTERVAL, config } from "constants/";
+import { config } from "constants/";
 import { BidFeed, StatusTag, BidConfirmModal } from "components";
 import { useMojito, useLazyMojito, useFetchAfterAuth } from "hooks";
 import { EMojitoQueries } from "state";
@@ -21,7 +21,6 @@ const LotDetail: NextPage = ({ lot }: any) => {
   const router = useRouter();
 
   const { data: mojitoLotData } = useMojito(EMojitoQueries.oneLot, {
-    pollInterval: LOT_POLL_INTERVAL,
     variables: {
       marketplaceAuctionLotId: lot.mojitoId,
     },
