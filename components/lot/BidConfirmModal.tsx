@@ -10,19 +10,16 @@ interface BidConfirmModalProps {
   handleClose: () => void;
   lot: any;
   mojitoLotData: any;
-  setHasBid: (value: boolean) => void;
+  userAvailableMinBid: number;
 }
 
 export const BidConfirmModal = ({
   handleClose,
   lot,
   mojitoLotData,
-  setHasBid,
+  userAvailableMinBid,
 }: BidConfirmModalProps) => {
   const submittedAmount = useRef<number | null>(null);
-  const [userAvailableMinBid, setUserAvailableMinBid] = useState<number>(
-    bidIncrement[0]
-  );
 
   const [availableOptions, setAvailableOptions] = useState<
     { value: number; label: string }[]
@@ -47,7 +44,7 @@ export const BidConfirmModal = ({
         ) => {
           if (
             e >= (mojitoLotData?.startingBid || 0) &&
-            (e >= mojitoLotData?.currentBid?.nextBidIncrement ||
+            (e >= userAvailableMinBid ||
               !mojitoLotData?.currentBid)
           ) {
             arr.push({ value: e, label: formatCurrencyAmount(e) });
@@ -77,6 +74,7 @@ export const BidConfirmModal = ({
     mojitoLotData?.bids?.length,
     mojitoLotData?.startingBid,
     mojitoLotData?.currentBid?.id,
+    userAvailableMinBid,
   ]);
 
   useLayoutEffect(() => {
@@ -104,7 +102,6 @@ export const BidConfirmModal = ({
         },
       }).then(() => {
         handleClose();
-        setHasBid(true);
       });
     } catch (e) {
       console.log(e);

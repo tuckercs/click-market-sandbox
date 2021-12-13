@@ -270,6 +270,7 @@ export const mojitoQueries = {
             username
             avatar
           }
+          maximumBid
           amount
           userOrganization {
             user {

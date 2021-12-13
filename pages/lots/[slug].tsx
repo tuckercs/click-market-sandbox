@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { NextPage } from "next";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -10,6 +10,7 @@ import { useMojito, useLazyMojito, useFetchAfterAuth } from "hooks";
 import { EMojitoQueries } from "state";
 import styles from "styles/LotDetail.module.css";
 import { formatCurrencyAmount } from "utils";
+import { bidIncrement } from "utils/bidIncrement";
 import Content from "metaverso.content.json";
 
 const LotDetail: NextPage = ({ lot }: any) => {
@@ -17,7 +18,10 @@ const LotDetail: NextPage = ({ lot }: any) => {
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [isSeeMoreLot, setIsSeeMoreLot] = useState(true);
   const [isSeeMoreAuthor, setIsSeeMoreAuthor] = useState(true);
-  const [hasBid, setHasBid] = useState(false);
+  const [yourMaxBidIndex, setYourMaxBidIndex] = useState(-1);
+  const [userAvailableMinBid, setUserAvailableMinBid] = useState(
+    bidIncrement[0]
+  );
   const router = useRouter();
 
   const { data: mojitoLotData } = useMojito(EMojitoQueries.oneLot, {
@@ -41,23 +45,75 @@ const LotDetail: NextPage = ({ lot }: any) => {
       },
     });
   };
-
+  console.log("mojitoLotData:", mojitoLotData);
   const isLotDescriptionLong = lot.about.length > 350;
   const isAboutAuthorLong = lot.author.about.length > 150;
   let currentBid;
   if (mojitoLotData)
     currentBid = mojitoLotData.getMarketplaceAuctionLot.currentBid;
 
+  // let _yourMaxBidIndex = -1;
+  useEffect(() => {
+    if (!!mojitoLotData?.getMarketplaceAuctionLot.bids.length) {
+      let userMaxBid = 0;
+      let bids = mojitoLotData?.getMarketplaceAuctionLot.bids;
+      bids = bids?.map((bid: any) => {
+        bid.isYou = profile?.me.id == bid.marketplaceUser.id;
+        if (bid.maximumBid && bid.maximumBid >= userMaxBid)
+          userMaxBid = bid.maximumBid;
+        return bid;
+      });
+
+      setYourMaxBidIndex(bids.findIndex((bid: any) => bid.isYou));
+
+      if (userMaxBid) {
+        const nextIncrementID =
+          bidIncrement.findIndex((e) => e === userMaxBid) + 1;
+        if (
+          bidIncrement[nextIncrementID] &&
+          mojitoLotData?.getMarketplaceAuctionLot.currentBid?.nextBidIncrement <
+            bidIncrement[nextIncrementID]
+        ) {
+          setUserAvailableMinBid(bidIncrement[nextIncrementID]);
+        } else {
+          setUserAvailableMinBid(
+            mojitoLotData?.getMarketplaceAuctionLot.currentBid?.nextBidIncrement
+          );
+        }
+      } else {
+        setUserAvailableMinBid(
+          mojitoLotData?.getMarketplaceAuctionLot.currentBid
+            ?.nextBidIncrement ?? 0
+        );
+      }
+    }
+  }, [
+    mojitoLotData?.getMarketplaceAuctionLot.bids,
+    mojitoLotData?.getMarketplaceAuctionLot.bids.length,
+    mojitoLotData?.getMarketplaceAuctionLot.currentBid.id,
+    mojitoLotData?.getMarketplaceAuctionLot.currentBid?.nextBidIncrement,
+    profile?.me.id,
+  ]);
+
+  useEffect(() => {
+    let bids = mojitoLotData?.getMarketplaceAuctionLot.bids;
+    if (yourMaxBidIndex == 0) bids[0].holdBid = true;
+    else if (yourMaxBidIndex > 0) {
+      bids[yourMaxBidIndex].outbid = true;
+      if (bids[0].amount == bids[yourMaxBidIndex].amount) {
+        bids[yourMaxBidIndex].outbidinfo = true;
+      }
+    }
+  }, [yourMaxBidIndex]);
+
   return (
     <main className={styles.main}>
-      {hasBid &&
-        mojitoLotData &&
-        !!mojitoLotData.getMarketplaceAuctionLot.bids.length &&
+      {yourMaxBidIndex > -1 &&
+        !!mojitoLotData?.getMarketplaceAuctionLot.bids.length &&
         profile &&
         mojitoLotData?.getMarketplaceAuctionLot.bidView.isDuringSale && (
           <div className={styles.topBanner}>
-            {mojitoLotData.getMarketplaceAuctionLot.bids[0].marketplaceUser
-              .id === profile.me.id ? (
+            {yourMaxBidIndex === 0 ? (
               <div className={styles.yourBid}>
                 Your bid is the highest so far 🥇
               </div>
@@ -166,22 +222,19 @@ const LotDetail: NextPage = ({ lot }: any) => {
                   <>
                     {isAuthenticated ? (
                       <>
-                        {mojitoLotData &&
-                        currentBid &&
-                        profile &&
-                        currentBid.marketplaceUser.id === profile?.me.id ? (
-                          <button className={styles.disabledButton} disabled>
-                            YOUR BID WAS SENT
+                        {yourMaxBidIndex === 0 ? (
+                          <button
+                            className={styles.button}
+                            onClick={() => setShowConfirmModal(true)}
+                          >
+                            INCREASE BID
                           </button>
                         ) : (
                           <button
                             className={styles.button}
                             onClick={() => setShowConfirmModal(true)}
                           >
-                            {hasBid &&
-                            currentBid?.marketplaceUser.id !== profile?.me.id
-                              ? "BID AGAIN!"
-                              : "BID NOW!"}
+                            {yourMaxBidIndex > 0 ? "BID AGAIN!" : "BID NOW!"}
                           </button>
                         )}
                       </>
@@ -224,7 +277,7 @@ const LotDetail: NextPage = ({ lot }: any) => {
             handleClose={() => setShowConfirmModal(false)}
             lot={lot}
             mojitoLotData={mojitoLotData?.getMarketplaceAuctionLot}
-            setHasBid={(value: boolean) => setHasBid(value)}
+            userAvailableMinBid={userAvailableMinBid}
           />
         )}
       </div>
