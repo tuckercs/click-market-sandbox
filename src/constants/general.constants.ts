@@ -6,6 +6,7 @@ export const config = {
     (typeof document !== "undefined" && document.location.origin) ||
     undefined,
   MOJITO_API_URL: process.env.NEXT_PUBLIC_MOJITO_API_URL,
+  MOJITO_API_WS_URL: process.env.NEXT_PUBLIC_MOJITO_API_WS_URL,
   SYNC_REGISTRATION_URL: process.env.NEXT_PUBLIC_SYNC_REGISTRATION_URL,
   CUSTOMER_AUDIENCE: process.env.NEXT_PUBLIC_CUSTOMER_AUDIENCE,
   CUSTOMER_SCOPE: process.env.NEXT_PUBLIC_CUSTOMER_SCOPE,
