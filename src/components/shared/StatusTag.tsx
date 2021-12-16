@@ -2,7 +2,8 @@ import React, { useEffect, useState, useCallback } from "react";
 import momentTimeZone from "moment-timezone";
 import { IAuctionLotBidView } from "@interfaces";
 import styles from "@styles/StatusTag.module.css";
-import { useSubscription, gql } from "@apollo/client";
+import { useMojitoSubscription } from "@hooks";
+import { EMojitoSubscriptions } from "@state";
 
 export const StatusTag = ({ mojitoLotData }: any) => {
   const [serverTime, setServerTime] = useState(momentTimeZone());
@@ -14,15 +15,7 @@ export const StatusTag = ({ mojitoLotData }: any) => {
       .tz(Intl.DateTimeFormat().resolvedOptions().timeZone)
       .format("MMM Do / H:mm:ss");
 
-  const { loading, error, data } = useSubscription(
-    gql`
-      subscription TimeNotifier {
-        timeNotifier {
-          time
-        }
-      }
-    `
-  );
+  const { loading, data } = useMojitoSubscription(EMojitoSubscriptions.timeNotifier);
 
   useEffect(() => {
     if (loading) return;

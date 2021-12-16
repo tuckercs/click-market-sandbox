@@ -3,6 +3,7 @@ import {
   useLazyQuery,
   useMutation,
   useQuery,
+  useSubscription,
 } from "@apollo/client";
 import {
   ApolloCache,
@@ -10,16 +11,20 @@ import {
   OperationVariables,
 } from "@apollo/client/core";
 import {
+  SubscriptionHookOptions,
   MutationHookOptions,
   MutationTuple,
   QueryResult,
   QueryTuple,
+  SubscriptionResult,
 } from "@apollo/client/react/types/types";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect } from "react";
 import {
+  EMojitoSubscriptions,
   EMojitoMutations,
   EMojitoQueries,
+  mojitoSubscriptions,
   mojitoMutations,
   mojitoQueries,
 } from "@state";
@@ -57,4 +62,11 @@ export function useFetchAfterAuth(cb: () => void): boolean {
     if (isAuthenticated) cb();
   }, [isAuthenticated]);
   return isLoading;
+}
+
+export function useMojitoSubscription<T = any, D = OperationVariables>(
+  query: EMojitoSubscriptions,
+  options?: SubscriptionHookOptions<T, D>
+): SubscriptionResult<T, D> {
+  return useSubscription<T, D>(mojitoSubscriptions[query], options);
 }
