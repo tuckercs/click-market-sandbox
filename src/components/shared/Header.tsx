@@ -3,16 +3,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Button, TwitterIcon } from "@components";
+import { Button } from "@components";
 import { config } from "@constants";
 import { useMojitoMutation, useLazyMojito, useFetchAfterAuth } from "@hooks";
 import { EMojitoMutations, EMojitoQueries } from "@state";
 import styles from "@styles/Header.module.css";
 
 export const Header = () => {
-  const { loginWithRedirect, isAuthenticated, isLoading, user } =
-    useAuth0();
-    const router = useRouter();
+  const { loginWithRedirect, isAuthenticated, isLoading, user } = useAuth0();
+  const router = useRouter();
 
   const [updateUserSettings] = useMojitoMutation<{
     userOrgId: string;
@@ -38,7 +37,14 @@ export const Header = () => {
         },
       });
     }
-  }, [isAuthenticated, profile, profile?.me.userOrgs, updateUserSettings, user?.picture, user?.nickname]);
+  }, [
+    isAuthenticated,
+    profile,
+    profile?.me.userOrgs,
+    updateUserSettings,
+    user?.picture,
+    user?.nickname,
+  ]);
 
   const login = () => {
     loginWithRedirect({
@@ -76,12 +82,7 @@ export const Header = () => {
             </Link>
           ) : (
             <div className={styles.button}>
-              <Button onClick={login}>
-                SIGN UP
-                <div className={styles.icon}>
-                  <TwitterIcon />
-                </div>
-              </Button>
+              <Button onClick={login}>SIGN UP</Button>
             </div>
           )}
         </>
