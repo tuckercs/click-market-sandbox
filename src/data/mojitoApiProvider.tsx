@@ -1,9 +1,9 @@
 import { FC, useRef } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { ApolloLink } from "@apollo/client/core";
-import { getMainDefinition } from '@apollo/client/utilities';
-import { WebSocketLink } from '@apollo/client/link/ws';
-import { SubscriptionClient } from 'subscriptions-transport-ws';
+import { getMainDefinition } from "@apollo/client/utilities";
+import { WebSocketLink } from "@apollo/client/link/ws";
+import { SubscriptionClient } from "subscriptions-transport-ws";
 import moment from "moment";
 import { setContext } from "@apollo/client/link/context";
 import {
