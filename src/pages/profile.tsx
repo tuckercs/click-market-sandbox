@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import { Button, ActiveBidtem } from "@components";
 import { config } from "@constants";
 import { useLazyMojito, useFetchAfterAuth } from "@hooks";
@@ -97,4 +97,4 @@ const Profile: NextPage = () => {
   );
 };
 
-export default Profile;
+export default withAuthenticationRequired(Profile);
