@@ -55,7 +55,7 @@ export const mojitoQueries = {
           }
           hasNotifications @client
         }
-        favoriteLots {
+        favoriteItems {
           id
         }
       }
