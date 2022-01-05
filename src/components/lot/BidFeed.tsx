@@ -1,6 +1,28 @@
 import React from "react";
+import styled from "styled-components";
+
 import { BidFeedItem } from "@components";
-import styles from "@styles/BidFeed.module.css";
+
+const Container = styled.div(
+  ({ theme }) => `
+  margin: 0 auto;
+  margin-top: 100px;
+  max-width: ${theme.breakpoints.lg + 1}px;
+  width: 100%;
+
+  ${theme.down(theme.breakpoints.lg)} {
+    padding: 0 30px;
+  }
+`
+);
+
+const Title = styled.h2`
+  margin-bottom: 22px;
+`;
+
+const Table = styled.div`
+  position: relative;
+`;
 
 export const BidFeed = ({ bids, profile }: any) => {
   bids = bids?.map((bid: any) => {
@@ -18,9 +40,9 @@ export const BidFeed = ({ bids, profile }: any) => {
   }
 
   return (
-    <div className={styles.container}>
-      <h3 className={styles.title}>Bid feed</h3>
-      <div className={styles.table}>
+    <Container>
+      <Title>Bid feed</Title>
+      <Table>
         {bids.map((item: any, index: number) => (
           <BidFeedItem
             item={item}
@@ -29,7 +51,7 @@ export const BidFeed = ({ bids, profile }: any) => {
             userId={profile?.me.id}
           />
         ))}
-      </div>
-    </div>
+      </Table>
+    </Container>
   );
 };

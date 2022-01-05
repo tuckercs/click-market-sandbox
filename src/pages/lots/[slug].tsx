@@ -4,13 +4,228 @@ import type { NextPage } from "next";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useAuth0 } from "@auth0/auth0-react";
+import styled from "styled-components";
+
 import { config } from "@constants";
-import { BidFeed, StatusTag, BidConfirmModal } from "@components";
+import { BidFeed, StatusTag, BidConfirmModal, Button } from "@components";
 import { useMojito, useLazyMojito, useFetchAfterAuth } from "@hooks";
 import { EMojitoQueries } from "@state";
 import { formatCurrencyAmount } from "@utils";
 import Content from "metaverso.content.json";
-import styles from "@styles/LotDetail.module.css";
+
+const Main = styled.main`
+  padding: 40px 0;
+`;
+
+const TopBanner = styled.div(
+  ({ theme }) => `
+  font: ${theme.fonts.body("bold")};
+  height: 40px;
+  margin: 0 auto;
+  margin-bottom: 16px;
+  max-width: 1176px;
+  padding: 0 30px;
+  width: 100%;
+`
+);
+
+const YourBid = styled.div(
+  ({ theme }) => `
+  align-items: center;
+  border: ${theme.borders.medium(theme.colors.bidBannerBorder)};
+  border-radius: ${theme.borderRadius.small};
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+`
+);
+
+const Outbid = styled.div(
+  ({ theme }) => `
+  align-items: center;
+  border: ${theme.borders.medium(theme.colors.primary)};
+  border-radius: ${theme.borderRadius.small};
+  color: ${theme.colors.primary};
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+`
+);
+
+const StyledContent = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const DetailContainer = styled.div(
+  ({ theme }) => `
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  ${theme.down(theme.breakpoints.lg)} {
+    margin: 0;
+  }
+`
+);
+
+const DetailLeft = styled.div(
+  ({ theme }) => `
+  margin: 0 36px 40px;
+
+  & .image,
+  .video {
+    background-color: ${theme.colors.imageBackground};
+    border-radius: ${theme.borderRadius.medium};
+    max-height: 588px;
+    object-fit: contain;
+  }
+
+  ${theme.down(theme.breakpoints.md)} {
+    padding: 0 30px;
+  }
+
+  ${theme.down(theme.breakpoints.lg)} {
+    margin: 0 0 40px;
+  }
+`
+);
+
+const StyledImage = styled.img(
+  ({ theme }) => `
+  background-color: ${theme.colors.imageBackground};
+  border-radius: ${theme.borderRadius.medium};
+  max-height: 588px;
+  object-fit: contain;
+
+  ${theme.down(theme.breakpoints.md)} {
+    width: 100%;
+  }
+`
+);
+
+const Video = styled.video(
+  ({ theme }) => `
+  background-color: ${theme.colors.imageBackground};
+  border-radius: ${theme.borderRadius.medium};
+  max-height: 588px;
+  object-fit: contain;
+
+  ${theme.down(theme.breakpoints.md)} {
+    width: 100%;
+  }
+`
+);
+
+const DetailRight = styled.div(
+  ({ theme }) => `
+  margin: 0 36px;
+  max-width: 432px;
+  width: 100%;
+
+  ${theme.down(theme.breakpoints.lg)} {
+    margin: 0 30px;
+  }
+`
+);
+
+const Row = styled.div`
+  align-items: center;
+  display: flex;
+`;
+
+const LotId = styled.span(
+  ({ theme }) => `
+  color: ${theme.colors.primary};
+  font: ${theme.fonts.body("bold")};
+  margin-right: 8px;
+`
+);
+
+const LotTitle = styled.h2`
+  margin: 16px 0;
+`;
+
+const LotDescription = styled.p(
+  ({ theme }) => `
+  font: ${theme.fonts.small()};
+  line-height: 20px;
+`
+);
+
+const MoreText = styled.span(
+  ({ theme }) => `
+  color: ${theme.colors.primary};
+  cursor: pointer;
+  font: ${theme.fonts.small("bold")};
+  text-decoration: ${theme.textDecoration.seeMoreText};
+`
+);
+
+const Author = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-top: 141px;
+`;
+
+const AuthorImage = styled.div`
+  margin-right: 30px;
+  min-width: 60px;
+
+  & img {
+    border-radius: 50%;
+  }
+`;
+
+const AuthorName = styled.h3(
+  ({ theme }) => `
+  font: ${theme.fonts.body("bold")};
+  margin: 0 0 10px;
+`
+);
+
+const AuthorDescription = styled.p(
+  ({ theme }) => `
+  font: ${theme.fonts.small()};
+  line-height: 20px;
+`
+);
+
+const CurrentBid = styled.p(
+  ({ theme }) => `
+  font: ${theme.fonts.body()};
+  line-height: 22px;
+  text-align: center;
+  margin: 40px 0 20px;
+`
+);
+
+const CurrentBidAmount = styled.span(
+  ({ theme }) => `
+  color: ${theme.colors.primary};
+  font-weight: bold;
+`
+);
+
+const Winner = styled.div(
+  ({ theme }) => `
+  font: ${theme.fonts.body()};
+  text-align: center;
+
+  & span {
+    font-weight: bold;
+  }
+`
+);
+
+const WinnerName = styled.span(
+  ({ theme }) => `
+  color: ${theme.colors.secondary};
+`
+);
 
 const LotDetail: NextPage = ({ lot }: any) => {
   const { isAuthenticated, loginWithRedirect, isLoading } = useAuth0();
@@ -49,117 +264,101 @@ const LotDetail: NextPage = ({ lot }: any) => {
     currentBid = mojitoLotData.getMarketplaceAuctionLot.currentBid;
 
   return (
-    <main className={styles.main}>
+    <Main>
       {hasBid &&
         mojitoLotData &&
         !!mojitoLotData.getMarketplaceAuctionLot.bids.length &&
         profile &&
         mojitoLotData?.getMarketplaceAuctionLot.bidView.isDuringSale && (
-          <div className={styles.topBanner}>
+          <TopBanner>
             {mojitoLotData.getMarketplaceAuctionLot.bids[0].marketplaceUser
               .id === profile.me.id ? (
-              <div className={styles.yourBid}>
-                Your bid is the highest so far 🥇
-              </div>
+              <YourBid>Your bid is the highest so far 🥇</YourBid>
             ) : (
-              <div className={styles.outbid}>You have been outbid! ⚠️</div>
+              <Outbid>You have been outbid! ⚠️</Outbid>
             )}
-          </div>
+          </TopBanner>
         )}
-      <div className={styles.content}>
-        <div className={styles.detailContainer}>
-          <div className={styles.detailLeft}>
+      <StyledContent>
+        <DetailContainer>
+          <DetailLeft>
             {lot.format === "image" && (
-              <img
-                className={styles.image}
-                src={lot.images[0]}
-                alt={lot.title}
-                width={612}
-              />
+              <StyledImage src={lot.images[0]} alt={lot.title} width={612} />
             )}
             {lot.format === "video" && (
-              <video
-                className={styles.video}
-                width={612}
-                controls
-                preload="auto"
-              >
+              <Video width={612} controls preload="auto">
                 <source src={lot.videos[0]} type="video/mp4" />
-              </video>
+              </Video>
             )}
-          </div>
+          </DetailLeft>
 
-          <div className={styles.detailRight}>
+          <DetailRight>
             {mojitoLotData && (
               <>
-                <div className={styles.row}>
-                  <span>#{lot.lotId}</span>
+                <Row>
+                  <LotId>#{lot.lotId}</LotId>
                   <StatusTag
                     mojitoLotData={mojitoLotData.getMarketplaceAuctionLot}
                   />
-                </div>
+                </Row>
               </>
             )}
-            <p className={styles.lotTitle}>{lot.title}</p>
-            <p className={styles.lotDescription}>
+            <LotTitle>{lot.title}</LotTitle>
+            <LotDescription>
               {`${
                 isSeeMoreLot && isLotDescriptionLong
                   ? `${lot.about.slice(0, 350)}...`
                   : lot.about
               } `}
               {isLotDescriptionLong && (
-                <span
-                  onClick={() => setIsSeeMoreLot(!isSeeMoreLot)}
-                  className={styles.moreText}
-                >
+                <MoreText onClick={() => setIsSeeMoreLot(!isSeeMoreLot)}>
                   {isSeeMoreLot ? "See more" : "See less"}
-                </span>
+                </MoreText>
               )}
-            </p>
-            <div className={styles.author}>
-              <div className={styles.authorImage}>
+            </LotDescription>
+            <Author>
+              <AuthorImage>
                 <Image
                   src={lot.author.avatar.url}
                   alt={lot.author.avatar.title}
                   width={60}
                   height={60}
                 />
-              </div>
+              </AuthorImage>
               <div>
-                <h3 className={styles.authorName}>{lot.author.name}</h3>
-                <p className={styles.lotDescription}>
+                <AuthorName>{lot.author.name}</AuthorName>
+                <AuthorDescription>
                   {`${
                     isSeeMoreAuthor && isAboutAuthorLong
                       ? `${lot.author.about.slice(0, 150)}...`
                       : lot.author.about
                   } `}
                   {isAboutAuthorLong && (
-                    <span
+                    <MoreText
                       onClick={() => setIsSeeMoreAuthor(!isSeeMoreAuthor)}
-                      className={styles.moreText}
                     >
                       {isSeeMoreAuthor ? "See more" : "See less"}
-                    </span>
+                    </MoreText>
                   )}
-                </p>
+                </AuthorDescription>
               </div>
-            </div>
+            </Author>
             {mojitoLotData?.getMarketplaceAuctionLot.bidView.isDuringSale &&
               currentBid && (
-                <p className={styles.currentBid}>
+                <CurrentBid>
                   Current bid:{" "}
-                  <span>
+                  <CurrentBidAmount>
                     {formatCurrencyAmount(
                       currentBid?.amount ? currentBid?.amount : 0
                     )}
-                  </span>
-                </p>
+                  </CurrentBidAmount>
+                </CurrentBid>
               )}
-            <div className={styles.buttonContainer}>
+            <div>
               {mojitoLotData?.getMarketplaceAuctionLot.bidView.isPreSale && (
-                <button className={styles.disabledButton} disabled>
+                <Button isBig disabled>
                   AVAILABLE SOON
-                </button>
+                </Button>
               )}
               {mojitoLotData?.getMarketplaceAuctionLot.bidView.isDuringSale &&
                 !isLoading && (
@@ -170,49 +369,49 @@ const LotDetail: NextPage = ({ lot }: any) => {
                         currentBid &&
                         profile &&
                         currentBid.marketplaceUser.id === profile?.me.id ? (
-                          <button className={styles.disabledButton} disabled>
+                          <Button isBig disabled>
                             YOUR BID WAS SENT
-                          </button>
+                          </Button>
                         ) : (
-                          <button
-                            className={styles.button}
+                          <Button
                             onClick={() => setShowConfirmModal(true)}
+                            isBig
                           >
                             {hasBid &&
                             currentBid?.marketplaceUser.id !== profile?.me.id
                               ? "BID AGAIN!"
                               : "BID NOW!"}
-                          </button>
+                          </Button>
                         )}
                       </>
                     ) : (
-                      <button className={styles.button} onClick={login}>
+                      <Button isBig onClick={login}>
                         SIGN IN
-                      </button>
+                      </Button>
                     )}
                   </>
                 )}
               {mojitoLotData?.getMarketplaceAuctionLot.bidView.isPostSale &&
                 currentBid && (
-                  <div className={styles.winner}>
+                  <Winner>
                     <div>
                       Winning Bid:{" "}
                       <span>{formatCurrencyAmount(currentBid.amount)}</span>
                     </div>
                     <div>
                       By{" "}
-                      <span>
+                      <WinnerName>
                         {currentBid.marketplaceUser.id === profile?.me.id
                           ? "You"
                           : currentBid.marketplaceUser.username ||
                             currentBid.userOrganization.user.name}
-                      </span>
+                      </WinnerName>
                     </div>
-                  </div>
+                  </Winner>
                 )}
             </div>
-          </div>
-        </div>
+          </DetailRight>
+        </DetailContainer>
         {!!mojitoLotData?.getMarketplaceAuctionLot.bids.length && (
           <BidFeed
             bids={mojitoLotData.getMarketplaceAuctionLot.bids}
@@ -227,8 +426,8 @@ const LotDetail: NextPage = ({ lot }: any) => {
             setHasBid={(value: boolean) => setHasBid(value)}
           />
         )}
-      </div>
-    </main>
+      </StyledContent>
+    </Main>
   );
 };
 

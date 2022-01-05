@@ -2,9 +2,12 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import fetch from "node-fetch";
 import { abortableFetch } from "abortcontroller-polyfill/dist/cjs-ponyfill";
+import { ThemeProvider } from "styled-components";
+
 import { Header, Footer } from "@components";
 import { AuthProvider, MojitoApiProvider } from "@state";
-import "@styles/globals.css";
+import { GlobalStyles } from "@theme/GlobalStyles";
+import { theme } from "@theme/theme";
 
 global.fetch = abortableFetch(fetch).fetch;
 
@@ -17,9 +20,12 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <AuthProvider>
         <MojitoApiProvider>
-          <Header />
-          <Component {...pageProps} />
-          <Footer/>
+          <ThemeProvider theme={theme}>
+            <GlobalStyles/>
+            <Header />
+            <Component {...pageProps} />
+            <Footer />
+          </ThemeProvider>
         </MojitoApiProvider>
       </AuthProvider>
     </>

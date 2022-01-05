@@ -1,9 +1,201 @@
 import { useState, useRef, useLayoutEffect } from "react";
 import Select from "react-select";
 import Image from "next/image";
-import { formatCurrencyAmount, bidIncrement } from "@utils";
+import styled from "styled-components";
+
+import { Button } from "@components";
 import { usePlaceBidMutation } from "@hooks";
-import styles from "@styles/BidConfirmModal.module.css";
+import { formatCurrencyAmount, bidIncrement } from "@utils";
+
+const Modal = styled.div(
+  ({ theme }) => `
+  background: ${theme.colors.modalOverlayBackground};
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`
+);
+
+const ModalContent = styled.section(
+  ({ theme }) => `
+  position: fixed;
+  background: ${theme.colors.background};
+  width: 80%;
+  max-height: 90vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: ${theme.borderRadius.medium};
+  padding: 45px 61px;
+  overflow-y: auto;
+
+  ${theme.down(theme.breakpoints.md)} {
+    padding: 45px 15px;
+    width: 90%;
+  }
+`
+);
+
+const ModalTitle = styled.h3(
+  ({ theme }) => `
+  margin-top: 0;
+  margin-bottom: 38px;
+
+  ${theme.down(theme.breakpoints.md)} {
+    font-size: 20px;
+  }
+`
+);
+
+const DetailContainer = styled.div(
+  ({ theme }) => `
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  ${theme.down(theme.breakpoints.md)} {
+    margin: 0;
+    flex-direction: column;
+  }
+`
+);
+
+const DetailLeft = styled.div(
+  ({ theme }) => `
+  flex: 1;
+
+  ${theme.down(theme.breakpoints.md)} {
+    margin: 0 0 40px;
+    width: 100%;
+  }
+`
+);
+
+const LotImage = styled.img(
+  ({ theme }) => `
+  border-radius: ${theme.borderRadius.medium};
+  height: 200px;
+  object-fit: cover;
+  width: 100%;
+
+  ${theme.down(theme.breakpoints.md)} {
+    height: auto;
+    max-height: 500px;
+    width: 100%;
+  }
+`
+);
+
+const LotVideo = styled.video(
+  ({ theme }) => `
+  border-radius: ${theme.borderRadius.medium};
+  height: 200px;
+  object-fit: cover;
+  width: 100%;
+
+  ${theme.down(theme.breakpoints.md)} {
+    height: auto;
+    max-height: 500px;
+    width: 100%;
+  }
+`
+);
+
+const DetailRight = styled.div(
+  ({ theme }) => `
+  flex: 1.5;
+  margin-left: 1rem;
+
+  ${theme.down(theme.breakpoints.md)} {
+    margin: 0;
+    width: 100%;
+  }
+`
+);
+
+const CurrentBid = styled.span(
+  ({ theme }) => `
+  background-color: ${theme.colors.secondary};
+  color: ${theme.colors.background};
+  border-radius: ${theme.borderRadius.small};
+  font: ${theme.fonts.small("bold")};
+  padding: 3px 8px;
+  margin-bottom: 18px;
+`
+);
+
+const LotDescription = styled.p(
+  ({ theme }) => `
+  font: ${theme.fonts.small()};
+  line-height: 20px;
+`
+);
+
+const BidContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const SelectBidContainer = styled(Select)(
+  ({ theme }) => `
+  border-radius: ${theme.borderRadius.small};
+  display: flex;
+  font: ${theme.fonts.small("bold")};
+  height: 40px;
+  justify-content: flex-end;
+`
+);
+
+const Separator = styled.hr`
+  border: ${({ theme }) => theme.borders.thin(theme.colors.border)};
+  border-bottom: none;
+`;
+
+const MaxTotalContainer = styled.div(
+  ({ theme }) => `
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font: ${theme.fonts.small("bold")};
+  line-height: 18px;
+`
+);
+
+const ConfirmButton = styled(Button)(
+  ({ theme }) => `
+  width: 100%;
+  max-width: 320px;
+  margin: 67px auto;
+
+  ${theme.down(theme.breakpoints.md)} {
+    border-radius: ${theme.borderRadius.small};
+    font-size: 20px;
+    height: 56px;
+  }
+`
+);
+
+const CloseButton = styled.button(
+  ({ theme }) => `
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 24px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+
+  ${theme.down(theme.breakpoints.md)} {
+    & img {
+      width: 15px !important;
+    }
+  }
+`
+);
 
 interface BidConfirmModalProps {
   handleClose: () => void;
@@ -114,45 +306,35 @@ export const BidConfirmModal = ({
     }
   };
   return (
-    <div className={styles.modal}>
-      <section className={styles.modalContent}>
-        <p className={styles.modalTitle}>Confirm your bid for {lot.title}</p>
-        <div className={styles.detailContainer}>
-          <div className={styles.detailLeft}>
+    <Modal>
+      <ModalContent>
+        <ModalTitle>Confirm your bid for {lot.title}</ModalTitle>
+        <DetailContainer>
+          <DetailLeft>
             {lot.format === "image" && (
-              <img
-                className={styles.image}
-                src={lot.images[0]}
-                alt={lot.title}
-              />
+              <LotImage src={lot.images[0]} alt={lot.title} />
             )}
             {lot.format === "video" && (
-              <video
-                className={styles.video}
-                height={350}
-                width={432}
-                src={lot.videos[0]}
-              />
+              <LotVideo height={350} width={432} src={lot.videos[0]} />
             )}
-          </div>
-          <div className={styles.detailRight}>
-            <span className={styles.currentBid}>
+          </DetailLeft>
+          <DetailRight>
+            <CurrentBid>
               Current bid:{" "}
               {formatCurrencyAmount(
                 mojitoLotData.currentBid?.amount
                   ? mojitoLotData.currentBid.amount
                   : 0
               )}
-            </span>
-            <p className={styles.lotDescription}>
+            </CurrentBid>
+            <LotDescription>
               If you place your maximum limit, the system will automatically
               keep you at the top within the next increment until your max bid
               is met.
-            </p>
-            <div className={styles.bidContainer}>
-              <p className={styles.lotDescription}>Your max. bid</p>
-              <Select
-                className={styles.selectBidContainer}
+            </LotDescription>
+            <BidContainer>
+              <LotDescription>Your max. bid</LotDescription>
+              <SelectBidContainer
                 classNamePrefix="reactSelect"
                 components={{ IndicatorSeparator: () => null }}
                 onChange={bidOnChange}
@@ -180,26 +362,22 @@ export const BidConfirmModal = ({
                 }
                 options={availableOptions}
               />
-            </div>
-            <hr className={styles.separator} />
-            <div className={styles.maxTotalContainer}>
+            </BidContainer>
+            <Separator />
+            <MaxTotalContainer>
               <p>max. Total</p>
               <p>{bidAmount} USD</p>
-            </div>
-          </div>
-        </div>
-        <button className={styles.button} onClick={onSubmit}>
+            </MaxTotalContainer>
+          </DetailRight>
+        </DetailContainer>
+        <ConfirmButton onClick={onSubmit} isBig>
           CONFIRM BID
-        </button>
-        <button
-          type="button"
-          onClick={handleClose}
-          className={styles.closeButton}
-        >
+        </ConfirmButton>
+        <CloseButton type="button" onClick={handleClose}>
           <Image src="/icons/close.svg" alt="close" width={20} height={20} />
-        </button>
-      </section>
-    </div>
+        </CloseButton>
+      </ModalContent>
+    </Modal>
   );
 };
 // // TODO: replace with real props and memo

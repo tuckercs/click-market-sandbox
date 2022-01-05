@@ -1,63 +1,167 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import Image from "next/image";
+import styled from "styled-components";
+
 import { StatusTag } from "@components";
 import { formatCurrencyAmount } from "@utils";
-import styles from "@styles/LotGridItem.module.css";
+
+const Lot = styled.a(
+  ({ theme }) => `
+  border-radius: ${theme.borderRadius.medium};
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  margin: 0 12px 68px;
+  max-width: 400px;
+  text-align: left;
+  text-decoration: none;
+  width: 100%;
+
+  ${theme.down(theme.breakpoints.md)} {
+    margin: 0 auto 68px;
+  }
+`
+);
+
+const ImageWrapper = styled.div`
+  position: relative;
+  height: 415px;
+  width: 100%;
+`;
+
+const LotImage = styled(Image)(
+  ({ theme }) => `
+  background-color: ${theme.colors.imageBackground};
+  border-radius: ${theme.borderRadius.medium};
+`
+);
+
+const Video = styled.video(
+  ({ theme }) => `
+  background-color: ${theme.colors.imageBackground};
+  border-radius: ${theme.borderRadius.medium};
+  height: 100%;
+  width: 100%;
+`
+);
+
+const TagContainer = styled.div`
+  align-self: flex-start;
+  margin: 16px 0 12px;
+`;
+
+const Line = styled.div`
+  justify-content: space-between;
+  overflow: hidden;
+  white-space: nowrap;
+`;
+
+const Title = styled.h3(
+  ({ theme }) => `
+  font: ${theme.fonts.h3("bold", theme.fonts.secondary)};
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`
+);
+
+const Row = styled.div(
+  ({ theme }) => `
+  align-items: flex-end;
+  display: flex;
+  font: ${theme.fonts.small()};
+  justify-content: space-between;
+`
+);
+
+const Paragraph = styled.p`
+  margin: 3px 0;
+`;
+
+const WinnerName = styled.span(
+  ({ theme }) => `
+  color: ${theme.colors.secondary};
+  font-weight: bold;
+`
+);
+
+const CreatorName = styled.span`
+  font-weight: bold;
+`;
+
+const Id = styled(Paragraph)(
+  ({ theme }) => `
+  color: ${theme.colors.primary};
+  font-weight: bold;
+`
+);
+
+const CurrentBid = styled.div`
+  text-align: right;
+`;
+
+const CurrentBidAmount = styled.div(
+  ({ theme }) => `
+  color: ${theme.colors.primary};
+  font: ${theme.fonts.body("bold")};
+`
+);
 
 export const LotGridItem = ({ lot, mojitoLotData }: any) => (
-  <a href={`lots/${lot.slug}`} className={styles.lot}>
-    <div className={styles.imageWrapper}>
+  <Lot href={`lots/${lot.slug}`}>
+    <ImageWrapper>
       {lot.format === "image" && (
-        <Image
+        <LotImage
           objectFit="cover"
           layout="fill"
           draggable="false"
-          className={styles.image}
           src={lot.images[0]}
           alt="lot-image"
         />
       )}
       {lot.format === "video" && (
-        <video className={styles.video} preload="none" poster={lot.preview}>
+        <Video preload="none" poster={lot.preview}>
           <source src={lot.videos[0]} />
-        </video>
+        </Video>
       )}
-    </div>
-    <div className={styles.tagContainer}>
+    </ImageWrapper>
+    <TagContainer>
       <StatusTag mojitoLotData={mojitoLotData} />
-    </div>
-    <div className={styles.line}>
-      <h2>{lot.title}</h2>
-    </div>
-    <div className={styles.row}>
+    </TagContainer>
+    <Line>
+      <Title>{lot.title}</Title>
+    </Line>
+    <Row>
       <div>
-        <p className={styles.id}>{`#${lot.lotId}`}</p>
-        <p>
+        <Id>{`#${lot.lotId}`}</Id>
+        <Paragraph>
           {mojitoLotData.bidView.isPostSale && mojitoLotData.currentBid ? (
             <>
               Winner{" "}
-              <span>{mojitoLotData.currentBid.userOrganization.user.name}</span>
+              <WinnerName>
+                {mojitoLotData.currentBid.userOrganization.user.name}
+              </WinnerName>
             </>
           ) : (
             <>
-              Created by <span>{lot.author.name}</span>
+              Created by <CreatorName>{lot.author.name}</CreatorName>
             </>
           )}
-        </p>
+        </Paragraph>
       </div>
       {mojitoLotData.bidView.isDuringSale && (
-        <div className={styles.currentBid}>
+        <CurrentBid>
           Current bid:
-          <div>
+          <CurrentBidAmount>
             {formatCurrencyAmount(
               mojitoLotData.currentBid?.amount
                 ? mojitoLotData.currentBid?.amount
                 : 0
             )}
-          </div>
-        </div>
+          </CurrentBidAmount>
+        </CurrentBid>
       )}
-    </div>
-  </a>
+    </Row>
+  </Lot>
 );

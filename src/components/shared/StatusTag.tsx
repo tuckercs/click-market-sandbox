@@ -1,9 +1,25 @@
 import React, { useEffect, useState, useCallback } from "react";
 import momentTimeZone from "moment-timezone";
+import styled from "styled-components";
+
 import { IAuctionLotBidView } from "@interfaces";
-import styles from "@styles/StatusTag.module.css";
 import { useMojitoSubscription } from "@hooks";
 import { EMojitoSubscriptions } from "@state";
+
+const Tag = styled.div(
+  ({ theme }) => `
+  align-self: flex-start;
+  background-color: ${theme.colors.secondary};
+  border-radius: ${theme.borderRadius.small};
+  color: ${theme.colors.background};
+  font: ${theme.fonts.small()};
+  padding: 4px 8px;
+`
+);
+
+const TagText = styled.span`
+  font-weight: bold;
+`;
 
 export const StatusTag = ({ mojitoLotData }: any) => {
   const [serverTime, setServerTime] = useState(momentTimeZone());
@@ -15,7 +31,9 @@ export const StatusTag = ({ mojitoLotData }: any) => {
       .tz(Intl.DateTimeFormat().resolvedOptions().timeZone)
       .format("MMM Do / H:mm:ss");
 
-  const { loading, data } = useMojitoSubscription(EMojitoSubscriptions.timeNotifier);
+  const { loading, data } = useMojitoSubscription(
+    EMojitoSubscriptions.timeNotifier
+  );
 
   useEffect(() => {
     if (loading) return;
@@ -29,7 +47,7 @@ export const StatusTag = ({ mojitoLotData }: any) => {
     if (bidView.isPreSale)
       return (
         <>
-          Bidding starts on <span>{formattedStartDate}</span>
+          Bidding starts on <TagText>{formattedStartDate}</TagText>
         </>
       );
     if (bidView.isDuringSale)
@@ -40,10 +58,10 @@ export const StatusTag = ({ mojitoLotData }: any) => {
           interval={1000}
         />
       );
-    return <span>Auction finished</span>;
+    return <TagText>Auction finished</TagText>;
   };
 
-  return <div className={styles.tag}>{tagTextView(mojitoLotData.bidView)}</div>;
+  return <Tag>{tagTextView(mojitoLotData.bidView)}</Tag>;
 };
 
 const calculateDuration = (
@@ -76,7 +94,7 @@ function Countdown({ eventTime, serverTime, interval }: CountdownProps) {
   return (
     <>
       Auction closes in:{" "}
-      <span>
+      <TagText>
         {duration.days()
           ? `${duration.days().toString().padStart(2, "0")}:`
           : ""}
@@ -84,7 +102,7 @@ function Countdown({ eventTime, serverTime, interval }: CountdownProps) {
           .minutes()
           .toString()
           .padStart(2, "0")}:${duration.seconds().toString().padStart(2, "0")}`}
-      </span>
+      </TagText>
     </>
   );
 }

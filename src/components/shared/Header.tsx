@@ -3,11 +3,53 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useAuth0 } from "@auth0/auth0-react";
+import styled from "styled-components";
+
 import { Button } from "@components";
 import { config } from "@constants";
 import { useMojitoMutation, useLazyMojito, useFetchAfterAuth } from "@hooks";
 import { EMojitoMutations, EMojitoQueries } from "@state";
-import styles from "@styles/Header.module.css";
+
+const Container = styled.nav(
+  ({ theme }) => `
+  align-items: center;
+  background-color: ${theme.colors.background};
+  display: flex;
+  height: 82px;
+  justify-content: space-between;
+  padding: 0 48px;
+
+  ${theme.down(theme.breakpoints.md)} {
+    height: 50px;
+    padding: 0 16px;
+  }
+`
+);
+
+const LogoLink = styled.a(
+  ({ theme }) => `
+  display: flex;
+
+  ${theme.down(theme.breakpoints.md)} {
+    &:first-child {
+      height: 24px !important;
+      width: 142px !important;
+    }
+  }
+`
+);
+
+const DivButton = styled.div(
+  ({ theme }) => `
+  ${theme.down(theme.breakpoints.md)} {
+    & button {
+      font-size: 16px;
+      min-height: 35px;
+      padding: 0 28px;
+    }
+  }
+`
+);
 
 export const Header = () => {
   const { loginWithRedirect, isAuthenticated, isLoading, user } = useAuth0();
@@ -56,16 +98,16 @@ export const Header = () => {
   };
 
   return (
-    <nav className={styles.container}>
-      <Link href="/">
-        <a className={styles.logo}>
+    <Container>
+      <Link href="/" passHref>
+        <LogoLink>
           <Image
             src="/images/metaverso-logo.svg"
             alt="logo"
             width={237}
             height={40}
           />
-        </a>
+        </LogoLink>
       </Link>
       {!isLoading && (
         <>
@@ -81,12 +123,12 @@ export const Header = () => {
               </a>
             </Link>
           ) : (
-            <div className={styles.button}>
+            <DivButton>
               <Button onClick={login}>SIGN UP</Button>
-            </div>
+            </DivButton>
           )}
         </>
       )}
-    </nav>
+    </Container>
   );
 };

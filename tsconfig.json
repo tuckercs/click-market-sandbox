@@ -21,10 +21,10 @@
       "@hooks": ["./src/hooks/index.ts"],
       "@interfaces": ["./src/interfaces/index.ts"],
       "@state": ["./src/data/index.ts"],
-      "@styles/*": ["./src/styles/*"],
+      "@theme/*": ["./src/theme/*"],
       "@utils": ["./src/utils/index.ts"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/theme/styled.d.ts"],
   "exclude": ["node_modules"]
 }
