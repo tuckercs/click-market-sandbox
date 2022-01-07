@@ -5,10 +5,10 @@ import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import styled from "styled-components";
 
 import { Button, ActiveBidtem } from "@components";
-import { config } from "@constants";
+import { config, images, strings } from "@constants";
 import { useLazyMojito, useFetchAfterAuth } from "@hooks";
 import { EMojitoQueries } from "@state";
-import Content from "metaverso.content.json";
+import Content from "content.json";
 
 const Main = styled.main`
   display: flex;
@@ -66,10 +66,6 @@ const ButtonsContainer = styled.div`
   justify-content: flex-end;
   margin-bottom: 5px;
 `;
-
-// const Edit = styled.div`
-// margin-left: 17px;
-// `;
 
 const Info = styled.div(
   ({ theme }) => `
@@ -188,29 +184,25 @@ const Profile: NextPage = () => {
                 <Image
                   src={
                     userPictureBetterQuality ||
-                    "/images/profile-placeholder.svg"
+                    images.AVATAR_PLACEHOLDER?.src
                   }
-                  alt="user"
-                  width={120}
-                  height={120}
+                  alt={images.AVATAR_PLACEHOLDER?.alt}
+                  width={images.AVATAR_PLACEHOLDER?.large}
+                  height={images.AVATAR_PLACEHOLDER?.large}
                 />
               </ImageWrapper>
               <ButtonsContainer>
                 <Button
                   onClick={() => logout({ returnTo: window.location.origin })}
                 >
-                  LOG OUT
+                  {strings.PROFILE.LOG_OUT_BUTTON}
                 </Button>
-                {/* <Edit>
-            <Button onClick={() => {}}>
-              EDIT
-            </Button>
-            </Edit> */}
               </ButtonsContainer>
               <Info>
                 <UserName>{user.name}</UserName>
                 <BiddingScore>
-                  Bidding score:&nbsp;<Score>{activeBids.length}</Score>
+                  {strings.PROFILE.BIDDING_SCORE}&nbsp;
+                  <Score>{activeBids.length}</Score>
                 </BiddingScore>
               </Info>
             </User>
@@ -218,14 +210,16 @@ const Profile: NextPage = () => {
           <Bids>
             {!!activeBids.length ? (
               <>
-                <BidsTitle>MY ACTIVE BIDS</BidsTitle>
+                <BidsTitle>{strings.PROFILE.ACTIVE_BIDS}</BidsTitle>
                 <Grid>
                   {activeBids.map((bid: any) => {
                     const lot = lots.find(
                       (item: any) =>
                         item.mojitoId === bid.marketplaceAuctionLot.id
                     );
-                    return <ActiveBidtem key={lot?.mojitoId} lotData={lot} />;
+                    return lot ? (
+                      <ActiveBidtem key={lot?.mojitoId} lotData={lot} />
+                    ) : null;
                   })}
                   <DummyView />
                   <DummyView />
@@ -233,12 +227,10 @@ const Profile: NextPage = () => {
               </>
             ) : (
               <Placeholder>
-                <PlaceholderText>
-                  {"You don't have any bids going on now"}
-                </PlaceholderText>
+                <PlaceholderText>{strings.PROFILE.PLACEHOLDER}</PlaceholderText>
                 <Link href="/">
                   <a>
-                    <Button>GET STARTED</Button>
+                    <Button>{strings.PROFILE.HOME_BUTTON}</Button>
                   </a>
                 </Link>
               </Placeholder>

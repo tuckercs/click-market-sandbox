@@ -138,7 +138,7 @@ export const MojitoApiProvider: FC = ({ children }) => {
   const client = useRef(
     new ApolloClient({
       ssrMode: ssrMode,
-      link:  link,
+      link: link,
       cache: new InMemoryCache(),
     })
   );

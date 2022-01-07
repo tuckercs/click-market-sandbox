@@ -3,6 +3,8 @@ import React from "react";
 import Image from "next/image";
 import styled from "styled-components";
 
+import { strings } from "@constants";
+
 const Lot = styled.a(
   ({ theme }) => `
   border-radius: ${theme.borderRadius.medium};
@@ -98,17 +100,17 @@ export const ActiveBidtem = ({ lotData }: any) => (
     <ImageWrapper>
       {lotData?.format === "image" && (
         <LotImage
-          objectFit={"cover"}
-          layout={"fill"}
+          objectFit="cover"
+          layout="fill"
           quality={75}
-          priority={true}
+          priority
           draggable="false"
-          src={lotData?.images[0] + `?w=${400}&h=${400}`}
+          src={lotData?.image + `?w=${400}&h=${400}`}
           alt="lot-image"
         />
       )}
       {lotData?.format === "video" && (
-        <Video width={432} src={lotData?.videos[0]} />
+        <Video width={432} src={lotData?.video} />
       )}
     </ImageWrapper>
     <Row>
@@ -116,7 +118,8 @@ export const ActiveBidtem = ({ lotData }: any) => (
     </Row>
     <LotId>{`#${lotData?.lotId}`}</LotId>
     <Paragraph>
-      Created by <Creator>{lotData?.author.name}</Creator>
+      {strings.COMMON.CREATED_BY}
+      <Creator>{lotData?.author.name}</Creator>
     </Paragraph>
   </Lot>
 );

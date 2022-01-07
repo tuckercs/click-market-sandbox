@@ -3,8 +3,9 @@ import Image from "next/image";
 import styled from "styled-components";
 
 import { LotGridItem } from "@components";
+import { config, images, strings } from "@constants";
 import { useCollection } from "@hooks";
-import Content from "metaverso.content.json";
+import Content from "content.json";
 
 const Container = styled.main`
   background: ${({ theme }) => theme.backgrounds.grid};
@@ -24,14 +25,14 @@ const Title = styled.h1`
   text-align: center;
 `;
 
-const Description = styled.p(
+const Subtitle = styled.p(
   ({ theme }) => `
   font: ${theme.fonts.body()};
   text-align: center;
 `
 );
 
-const DescriptionTitle = styled.p(
+const Date = styled.p(
   ({ theme }) => `
   color: ${theme.colors.background};
   font: ${theme.fonts.body()};
@@ -39,7 +40,7 @@ const DescriptionTitle = styled.p(
 `
 );
 
-const Subtitle = styled.p(
+const Domain = styled.p(
   ({ theme }) => `
   font: ${theme.fonts.body("bold")};
   margin: 35px 0 120px;
@@ -69,23 +70,26 @@ const DummyView = styled.div`
 
 const Home: NextPage = () => {
   const { lots } = Content;
-  const { collection } = useCollection("metaverso"); // TODO: Remove hardcoding
+  const { collection } = useCollection(config.COLLECTION_SLUG);
 
   const collectionLotsIds = collection?.items?.map((e: any) => e.lot.id) || [];
   let filteredLots = lots.filter((e) => collectionLotsIds.includes(e.mojitoId));
 
   return (
     <Container>
-      <Image src="/images/brand-icon.png" alt="icon" width={24} height={8} />
-      <Title>Metaverso NFTs</Title>
+      <Image
+        src={images.BRAND_ICON?.src}
+        alt={images.BRAND_ICON?.alt}
+        width={images.BRAND_ICON?.width}
+        height={images.BRAND_ICON?.height}
+      />
+      <Title>{strings.GRID.TITLE}</Title>
 
-      <Description>{`Puerto Rico's home in the metaverse`}</Description>
+      <Subtitle>{strings.GRID.SUBTITLE}</Subtitle>
 
-      <DescriptionTitle>
-        Dec 7, 2021 Museo de Arte de Puerto Rico
-      </DescriptionTitle>
+      <Date>{strings.GRID.DATE_AND_LOCATION}</Date>
 
-      <Subtitle>metaver.so</Subtitle>
+      <Domain>{strings.GRID.DOMAIN}</Domain>
 
       <Grid>
         {filteredLots.map((lot) => {

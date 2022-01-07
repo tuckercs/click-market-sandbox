@@ -17,7 +17,7 @@ export function useCollection(
   hasMultipleLots: boolean;
 } {
   const { data, error, loading } = useMojito(EMojitoQueries.collectionBySlug, {
-    variables: { slug: "metaverso", marketplaceID: config.MARKETPLACE_ID }, // TODO: Remove hardcoding
+    variables: { slug, marketplaceID: config.MARKETPLACE_ID },
     ...options,
   });
 

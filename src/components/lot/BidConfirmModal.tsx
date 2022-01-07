@@ -4,6 +4,7 @@ import Image from "next/image";
 import styled from "styled-components";
 
 import { Button } from "@components";
+import { strings, images } from "@constants";
 import { usePlaceBidMutation } from "@hooks";
 import { formatCurrencyAmount, bidIncrement } from "@utils";
 
@@ -308,19 +309,19 @@ export const BidConfirmModal = ({
   return (
     <Modal>
       <ModalContent>
-        <ModalTitle>Confirm your bid for {lot.title}</ModalTitle>
+        <ModalTitle>{`${strings.LOT.CONFIRM_MODAL.TITLE}${lot.title}`}</ModalTitle>
         <DetailContainer>
           <DetailLeft>
             {lot.format === "image" && (
-              <LotImage src={lot.images[0]} alt={lot.title} />
+              <LotImage src={lot.image} alt={lot.title} />
             )}
             {lot.format === "video" && (
-              <LotVideo height={350} width={432} src={lot.videos[0]} />
+              <LotVideo height={350} width={432} src={lot.video} />
             )}
           </DetailLeft>
           <DetailRight>
             <CurrentBid>
-              Current bid:{" "}
+              {strings.COMMON.CURRENT_BID}
               {formatCurrencyAmount(
                 mojitoLotData.currentBid?.amount
                   ? mojitoLotData.currentBid.amount
@@ -328,12 +329,12 @@ export const BidConfirmModal = ({
               )}
             </CurrentBid>
             <LotDescription>
-              If you place your maximum limit, the system will automatically
-              keep you at the top within the next increment until your max bid
-              is met.
+              {strings.LOT.CONFIRM_MODAL.DISCLAIMER}
             </LotDescription>
             <BidContainer>
-              <LotDescription>Your max. bid</LotDescription>
+              <LotDescription>
+                {strings.LOT.CONFIRM_MODAL.YOUR_MAX_BID}
+              </LotDescription>
               <SelectBidContainer
                 classNamePrefix="reactSelect"
                 components={{ IndicatorSeparator: () => null }}
@@ -365,25 +366,23 @@ export const BidConfirmModal = ({
             </BidContainer>
             <Separator />
             <MaxTotalContainer>
-              <p>max. Total</p>
+              <p>{strings.LOT.CONFIRM_MODAL.MAX_TOTAL}</p>
               <p>{bidAmount} USD</p>
             </MaxTotalContainer>
           </DetailRight>
         </DetailContainer>
         <ConfirmButton onClick={onSubmit} isBig>
-          CONFIRM BID
+          {strings.LOT.CONFIRM_MODAL.BUTTON_TITLE}
         </ConfirmButton>
         <CloseButton type="button" onClick={handleClose}>
-          <Image src="/icons/close.svg" alt="close" width={20} height={20} />
+          <Image
+            src={images.CLOSE_ICON?.src}
+            alt={images.CLOSE_ICON?.alt}
+            width={images.CLOSE_ICON?.width}
+            height={images.CLOSE_ICON?.height}
+          />
         </CloseButton>
       </ModalContent>
     </Modal>
   );
 };
-// // TODO: replace with real props and memo
-// const areEqual = () => {
-//   let equal = false;
-//   return equal;
-// };
-
-// export default memo(BidConfirmModal, areEqual);

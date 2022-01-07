@@ -3,16 +3,11 @@ module.exports = {
   reactStrictMode: true,
   images: {
     domains: [
-      "downloads.ctfassets.net",
-      "images.ctfassets.net",
-      "lh3.googleusercontent.com",
-      "lh5.googleusercontent.com",
-      "assets.website-files.com",
-      "storage.googleapis.com",
-      "assets.website-files.com",
       "abs.twimg.com",
       "pbs.twimg.com",
       "s.gravatar.com",
+      "lh3.googleusercontent.com",
+      "c7.staticflickr.com",
     ],
   },
   webpack: (config) => {

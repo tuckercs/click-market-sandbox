@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { BidFeedItem } from "@components";
+import { strings } from "@constants";
 
 const Container = styled.div(
   ({ theme }) => `
@@ -41,7 +42,7 @@ export const BidFeed = ({ bids, profile }: any) => {
 
   return (
     <Container>
-      <Title>Bid feed</Title>
+      <Title>{strings.LOT.BID_FEED.TITLE}</Title>
       <Table>
         {bids.map((item: any, index: number) => (
           <BidFeedItem
