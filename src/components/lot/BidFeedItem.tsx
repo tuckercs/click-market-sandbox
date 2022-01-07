@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import styled from "styled-components";
 
-import { config } from "@constants";
+import { config, images, strings } from "@constants";
 import { formatCurrencyAmount, getTimeAgo } from "@utils";
 
 interface StyledProps {
@@ -66,8 +66,7 @@ const Warning = styled.span`
 `;
 
 const Arrow = styled.div`
-  background-color: ${({ theme }) =>
-    theme.colors.info};
+  background-color: ${({ theme }) => theme.colors.info};
   height: 15px;
   left: 10px;
   position: absolute;
@@ -113,14 +112,9 @@ export const BidFeedItem = ({ item, isTop, userId }: any) => {
     },
     outbidinfo,
   } = item;
-  // const avatar = useRef<HTMLDivElement>(null);
   const timeAgo = getTimeAgo(createdAt);
   const avatarBetterQuality = avatar?.replace("_normal", "_400x400");
-  // useLayoutEffect(() => {
-  //   if (avatarKey && avatar.current) {
-  //     avatar.current.innerHTML = generateAvatar(avatarKey);
-  //   }
-  // }, [avatarKey, avatar]);
+
   const onShowMessage = () => {
     if (!showMessage) {
       setShowMessage(true);
@@ -131,26 +125,30 @@ export const BidFeedItem = ({ item, isTop, userId }: any) => {
   return (
     <Container isTop={isTop}>
       <Bidder>
-        {/* <div
-          ref={avatar}
-          style={isTop ? { width: 96, height: 96 } : undefined}
-        /> */}
         <AvatarImage
-          src={avatarBetterQuality || "/images/profile-placeholder.svg"}
-          alt="avatar"
-          width={isTop ? 96 : 51}
-          height={isTop ? 96 : 51}
+          src={avatarBetterQuality || images.AVATAR_PLACEHOLDER?.src}
+          alt={images.AVATAR_PLACEHOLDER?.alt}
+          width={
+            isTop
+              ? images.AVATAR_PLACEHOLDER?.medium
+              : images.AVATAR_PLACEHOLDER?.small
+          }
+          height={
+            isTop
+              ? images.AVATAR_PLACEHOLDER?.medium
+              : images.AVATAR_PLACEHOLDER?.small
+          }
         />
-        <Name isTop={isTop}>{id === userId ? "You" : username || name}</Name>
+        <Name isTop={isTop}>
+          {id === userId ? strings.COMMON.YOU : username || name}
+        </Name>
         <WarningContainer>
-          {outbidinfo && <Warning onClick={onShowMessage}>⚠️</Warning>}
+          {outbidinfo && <Warning onClick={onShowMessage}>{strings.LOT.BID_FEED.WARNING_ICON}</Warning>}
           {showMessage && (
             <>
               <Arrow />
               <WarningMessage>
-                {
-                  "You don't hold the leading bid because you placed your responsive high bid after the leading user."
-                }
+                {strings.LOT.BID_FEED.WARNING_MESSAGE}
               </WarningMessage>
             </>
           )}

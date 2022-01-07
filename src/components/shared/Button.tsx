@@ -39,19 +39,11 @@ export const Button = ({
   className?: string;
 }) =>
   isBig ? (
-    <BigButton
-      onClick={onClick}
-      disabled={disabled}
-      className={className}
-    >
+    <BigButton onClick={onClick} disabled={disabled} className={className}>
       {children}
     </BigButton>
   ) : (
-    <SmallButton
-      onClick={onClick}
-      disabled={disabled}
-      className={className}
-    >
+    <SmallButton onClick={onClick} disabled={disabled} className={className}>
       {children}
     </SmallButton>
   );

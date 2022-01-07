@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
 
+import { images, strings, TERMS_AND_CONDITIONS_LINK } from "@constants";
+
 const StyledFooter = styled.footer`
   display: flex;
   flex-direction: column;
@@ -24,15 +26,15 @@ const FooterLogo = styled.div`
 export const Footer = () => {
   return (
     <StyledFooter>
-      <Link href="https://www.metaver.so/health" passHref>
-        <FooterText>Health and Safety Guidelines</FooterText>
+      <Link href={TERMS_AND_CONDITIONS_LINK} passHref>
+        <FooterText target="_blank">{strings.COMMON.TERMS_AND_CONDITIONS}</FooterText>
       </Link>
       <FooterLogo>
         <Image
-          src="/images/metaverso-logo.svg"
-          alt="logo"
-          width={276}
-          height={30}
+          src={images.LOGO?.src}
+          alt={images.LOGO?.alt}
+          width={images.LOGO?.footerWidth}
+          height={images.LOGO?.footerHeight}
         />
       </FooterLogo>
     </StyledFooter>

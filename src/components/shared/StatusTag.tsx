@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import momentTimeZone from "moment-timezone";
 import styled from "styled-components";
 
+import { strings } from "@constants";
 import { IAuctionLotBidView } from "@interfaces";
 import { useMojitoSubscription } from "@hooks";
 import { EMojitoSubscriptions } from "@state";
@@ -47,7 +48,8 @@ export const StatusTag = ({ mojitoLotData }: any) => {
     if (bidView.isPreSale)
       return (
         <>
-          Bidding starts on <TagText>{formattedStartDate}</TagText>
+          {strings.COMMON.BIDDING_STARTS}
+          <TagText>{formattedStartDate}</TagText>
         </>
       );
     if (bidView.isDuringSale)
@@ -58,7 +60,7 @@ export const StatusTag = ({ mojitoLotData }: any) => {
           interval={1000}
         />
       );
-    return <TagText>Auction finished</TagText>;
+    return <TagText>{strings.COMMON.AUCTION_FINISHED}</TagText>;
   };
 
   return <Tag>{tagTextView(mojitoLotData.bidView)}</Tag>;
@@ -93,7 +95,7 @@ function Countdown({ eventTime, serverTime, interval }: CountdownProps) {
 
   return (
     <>
-      Auction closes in:{" "}
+      {strings.COMMON.AUCTION_CLOSES}
       <TagText>
         {duration.days()
           ? `${duration.days().toString().padStart(2, "0")}:`

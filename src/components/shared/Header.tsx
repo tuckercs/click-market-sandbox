@@ -6,7 +6,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import styled from "styled-components";
 
 import { Button } from "@components";
-import { config } from "@constants";
+import { config, strings, images } from "@constants";
 import { useMojitoMutation, useLazyMojito, useFetchAfterAuth } from "@hooks";
 import { EMojitoMutations, EMojitoQueries } from "@state";
 
@@ -102,10 +102,10 @@ export const Header = () => {
       <Link href="/" passHref>
         <LogoLink>
           <Image
-            src="/images/metaverso-logo.svg"
-            alt="logo"
-            width={237}
-            height={40}
+            src={images.LOGO?.src}
+            alt={images.LOGO?.alt}
+            width={images.LOGO?.headerWidth}
+            height={images.LOGO?.headerHeight}
           />
         </LogoLink>
       </Link>
@@ -115,16 +115,16 @@ export const Header = () => {
             <Link href="/profile">
               <a>
                 <Image
-                  src="/icons/profile.svg"
-                  alt="profile"
-                  width={26}
-                  height={26}
+                  src={images.PROFILE_ICON?.src}
+                  alt={images.PROFILE_ICON?.alt}
+                  width={images.PROFILE_ICON?.width}
+                  height={images.PROFILE_ICON?.height}
                 />
               </a>
             </Link>
           ) : (
             <DivButton>
-              <Button onClick={login}>SIGN UP</Button>
+              <Button onClick={login}>{strings.COMMON.LOGIN_BUTTON}</Button>
             </DivButton>
           )}
         </>

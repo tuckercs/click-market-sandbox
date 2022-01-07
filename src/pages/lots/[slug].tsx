@@ -6,12 +6,12 @@ import { useRouter } from "next/router";
 import { useAuth0 } from "@auth0/auth0-react";
 import styled from "styled-components";
 
-import { config } from "@constants";
+import { config, images, strings } from "@constants";
 import { BidFeed, StatusTag, BidConfirmModal, Button } from "@components";
 import { useMojito, useLazyMojito, useFetchAfterAuth } from "@hooks";
 import { EMojitoQueries } from "@state";
 import { formatCurrencyAmount } from "@utils";
-import Content from "metaverso.content.json";
+import Content from "content.json";
 
 const Main = styled.main`
   padding: 40px 0;
@@ -273,9 +273,9 @@ const LotDetail: NextPage = ({ lot }: any) => {
           <TopBanner>
             {mojitoLotData.getMarketplaceAuctionLot.bids[0].marketplaceUser
               .id === profile.me.id ? (
-              <YourBid>Your bid is the highest so far 🥇</YourBid>
+              <YourBid>{strings.LOT.HIGHEST_BID}</YourBid>
             ) : (
-              <Outbid>You have been outbid! ⚠️</Outbid>
+              <Outbid>{strings.LOT.OUTBID}</Outbid>
             )}
           </TopBanner>
         )}
@@ -283,11 +283,11 @@ const LotDetail: NextPage = ({ lot }: any) => {
         <DetailContainer>
           <DetailLeft>
             {lot.format === "image" && (
-              <StyledImage src={lot.images[0]} alt={lot.title} width={612} />
+              <StyledImage src={lot.image} alt={lot.title} width={612} />
             )}
             {lot.format === "video" && (
               <Video width={612} controls preload="auto">
-                <source src={lot.videos[0]} type="video/mp4" />
+                <source src={lot.video} type="video/mp4" />
               </Video>
             )}
           </DetailLeft>
@@ -312,17 +312,21 @@ const LotDetail: NextPage = ({ lot }: any) => {
               } `}
               {isLotDescriptionLong && (
                 <MoreText onClick={() => setIsSeeMoreLot(!isSeeMoreLot)}>
-                  {isSeeMoreLot ? "See more" : "See less"}
+                  {isSeeMoreLot
+                    ? strings.COMMON.SEE_MORE
+                    : strings.COMMON.SEE_LESS}
                 </MoreText>
               )}
             </LotDescription>
             <Author>
               <AuthorImage>
                 <Image
-                  src={lot.author.avatar.url}
-                  alt={lot.author.avatar.title}
-                  width={60}
-                  height={60}
+                  src={
+                    lot.author.avatar.url || images.AVATAR_PLACEHOLDER?.src
+                  }
+                  alt={images.AVATAR_PLACEHOLDER?.alt}
+                  width={images.AVATAR_PLACEHOLDER?.authorSize}
+                  height={images.AVATAR_PLACEHOLDER?.authorSize}
                 />
               </AuthorImage>
               <div>
@@ -337,7 +341,9 @@ const LotDetail: NextPage = ({ lot }: any) => {
                     <MoreText
                       onClick={() => setIsSeeMoreAuthor(!isSeeMoreAuthor)}
                     >
-                      {isSeeMoreAuthor ? "See more" : "See less"}
+                      {isSeeMoreAuthor
+                        ? strings.COMMON.SEE_MORE
+                        : strings.COMMON.SEE_LESS}
                     </MoreText>
                   )}
                 </AuthorDescription>
@@ -346,7 +352,7 @@ const LotDetail: NextPage = ({ lot }: any) => {
             {mojitoLotData?.getMarketplaceAuctionLot.bidView.isDuringSale &&
               currentBid && (
                 <CurrentBid>
-                  Current bid:{" "}
+                  {strings.COMMON.CURRENT_BID}
                   <CurrentBidAmount>
                     {formatCurrencyAmount(
                       currentBid?.amount ? currentBid?.amount : 0
@@ -357,7 +363,7 @@ const LotDetail: NextPage = ({ lot }: any) => {
             <div>
               {mojitoLotData?.getMarketplaceAuctionLot.bidView.isPreSale && (
                 <Button isBig disabled>
-                  AVAILABLE SOON
+                  {strings.LOT.AVAILABLE_SOON}
                 </Button>
               )}
               {mojitoLotData?.getMarketplaceAuctionLot.bidView.isDuringSale &&
@@ -370,7 +376,7 @@ const LotDetail: NextPage = ({ lot }: any) => {
                         profile &&
                         currentBid.marketplaceUser.id === profile?.me.id ? (
                           <Button isBig disabled>
-                            YOUR BID WAS SENT
+                            {strings.LOT.BID_SENT}
                           </Button>
                         ) : (
                           <Button
@@ -379,14 +385,14 @@ const LotDetail: NextPage = ({ lot }: any) => {
                           >
                             {hasBid &&
                             currentBid?.marketplaceUser.id !== profile?.me.id
-                              ? "BID AGAIN!"
-                              : "BID NOW!"}
+                              ? strings.LOT.BID_AGAIN_BUTTON
+                              : strings.LOT.BID_NOW_BUTTON}
                           </Button>
                         )}
                       </>
                     ) : (
                       <Button isBig onClick={login}>
-                        SIGN IN
+                        {strings.LOT.LOGIN_BUTTON}
                       </Button>
                     )}
                   </>
@@ -395,14 +401,14 @@ const LotDetail: NextPage = ({ lot }: any) => {
                 currentBid && (
                   <Winner>
                     <div>
-                      Winning Bid:{" "}
+                      {strings.LOT.WINNING_BID}
                       <span>{formatCurrencyAmount(currentBid.amount)}</span>
                     </div>
                     <div>
-                      By{" "}
+                      {strings.LOT.BY}
                       <WinnerName>
                         {currentBid.marketplaceUser.id === profile?.me.id
-                          ? "You"
+                          ? strings.COMMON.YOU
                           : currentBid.marketplaceUser.username ||
                             currentBid.userOrganization.user.name}
                       </WinnerName>

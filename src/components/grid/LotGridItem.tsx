@@ -4,6 +4,7 @@ import Image from "next/image";
 import styled from "styled-components";
 
 import { StatusTag } from "@components";
+import { strings } from "@constants";
 import { formatCurrencyAmount } from "@utils";
 
 const Lot = styled.a(
@@ -116,13 +117,13 @@ export const LotGridItem = ({ lot, mojitoLotData }: any) => (
           objectFit="cover"
           layout="fill"
           draggable="false"
-          src={lot.images[0]}
+          src={lot.image}
           alt="lot-image"
         />
       )}
       {lot.format === "video" && (
         <Video preload="none" poster={lot.preview}>
-          <source src={lot.videos[0]} />
+          <source src={lot.video} />
         </Video>
       )}
     </ImageWrapper>
@@ -138,21 +139,22 @@ export const LotGridItem = ({ lot, mojitoLotData }: any) => (
         <Paragraph>
           {mojitoLotData.bidView.isPostSale && mojitoLotData.currentBid ? (
             <>
-              Winner{" "}
+              {strings.COMMON.WINNER}
               <WinnerName>
                 {mojitoLotData.currentBid.userOrganization.user.name}
               </WinnerName>
             </>
           ) : (
             <>
-              Created by <CreatorName>{lot.author.name}</CreatorName>
+              {strings.COMMON.CREATED_BY}
+              <CreatorName>{lot.author.name}</CreatorName>
             </>
           )}
         </Paragraph>
       </div>
       {mojitoLotData.bidView.isDuringSale && (
         <CurrentBid>
-          Current bid:
+          {strings.COMMON.CURRENT_BID}
           <CurrentBidAmount>
             {formatCurrencyAmount(
               mojitoLotData.currentBid?.amount

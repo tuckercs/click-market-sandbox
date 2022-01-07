@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is the Mojito Reference App for marketplaces.
 
 ## Getting Started
 
@@ -12,23 +12,22 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Configuration
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Configuration values can be found in `src/constants/general.constants.ts`, where values are taken from `.env` file. A sample env file is included as `.env.sample`. A JWT issuer domain is needed, and also organization ID and marketplace ID, which are retrieved from the Manager UI.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Add Content
 
-## Learn More
+Content must be added in `content.json` following the sample lot object in `lots` array.
+* `lotId` is the number shown for every lot. It should start at `1` and be in increasing order.
+* `mojitoId` is obtained from the Manager UI for every lot. It corresponds to the id of the item in the Mojito API.
+* `format` can take one of the values `image` or `video`, depending on the type of multimedia the lot has. If it is `image`, then the lot object must have an `image` property; if it is `video`, then it must have a `video` property.
+* `preview` contains an image for both cases. 
 
-To learn more about Next.js, take a look at the following resources:
+## Customize App
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+App theme can be edited in `src/theme/theme.ts`. In there, several aspects can be edited, such as grid background, border radiuses, borders, colors, fonts, text decoration for links, breakpoints... In order to change the font families, the new font files must be added to `public/fonts` folder and `@font-face` specification must be included in `src/theme/GlobalStyles.ts`, the same way as for existing ones.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Copy is set in `src/constants/strings.ts` file and can be modified there, and also the images (logo, default avatar, close icon, profile icon...), in `src/constants/images.ts`. 
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Add link to terms and conditions in `TERMS_AND_CONDITIONS_LINK` constant, in `src/constants/general.constants.ts` file.
