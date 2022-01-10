@@ -24,6 +24,7 @@ export const strings = {
     BID_AGAIN_BUTTON: "BID AGAIN!",
     BID_NOW_BUTTON: "BID NOW!",
     BID_SENT: "YOUR BID WAS SENT",
+    SET_USERNAME: "SET USERNAME TO BID",
     AVAILABLE_SOON: "AVAILABLE SOON",
     HIGHEST_BID: "Your bid is the highest so far 🥇",
     OUTBID: "You have been outbid! ⚠️",
@@ -48,6 +49,9 @@ export const strings = {
   },
   PROFILE: {
     LOG_OUT_BUTTON: "LOG OUT",
+    EDIT_BUTTON: "EDIT",
+    DONE_BUTTON: "DONE",
+    LOADING: "LOADING...",
     BIDDING_SCORE: "Bidding score:",
     ACTIVE_BIDS: "MY ACTIVE BIDS",
     HOME_BUTTON: "GET STARTED",
