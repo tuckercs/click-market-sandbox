@@ -2,7 +2,8 @@ import type { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
-import { Button, ActiveBidtem } from "@components";
+
+import { Button, LotGridItem } from "@components";
 import { config } from "@constants";
 import { useLazyMojito, useFetchAfterAuth } from "@hooks";
 import { EMojitoQueries } from "@state";
@@ -68,13 +69,9 @@ const Profile: NextPage = () => {
                       (item: any) =>
                         item.mojitoId === bid.marketplaceAuctionLot.id
                     );
-                    return (
-                      <ActiveBidtem
-                        key={lot?.mojitoId}
-                        bidData={bid}
-                        lotData={lot}
-                      />
-                    );
+                    return lot ? (
+                      <LotGridItem key={lot?.mojitoId} lot={lot} />
+                    ) : null;
                   })}
                   <div className={styles.dummyView} />
                   <div className={styles.dummyView} />
