@@ -1,4 +1,5 @@
 export const strings = {
+  SITE_TITLE: "Metaverso",
   COMMON: {
     LOGIN_BUTTON: "SIGN UP",
     TERMS_AND_CONDITIONS: "Terms and Conditions",

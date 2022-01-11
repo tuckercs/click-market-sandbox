@@ -1,4 +1,5 @@
 export const images = {
+  FAVICON: "/favicon.png",
   CLOSE_ICON: {
     src: "/icons/close.svg",
     alt: "close",
