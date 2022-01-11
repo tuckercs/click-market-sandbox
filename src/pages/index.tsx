@@ -101,6 +101,7 @@ const Home: NextPage = () => {
               key={lot.mojitoId + JSON.stringify(item.lot.bidView)}
               mojitoLotData={item.lot}
               lot={lot}
+              isCollectionItem
             />
           ) : null;
         })}

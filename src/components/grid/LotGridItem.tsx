@@ -29,6 +29,7 @@ const ImageWrapper = styled.div`
   position: relative;
   height: 415px;
   width: 100%;
+  margin-bottom: 16px;
 `;
 
 const LotImage = styled(Image)(
@@ -49,7 +50,7 @@ const Video = styled.video(
 
 const TagContainer = styled.div`
   align-self: flex-start;
-  margin: 16px 0 12px;
+  margin-bottom: 12px;
 `;
 
 const Line = styled.div`
@@ -109,7 +110,7 @@ const CurrentBidAmount = styled.div(
 `
 );
 
-export const LotGridItem = ({ lot, mojitoLotData }: any) => (
+export const LotGridItem = ({ lot, mojitoLotData, isCollectionItem }: any) => (
   <Lot href={`lots/${lot.slug}`}>
     <ImageWrapper>
       {lot.format === "image" && (
@@ -127,9 +128,11 @@ export const LotGridItem = ({ lot, mojitoLotData }: any) => (
         </Video>
       )}
     </ImageWrapper>
-    <TagContainer>
-      <StatusTag mojitoLotData={mojitoLotData} />
-    </TagContainer>
+    {isCollectionItem && (
+      <TagContainer>
+        <StatusTag mojitoLotData={mojitoLotData} />
+      </TagContainer>
+    )}
     <Line>
       <Title>{lot.title}</Title>
     </Line>
@@ -137,7 +140,9 @@ export const LotGridItem = ({ lot, mojitoLotData }: any) => (
       <div>
         <Id>{`#${lot.lotId}`}</Id>
         <Paragraph>
-          {mojitoLotData.bidView.isPostSale && mojitoLotData.currentBid ? (
+          {isCollectionItem &&
+          mojitoLotData?.bidView.isPostSale &&
+          mojitoLotData?.currentBid ? (
             <>
               {strings.COMMON.WINNER}
               <WinnerName>
@@ -152,7 +157,7 @@ export const LotGridItem = ({ lot, mojitoLotData }: any) => (
           )}
         </Paragraph>
       </div>
-      {mojitoLotData.bidView.isDuringSale && (
+      {isCollectionItem && mojitoLotData?.bidView.isDuringSale && (
         <CurrentBid>
           {strings.COMMON.CURRENT_BID}
           <CurrentBidAmount>

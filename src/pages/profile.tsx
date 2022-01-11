@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import styled from "styled-components";
 
-import { Button, ActiveBidtem } from "@components";
+import { Button, LotGridItem } from "@components";
 import { config, images, strings } from "@constants";
 import { useLazyMojito, useFetchAfterAuth } from "@hooks";
 import { EMojitoQueries } from "@state";
@@ -183,8 +183,7 @@ const Profile: NextPage = () => {
               <ImageWrapper>
                 <Image
                   src={
-                    userPictureBetterQuality ||
-                    images.AVATAR_PLACEHOLDER?.src
+                    userPictureBetterQuality || images.AVATAR_PLACEHOLDER?.src
                   }
                   alt={images.AVATAR_PLACEHOLDER?.alt}
                   width={images.AVATAR_PLACEHOLDER?.large}
@@ -218,7 +217,7 @@ const Profile: NextPage = () => {
                         item.mojitoId === bid.marketplaceAuctionLot.id
                     );
                     return lot ? (
-                      <ActiveBidtem key={lot?.mojitoId} lotData={lot} />
+                      <LotGridItem key={lot?.mojitoId} lot={lot} />
                     ) : null;
                   })}
                   <DummyView />
