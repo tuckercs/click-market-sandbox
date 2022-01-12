@@ -7,7 +7,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import styled from "styled-components";
 
 import { config, images, strings } from "@constants";
-import { BidFeed, StatusTag, BidConfirmModal, Button } from "@components";
+import { BidFeed, StatusTag, BidConfirmModal, Button, QuickBidModal } from "@components";
 import { useMojito, useLazyMojito, useFetchAfterAuth } from "@hooks";
 import { EMojitoQueries } from "@state";
 import { formatCurrencyAmount } from "@utils";
@@ -20,7 +20,6 @@ const Main = styled.main`
 const TopBanner = styled.div(
   ({ theme }) => `
   font: ${theme.fonts.body("bold")};
-  height: 40px;
   margin: 0 auto;
   margin-bottom: 16px;
   max-width: 1176px;
@@ -51,6 +50,23 @@ const Outbid = styled.div(
   height: 100%;
   justify-content: center;
   width: 100%;
+  padding: 10px;
+`
+);
+
+const QuickBidButton = styled.button(
+  ({ theme }) => `
+    background-color: #ff00ff;
+    border-radius: 8px;
+    border: none;
+    font-family: "IBMPlexMono", sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 21px;
+    color: #ffffff;
+    padding: 7px 28px;
+    margin-left: 24px;
 `
 );
 
@@ -234,6 +250,7 @@ const LotDetail: NextPage = ({ lot }: any) => {
   const [isSeeMoreAuthor, setIsSeeMoreAuthor] = useState(true);
   const [hasBid, setHasBid] = useState(false);
   const router = useRouter();
+  const [showQuickBidModal, setShowQuickBidModal] = useState(false);
 
   const { data: mojitoLotData } = useMojito(EMojitoQueries.oneLot, {
     variables: {
@@ -275,7 +292,18 @@ const LotDetail: NextPage = ({ lot }: any) => {
               .id === profile.me.id ? (
               <YourBid>{strings.LOT.HIGHEST_BID}</YourBid>
             ) : (
-              <Outbid>{strings.LOT.OUTBID}</Outbid>
+              <>
+                <Outbid>
+                  {strings.LOT.OUTBID}
+                  <QuickBidButton onClick={() => setShowQuickBidModal(true)}>
+                    {strings.LOT.QUICKBID}{" "}
+                    {
+                      mojitoLotData.getMarketplaceAuctionLot.currentBid
+                        .nextBidIncrement
+                    }
+                  </QuickBidButton>
+                </Outbid>
+              </>
             )}
           </TopBanner>
         )}
@@ -321,9 +349,7 @@ const LotDetail: NextPage = ({ lot }: any) => {
             <Author>
               <AuthorImage>
                 <Image
-                  src={
-                    lot.author.avatar.url || images.AVATAR_PLACEHOLDER?.src
-                  }
+                  src={lot.author.avatar.url || images.AVATAR_PLACEHOLDER?.src}
                   alt={images.AVATAR_PLACEHOLDER?.alt}
                   width={images.AVATAR_PLACEHOLDER?.authorSize}
                   height={images.AVATAR_PLACEHOLDER?.authorSize}
@@ -430,6 +456,13 @@ const LotDetail: NextPage = ({ lot }: any) => {
             lot={lot}
             mojitoLotData={mojitoLotData?.getMarketplaceAuctionLot}
             setHasBid={(value: boolean) => setHasBid(value)}
+          />
+        )}
+        {showQuickBidModal && (
+          <QuickBidModal
+            handleClose={() => setShowQuickBidModal(false)}
+            lot={lot}
+            mojitoLotData={mojitoLotData?.getMarketplaceAuctionLot}
           />
         )}
       </StyledContent>
