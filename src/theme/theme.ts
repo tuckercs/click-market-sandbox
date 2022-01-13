@@ -2,6 +2,9 @@ import { DefaultTheme } from "styled-components";
 
 import { FontStyle } from "./styled";
 
+export const UNIT = 12;
+const MAX_CONTENT_WIDTH = 1368;
+
 export const theme: DefaultTheme = {
   backgrounds: {
     grid: "url(/images/background.png)",
@@ -61,10 +64,13 @@ export const theme: DefaultTheme = {
     info: 1,
     footerLogo: -1000,
   },
+  unit: UNIT,
   breakpoints: {
     sm: 500,
+    mdByUnit: UNIT * 63.92,
     md: 767,
     lg: 1115,
+    maxWidth: MAX_CONTENT_WIDTH,
   },
   up: (breakpoint: number) => `@media (min-width: ${breakpoint}px`,
   down: (breakpoint: number) => `@media (max-width: ${breakpoint}px)`,

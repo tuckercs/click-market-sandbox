@@ -13,24 +13,26 @@ const Lot = styled.a(
   color: inherit;
   display: flex;
   flex-direction: column;
-  margin: 0 12px 68px;
-  max-width: 400px;
+  margin: 0 ${theme.unit}px 68px;
+  max-width: ${theme.unit * 36}px;
   text-align: left;
   text-decoration: none;
   width: 100%;
 
-  ${theme.down(theme.breakpoints.md)} {
+  ${theme.down(theme.breakpoints.mdByUnit)} {
     margin: 0 auto 68px;
   }
 `
 );
 
-const ImageWrapper = styled.div`
+const ImageWrapper = styled.div(
+  ({ theme }) => `
   position: relative;
-  height: 415px;
+  height: ${theme.unit * 34.58}px;
   width: 100%;
   margin-bottom: 16px;
-`;
+`
+);
 
 const LotImage = styled(Image)(
   ({ theme }) => `
