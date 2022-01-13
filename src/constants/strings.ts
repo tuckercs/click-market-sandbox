@@ -44,6 +44,14 @@ export const strings = {
       DISCLAIMER:
         "If you place your maximum limit, the system will automatically keep you at the top within the next increment until your max bid is met.",
     },
+    QUICKBID_MODAL: {
+      TITLE: "Are you sure you want to proceed with this bid?",
+      PROCEED: "PROCEED",
+      CANCEL: "CANCEL",
+      CURRENT_BID: "Current bid: ",
+      QUICK_BID: "Quick bid: ",
+      CUSTOM_BID: "Customize Bid"
+    }
   },
   PROFILE: {
     LOG_OUT_BUTTON: "LOG OUT",

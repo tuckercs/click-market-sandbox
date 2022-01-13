@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { NextPage } from "next";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -8,8 +8,8 @@ import styled from "styled-components";
 
 import { config, images, strings } from "@constants";
 import { BidFeed, StatusTag, BidConfirmModal, Button, QuickBidModal } from "@components";
-import { useMojito, useLazyMojito, useFetchAfterAuth } from "@hooks";
-import { EMojitoQueries } from "@state";
+import { useMojito, useLazyMojito, useFetchAfterAuth, useMojitoSubscription } from "@hooks";
+import { EMojitoQueries, EMojitoSubscriptions } from "@state";
 import { formatCurrencyAmount } from "@utils";
 import Content from "content.json";
 
@@ -252,11 +252,20 @@ const LotDetail: NextPage = ({ lot }: any) => {
   const router = useRouter();
   const [showQuickBidModal, setShowQuickBidModal] = useState(false);
 
-  const { data: mojitoLotData } = useMojito(EMojitoQueries.oneLot, {
+  let { loading, data, error } = useMojitoSubscription(
+    EMojitoSubscriptions.getMarketplaceAuctionLot, {
+      variables: {
+        marketplaceAuctionLotId: lot.mojitoId,
+      }
+    }
+  );
+
+  let { data: mojitoLotData } = useMojito(EMojitoQueries.oneLot, {
     variables: {
       marketplaceAuctionLotId: lot.mojitoId,
     },
   });
+
   const [getData, { data: profile }] = useLazyMojito(EMojitoQueries.profile, {
     variables: {
       organizationID: config.ORGANIZATION_ID,
@@ -461,8 +470,10 @@ const LotDetail: NextPage = ({ lot }: any) => {
         {showQuickBidModal && (
           <QuickBidModal
             handleClose={() => setShowQuickBidModal(false)}
+            handleCustomBid={() => setShowConfirmModal(true)}
             lot={lot}
             mojitoLotData={mojitoLotData?.getMarketplaceAuctionLot}
+            setHasBid={(value: boolean) => setHasBid(value)}
           />
         )}
       </StyledContent>
