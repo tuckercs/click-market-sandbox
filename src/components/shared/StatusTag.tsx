@@ -90,7 +90,9 @@ function Countdown({ eventTime, serverTime, interval }: CountdownProps) {
   }, [serverTime]);
 
   useEffect(() => {
-    setInterval(timerCallback, interval);
+    const intervalId = setInterval(timerCallback, interval);
+
+    return () => clearInterval(intervalId);
   }, [serverTime]);
 
   return (
