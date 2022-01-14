@@ -67,6 +67,7 @@ const QuickBidButton = styled.button(
     color: #ffffff;
     padding: 7px 28px;
     margin-left: 24px;
+    text-transform: uppercase;
 `
 );
 
@@ -473,7 +474,6 @@ const LotDetail: NextPage = ({ lot }: any) => {
             handleCustomBid={() => setShowConfirmModal(true)}
             lot={lot}
             mojitoLotData={mojitoLotData?.getMarketplaceAuctionLot}
-            setHasBid={(value: boolean) => setHasBid(value)}
           />
         )}
       </StyledContent>

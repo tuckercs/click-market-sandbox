@@ -27,7 +27,7 @@ export const strings = {
     AVAILABLE_SOON: "AVAILABLE SOON",
     HIGHEST_BID: "Your bid is the highest so far 🥇",
     OUTBID: "You have been outbid! ⚠️",
-    QUICKBID: "QUICK BID",
+    QUICKBID: "Quick bid",
     WINNING_BID: "Winning Bid: ",
     BY: "By ",
     BID_FEED: {

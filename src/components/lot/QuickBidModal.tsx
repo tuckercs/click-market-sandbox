@@ -132,7 +132,6 @@ interface QuickBidModalProps {
   handleCustomBid: () => void;
   lot: any;
   mojitoLotData: any;
-  setHasBid: (value: boolean) => void;
 }
 
 export const QuickBidModal = ({
@@ -140,7 +139,6 @@ export const QuickBidModal = ({
   handleCustomBid,
   lot,
   mojitoLotData,
-  setHasBid
 }: QuickBidModalProps) => {
   const [error, setError] = useState<any>(null);
   const [placeBid] = usePlaceBidMutation(lot);
@@ -154,7 +152,6 @@ export const QuickBidModal = ({
         },
       }).then(() => {
         handleClose();
-        setHasBid(true);
       });
     } catch (e) {
       console.log(e);

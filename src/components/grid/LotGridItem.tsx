@@ -1,13 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import styled from "styled-components";
 
 import { StatusTag } from "@components";
 import { strings } from "@constants";
 import { formatCurrencyAmount } from "@utils";
+import { QuickBidModal } from "../lot";
 
-const Lot = styled.a(
+const Lot = styled.div(
   ({ theme }) => `
   border-radius: ${theme.borderRadius.medium};
   color: inherit;
@@ -25,7 +26,7 @@ const Lot = styled.a(
 `
 );
 
-const ImageWrapper = styled.div`
+const ImageWrapper = styled.a`
   position: relative;
   height: 415px;
   width: 100%;
@@ -109,61 +110,95 @@ const CurrentBidAmount = styled.div(
 `
 );
 
-export const LotGridItem = ({ lot, mojitoLotData }: any) => (
-  <Lot href={`lots/${lot.slug}`}>
-    <ImageWrapper>
-      {lot.format === "image" && (
-        <LotImage
-          objectFit="cover"
-          layout="fill"
-          draggable="false"
-          src={lot.image}
-          alt="lot-image"
+const QuickBidButton = styled.button(
+  ({ theme }) => `
+    background-color: #ff00ff;
+    border-radius: 8px;
+    border: none;
+    font-family: "PostGrotesk", sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 18px;
+    color: #ffffff;
+    padding: 5px 10px;
+`
+);
+
+export const LotGridItem = ({ lot, mojitoLotData }: any) => {
+  const [showQuickBidModal, setShowQuickBidModal] = useState(false);
+
+  return (
+    <Lot>
+      <ImageWrapper href={`lots/${lot.slug}`}>
+        {lot.format === "image" && (
+          <LotImage
+            objectFit="cover"
+            layout="fill"
+            draggable="false"
+            src={lot.image}
+            alt="lot-image"
+          />
+        )}
+        {lot.format === "video" && (
+          <Video preload="none" poster={lot.preview}>
+            <source src={lot.video} />
+          </Video>
+        )}
+      </ImageWrapper>
+      <TagContainer>
+        <StatusTag mojitoLotData={mojitoLotData} />
+      </TagContainer>
+      <Row>
+        <Title>{lot.title}</Title>
+        {mojitoLotData.bidView.isDuringSale && (
+          <CurrentBid>
+            {strings.COMMON.CURRENT_BID}
+            <CurrentBidAmount>
+              {formatCurrencyAmount(
+                mojitoLotData.currentBid?.amount
+                  ? mojitoLotData.currentBid?.amount
+                  : 0
+              )}
+            </CurrentBidAmount>
+          </CurrentBid>
+        )}
+      </Row>
+      <Row>
+        <div>
+          <Id>{`#${lot.lotId}`}</Id>
+          <Paragraph>
+            {mojitoLotData.bidView.isPostSale && mojitoLotData.currentBid ? (
+              <>
+                {strings.COMMON.WINNER}
+                <WinnerName>
+                  {mojitoLotData.currentBid.userOrganization.user.name}
+                </WinnerName>
+              </>
+            ) : (
+              <>
+                {strings.COMMON.CREATED_BY}
+                <CreatorName>{lot.author.name}</CreatorName>
+              </>
+            )}
+          </Paragraph>
+        </div>
+        {mojitoLotData.bidView.isDuringSale &&
+          mojitoLotData.currentBid?.amount && (
+            <QuickBidButton onClick={() => setShowQuickBidModal(true)}>
+              {strings.LOT.QUICKBID} $
+              {mojitoLotData.currentBid.nextBidIncrement}
+            </QuickBidButton>
+          )}
+      </Row>
+      {showQuickBidModal && (
+        <QuickBidModal
+          handleClose={() => setShowQuickBidModal(false)}
+          handleCustomBid={() => {}}
+          lot={lot}
+          mojitoLotData={mojitoLotData}
         />
       )}
-      {lot.format === "video" && (
-        <Video preload="none" poster={lot.preview}>
-          <source src={lot.video} />
-        </Video>
-      )}
-    </ImageWrapper>
-    <TagContainer>
-      <StatusTag mojitoLotData={mojitoLotData} />
-    </TagContainer>
-    <Line>
-      <Title>{lot.title}</Title>
-    </Line>
-    <Row>
-      <div>
-        <Id>{`#${lot.lotId}`}</Id>
-        <Paragraph>
-          {mojitoLotData.bidView.isPostSale && mojitoLotData.currentBid ? (
-            <>
-              {strings.COMMON.WINNER}
-              <WinnerName>
-                {mojitoLotData.currentBid.userOrganization.user.name}
-              </WinnerName>
-            </>
-          ) : (
-            <>
-              {strings.COMMON.CREATED_BY}
-              <CreatorName>{lot.author.name}</CreatorName>
-            </>
-          )}
-        </Paragraph>
-      </div>
-      {mojitoLotData.bidView.isDuringSale && (
-        <CurrentBid>
-          {strings.COMMON.CURRENT_BID}
-          <CurrentBidAmount>
-            {formatCurrencyAmount(
-              mojitoLotData.currentBid?.amount
-                ? mojitoLotData.currentBid?.amount
-                : 0
-            )}
-          </CurrentBidAmount>
-        </CurrentBid>
-      )}
-    </Row>
-  </Lot>
-);
+    </Lot>
+  );
+};
