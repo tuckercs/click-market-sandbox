@@ -42,6 +42,8 @@ export const strings = {
       YOUR_MAX_BID: "Your max. bid",
       DISCLAIMER:
         "If you place your maximum limit, the system will automatically keep you at the top within the next increment until your max bid is met.",
+      SUCCESS: "Your bid was submitted successfully!",
+      CLOSE: "CLOSE",
     },
   },
   PROFILE: {

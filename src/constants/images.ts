@@ -6,6 +6,12 @@ export const images = {
     width: 20,
     height: 20,
   },
+  SUCCESS: {
+    src: "/images/success.svg",
+    alt: "success",
+    width: 158,
+    height: 158,
+  },
   AVATAR_PLACEHOLDER: {
     src: "/images/profile-placeholder.svg",
     alt: "avatar",
