@@ -7,6 +7,8 @@ import { StatusTag } from "@components";
 import { strings } from "@constants";
 import { formatCurrencyAmount } from "@utils";
 import { QuickBidModal } from "../lot";
+import { useMojitoSubscription } from "@hooks";
+import { EMojitoSubscriptions } from "@state";
 
 const Lot = styled.div(
   ({ theme }) => `
@@ -131,6 +133,18 @@ export const LotGridItem = ({ lot, mojitoLotData, profile}: any) => {
 
   const showQuickBid = () => {
     return mojitoLotData.currentBid.marketplaceUser.id !== profile?.me?.id && isAuthenticated && mojitoLotData.bidView.isDuringSale
+  }
+
+  let { loading, data, error } = useMojitoSubscription(
+    EMojitoSubscriptions.getMarketplaceAuctionLot, {
+      variables: {
+        marketplaceAuctionLotId: lot.mojitoId,
+      }
+    }
+  );
+
+  if(data){
+    Object.assign({}, mojitoLotData.currentBid , data.getMarketplaceAuctionLot.currentBid)
   }
 
   return (
