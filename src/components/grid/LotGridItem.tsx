@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import styled from "styled-components";
-
+import { useAuth0 } from "@auth0/auth0-react";
 import { StatusTag } from "@components";
 import { strings } from "@constants";
 import { formatCurrencyAmount } from "@utils";
@@ -127,6 +127,7 @@ const QuickBidButton = styled.button(
 
 export const LotGridItem = ({ lot, mojitoLotData }: any) => {
   const [showQuickBidModal, setShowQuickBidModal] = useState(false);
+  const { isAuthenticated } = useAuth0();
 
   return (
     <Lot>
@@ -183,7 +184,7 @@ export const LotGridItem = ({ lot, mojitoLotData }: any) => {
             )}
           </Paragraph>
         </div>
-        {mojitoLotData.bidView.isDuringSale &&
+        {isAuthenticated && mojitoLotData.bidView.isDuringSale &&
           mojitoLotData.currentBid?.amount && (
             <QuickBidButton onClick={() => setShowQuickBidModal(true)}>
               {strings.LOT.QUICKBID} $
