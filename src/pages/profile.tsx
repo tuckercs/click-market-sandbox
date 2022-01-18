@@ -170,10 +170,6 @@ const Profile: NextPage = () => {
 
   if (!profile) return null;
   const activeBids = profile.me.activeBids;
-  const userPictureBetterQuality = user?.picture?.replace(
-    "_normal",
-    "_400x400"
-  );
   return (
     <Main>
       {user && (
@@ -183,7 +179,7 @@ const Profile: NextPage = () => {
               <ImageWrapper>
                 <Image
                   src={
-                    userPictureBetterQuality || images.AVATAR_PLACEHOLDER?.src
+                    images.AVATAR_PLACEHOLDER?.src
                   }
                   alt={images.AVATAR_PLACEHOLDER?.alt}
                   width={images.AVATAR_PLACEHOLDER?.large}

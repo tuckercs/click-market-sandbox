@@ -1,4 +1,5 @@
 This is the Mojito Reference App for marketplaces.
+This project is licensed under the terms of the MIT license.
 
 ## Getting Started
 
@@ -31,3 +32,8 @@ App theme can be edited in `src/theme/theme.ts`. In there, several aspects can b
 Copy (including site title) is set in `src/constants/strings.ts` file and can be modified there, and also the images (favicon, logo, default avatar, close icon, profile icon...), in `src/constants/images.ts`. 
 
 Add link to terms and conditions in `TERMS_AND_CONDITIONS_LINK` constant, in `src/constants/general.constants.ts` file.
+
+## API documentation
+
+A [documentation link](https://developers.mojito.xyz) which contains detailed description of Mojito APIs and data models.
+

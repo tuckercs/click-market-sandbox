@@ -113,7 +113,6 @@ export const BidFeedItem = ({ item, isTop, userId }: any) => {
     outbidinfo,
   } = item;
   const timeAgo = getTimeAgo(createdAt);
-  const avatarBetterQuality = avatar?.replace("_normal", "_400x400");
 
   const onShowMessage = () => {
     if (!showMessage) {
@@ -126,7 +125,7 @@ export const BidFeedItem = ({ item, isTop, userId }: any) => {
     <Container isTop={isTop}>
       <Bidder>
         <AvatarImage
-          src={avatarBetterQuality || images.AVATAR_PLACEHOLDER?.src}
+          src={images.AVATAR_PLACEHOLDER?.src}
           alt={images.AVATAR_PLACEHOLDER?.alt}
           width={
             isTop
