@@ -111,6 +111,7 @@ const Home: NextPage = () => {
               mojitoLotData={item.lot}
               profile={profile}
               lot={lot}
+              isCollectionItem
             />
           ) : null;
         })}

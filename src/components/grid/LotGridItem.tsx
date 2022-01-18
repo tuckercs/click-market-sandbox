@@ -32,6 +32,7 @@ const ImageWrapper = styled.a`
   position: relative;
   height: 415px;
   width: 100%;
+  margin-bottom: 16px;
 `;
 
 const LotImage = styled(Image)(
@@ -52,7 +53,7 @@ const Video = styled.video(
 
 const TagContainer = styled.div`
   align-self: flex-start;
-  margin: 16px 0 12px;
+  margin-bottom: 12px;
 `;
 
 const Line = styled.div`
