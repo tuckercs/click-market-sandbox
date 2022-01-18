@@ -125,9 +125,13 @@ const QuickBidButton = styled.button(
 `
 );
 
-export const LotGridItem = ({ lot, mojitoLotData }: any) => {
+export const LotGridItem = ({ lot, mojitoLotData, profile}: any) => {
   const [showQuickBidModal, setShowQuickBidModal] = useState(false);
   const { isAuthenticated } = useAuth0();
+
+  const showQuickBid = () => {
+    return mojitoLotData.currentBid.marketplaceUser.id !== profile?.me?.id && isAuthenticated && mojitoLotData.bidView.isDuringSale
+  }
 
   return (
     <Lot>
@@ -184,7 +188,7 @@ export const LotGridItem = ({ lot, mojitoLotData }: any) => {
             )}
           </Paragraph>
         </div>
-        {isAuthenticated && mojitoLotData.bidView.isDuringSale &&
+        {showQuickBid() &&
           mojitoLotData.currentBid?.amount && (
             <QuickBidButton onClick={() => setShowQuickBidModal(true)}>
               {strings.LOT.QUICKBID} $

@@ -4,8 +4,9 @@ import styled from "styled-components";
 
 import { LotGridItem } from "@components";
 import { config, images, strings } from "@constants";
-import { useCollection } from "@hooks";
+import { useCollection, useFetchAfterAuth, useLazyMojito } from "@hooks";
 import Content from "content.json";
+import { EMojitoQueries } from "@state";
 
 const Container = styled.main`
   background: ${({ theme }) => theme.backgrounds.grid};
@@ -75,6 +76,14 @@ const Home: NextPage = () => {
   const collectionLotsIds = collection?.items?.map((e: any) => e.lot.id) || [];
   let filteredLots = lots.filter((e) => collectionLotsIds.includes(e.mojitoId));
 
+  const [getData, { data: profile }] = useLazyMojito(EMojitoQueries.profile, {
+    variables: {
+      organizationID: config.ORGANIZATION_ID,
+    },
+  });
+
+  useFetchAfterAuth(getData);
+
   return (
     <Container>
       <Image
@@ -100,6 +109,7 @@ const Home: NextPage = () => {
             <LotGridItem
               key={lot.mojitoId + JSON.stringify(item.lot.bidView)}
               mojitoLotData={item.lot}
+              profile={profile}
               lot={lot}
             />
           ) : null;
